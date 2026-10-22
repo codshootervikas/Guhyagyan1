@@ -1,0 +1,11 @@
+# Environment variables (contains private keys)
+.env
+.env.local
+.env.*.local
+
+# Dependency directories
+node_modules/
+
+# OS and editor files
+.DS_Store
+Thumbs.db

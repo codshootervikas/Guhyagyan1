@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seeker Initiation Registration — GuhyaGyan</title>
+  <meta name="description" content="Register as a sacred seeker on GuhyaGyan. Begin your spiritual journey into esoteric wisdom, sadhana tracking, and meditation sanctuary.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕉️</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Starfield Canvas -->
+  <canvas id="celestial-canvas"></canvas>
+
+  <!-- Global Header Navigation -->
+  <header class="main-header" id="main-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="brand-logo">
+        <svg class="yantra-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#e6b747" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <circle cx="50" cy="50" r="38" stroke="#fbe69b" stroke-width="1.2"/>
+          <polygon points="50,15 82,72 18,72" stroke="#e6b747" stroke-width="1.8" fill="rgba(230,183,71,0.08)"/>
+          <polygon points="50,85 82,28 18,28" stroke="#e6b747" stroke-width="1.8" fill="rgba(230,183,71,0.08)"/>
+          <circle cx="50" cy="50" r="4" fill="#fbe69b"/>
+        </svg>
+        <div class="brand-title-wrap">
+          <span class="brand-name">GuhyaGyan</span>
+          <span class="brand-sub">गुह्य ज्ञान • Sacred Wisdom</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-link">Sanctuary</a></li>
+          <li><a href="index.html#realms" class="nav-link">Sacred Realms</a></li>
+          <li><a href="index.html#sutra-oracle" class="nav-link">Daily Sutra</a></li>
+          <li><a href="index.html#interactive-sadhana" class="nav-link">Sadhana Studio</a></li>
+          <li><a href="sanctuary.html" class="nav-link" id="nav-sanctuary-link" style="display: none;">Seeker Portal</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions" id="nav-auth-actions">
+        <a href="login.html" class="btn btn-ghost btn-sm" id="nav-login-btn">Log In</a>
+        <a href="register.html" class="btn btn-primary btn-sm active" id="nav-register-btn">Initiate</a>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Register Page Main Container -->
+  <main class="auth-page-wrapper">
+    <div class="auth-card auth-card-wide">
+      <div class="auth-header">
+        <div class="auth-yantra-glyph">🪷</div>
+        <div class="sanskrit-subtitle">दीक्षा सङ्कल्प • Seeker Initiation</div>
+        <h1 class="font-cinzel" style="font-size: 2rem; margin-bottom: 0.5rem;">Begin Your <span class="gold-gradient-text">Sacred Journey</span></h1>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+          Take the vow of contemplation. Register to unlock personal sadhana logs, save sacred sutras, and immerse in esoteric teachings.
+        </p>
+      </div>
+
+      <form id="register-form" novalidate>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+          <!-- Seeker Full Name -->
+          <div class="form-group">
+            <label class="form-label" for="reg-name">Seeker Name / Diksha Title <span class="req">*</span></label>
+            <div class="input-with-icon">
+              <span class="input-icon">👤</span>
+              <input type="text" id="reg-name" class="form-input" placeholder="e.g. Anand Giri or Maya Devi" required autocomplete="name">
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Sacred Email Address <span class="req">*</span></label>
+            <div class="input-with-icon">
+              <span class="input-icon">✉️</span>
+              <input type="email" id="reg-email" class="form-input" placeholder="seeker@transcendence.org" required autocomplete="email">
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+          <!-- Primary Spiritual Tradition / Path -->
+          <div class="form-group">
+            <label class="form-label" for="reg-path">Primary Spiritual Path</label>
+            <div class="input-with-icon">
+              <span class="input-icon">📜</span>
+              <select id="reg-path" class="form-select">
+                <option value="Advaita Vedanta & Non-Duality">Advaita Vedanta & Non-Duality</option>
+                <option value="Kundalini Vidya & Chakras">Kundalini Vidya & Chakras</option>
+                <option value="Kashmir Shaivism & Tantra">Kashmir Shaivism & Spanda Tantra</option>
+                <option value="Nada Yoga & Sacred Sound">Nada Yoga & Sacred Sound</option>
+                <option value="Raja Yoga & Meditation">Raja Yoga & Silent Dhyana</option>
+                <option value="Bhakti & Divine Love">Bhakti Yoga & Devotion</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Seeker Level -->
+          <div class="form-group">
+            <label class="form-label" for="reg-level">Sadhana Experience Level</label>
+            <div class="input-with-icon">
+              <span class="input-icon">✨</span>
+              <select id="reg-level" class="form-select">
+                <option value="Beginning Seeker (Aarambha)">Beginning Seeker (Aarambha)</option>
+                <option value="Dedicated Seeker (Madhyama Sadhaka)" selected>Dedicated Seeker (Madhyama Sadhaka)</option>
+                <option value="Deep Contemplative (Pravina)">Deep Contemplative (Pravina)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avatar Selection -->
+        <div class="form-group">
+          <label class="form-label">Select Your Sacred Vessel Emblem (Avatar)</label>
+          <div class="avatar-selector-grid" id="avatar-grid">
+            <div class="avatar-option selected" data-avatar="🕉️" title="Sacred Om">🕉️</div>
+            <div class="avatar-option" data-avatar="🪷" title="Cosmic Lotus">🪷</div>
+            <div class="avatar-option" data-avatar="👁️" title="Ajna Third Eye">👁️</div>
+            <div class="avatar-option" data-avatar="🧘" title="Meditating Sage">🧘</div>
+            <div class="avatar-option" data-avatar="⚡" title="Kundalini Fire">⚡</div>
+            <div class="avatar-option" data-avatar="🕯️" title="Inner Flame">🕯️</div>
+          </div>
+          <input type="hidden" id="selected-avatar" value="🕉️">
+        </div>
+
+        <!-- Passwords -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Sacred Passphrase <span class="req">*</span></label>
+            <div class="input-with-icon">
+              <span class="input-icon">🔒</span>
+              <input type="password" id="reg-password" class="form-input" placeholder="Min. 6 mystical characters" required autocomplete="new-password">
+              <button type="button" class="input-action-btn" id="toggle-reg-pass" aria-label="Toggle password visibility">👁️</button>
+            </div>
+            <!-- Strength Indicator -->
+            <div class="password-strength">
+              <div class="strength-bar-bg">
+                <div class="strength-bar-fill" id="strength-fill"></div>
+              </div>
+              <span class="strength-text" id="strength-label">Passphrase vitality: unentered</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-confirm-password">Confirm Passphrase <span class="req">*</span></label>
+            <div class="input-with-icon">
+              <span class="input-icon">🛡️</span>
+              <input type="password" id="reg-confirm-password" class="form-input" placeholder="Repeat passphrase exactly" required autocomplete="new-password">
+            </div>
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 0.4rem;" id="match-status-label"></span>
+          </div>
+        </div>
+
+        <!-- Seeker Vow Agreement -->
+        <div class="form-group" style="margin-top: 0.5rem; margin-bottom: 2rem;">
+          <label class="checkbox-wrap">
+            <input type="checkbox" id="reg-vow" required>
+            <span class="checkbox-label">
+              I enter this sanctum with reverence, humility, and sincerity to practice sadhana and respect the sacred lineage of truth.
+            </span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" id="submit-register-btn">
+          <span>Complete Seeker Initiation</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+        <div style="text-align: center; margin-top: 1.75rem; font-size: 0.95rem; color: var(--text-muted);">
+          Already initiated into the mysteries? 
+          <a href="login.html" style="color: var(--gold-light); font-weight: 600; text-decoration: none; margin-left: 0.35rem;" id="go-to-login-link">Enter Sanctum (Log In) →</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Logout Confirmation Modal Dialog -->
+  <div class="modal-overlay" id="logout-modal">
+    <div class="modal-dialog">
+      <div style="font-size: 3rem; margin-bottom: 1rem;">🕉️</div>
+      <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #fff;">Conclude Sacred Session?</h3>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem;">
+        Honored seeker, are you ready to log out and return to the realm of silence?
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1rem;">
+        <button class="btn btn-ghost" onclick="window.closeLogoutModal()">Remain in Sanctum</button>
+        <button class="btn btn-danger" onclick="window.executeLogout()">Confirm Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Avatar Picker Interaction
+      const avatarGrid = document.getElementById('avatar-grid');
+      const avatarInput = document.getElementById('selected-avatar');
+      
+      if (avatarGrid && avatarInput) {
+        avatarGrid.querySelectorAll('.avatar-option').forEach(opt => {
+          opt.addEventListener('click', () => {
+            avatarGrid.querySelectorAll('.avatar-option').forEach(o => o.classList.remove('selected'));
+            opt.classList.add('selected');
+            avatarInput.value = opt.getAttribute('data-avatar');
+          });
+        });
+      }
+
+      // Password Visibility Toggle
+      const passInput = document.getElementById('reg-password');
+      const toggleBtn = document.getElementById('toggle-reg-pass');
+      if (toggleBtn && passInput) {
+        toggleBtn.addEventListener('click', () => {
+          const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passInput.setAttribute('type', type);
+          toggleBtn.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+      }
+
+      // Dynamic Password Strength Meter
+      const strengthFill = document.getElementById('strength-fill');
+      const strengthLabel = document.getElementById('strength-label');
+      
+      if (passInput && strengthFill && strengthLabel) {
+        passInput.addEventListener('input', () => {
+          const val = passInput.value;
+          let score = 0;
+          if (val.length >= 6) score += 25;
+          if (val.length >= 10) score += 25;
+          if (/[A-Z]/.test(val) && /[0-9]/.test(val)) score += 25;
+          if (/[^A-Za-z0-9]/.test(val)) score += 25;
+
+          strengthFill.style.width = score + '%';
+          if (score <= 25) {
+            strengthFill.style.backgroundColor = '#ef4444';
+            strengthLabel.textContent = 'Passphrase vitality: Tender (Aarambha)';
+            strengthLabel.style.color = '#fca5a5';
+          } else if (score <= 50) {
+            strengthFill.style.backgroundColor = '#f59e0b';
+            strengthLabel.textContent = 'Passphrase vitality: Awakening (Madhyama)';
+            strengthLabel.style.color = '#fcd34d';
+          } else if (score <= 75) {
+            strengthFill.style.backgroundColor = '#38bdf8';
+            strengthLabel.textContent = 'Passphrase vitality: Enlightened (Pravina)';
+            strengthLabel.style.color = '#7dd3fc';
+          } else {
+            strengthFill.style.backgroundColor = '#4ade80';
+            strengthLabel.textContent = 'Passphrase vitality: Invulnerable (Vajra)';
+            strengthLabel.style.color = '#86efac';
+          }
+        });
+      }
+
+      // Form Submission
+      const form = document.getElementById('register-form');
+      const submitBtn = document.getElementById('submit-register-btn');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('reg-name').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        const path = document.getElementById('reg-path').value;
+        const level = document.getElementById('reg-level').value;
+        const avatar = document.getElementById('selected-avatar').value;
+        const password = document.getElementById('reg-password').value;
+        const confirmPass = document.getElementById('reg-confirm-password').value;
+        const vowChecked = document.getElementById('reg-vow').checked;
+
+        if (!name || !email || !password) {
+          window.showToast('Kindly fill all required sacred fields.', 'error');
+          return;
+        }
+
+        if (password.length < 6) {
+          window.showToast('Your sacred passphrase must contain at least 6 characters.', 'error');
+          return;
+        }
+
+        if (password !== confirmPass) {
+          window.showToast('The sacred passphrases do not match. Harmonize both entries.', 'error');
+          return;
+        }
+
+        if (!vowChecked) {
+          window.showToast('Please accept the sacred vow of sincere contemplation to proceed.', 'error');
+          return;
+        }
+
+        // Show loading state
+        const originalBtnContent = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Initiating in Supabase...</span> <span style="display:inline-block; animation: spin 1s linear infinite;">⏳</span>';
+
+        try {
+          const newSeeker = await window.authManager.register({
+            name,
+            email,
+            path,
+            level,
+            avatar,
+            password
+          });
+
+          window.showToast(`Om Namah Shivaya! Welcome, Seeker ${newSeeker.name}. Initiation blessed.`, 'success');
+          
+          setTimeout(() => {
+            window.location.href = 'sanctuary.html';
+          }, 1200);
+        } catch (err) {
+          window.showToast(err.message || 'An error occurred during initiation.', 'error');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnContent;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

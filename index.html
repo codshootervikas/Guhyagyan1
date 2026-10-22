@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guhya Gyan Foundation — Indian Knowledge System (IKS) & Sacred Wisdom</title>
+  <meta name="description"
+    content="Guhya Gyan Foundation is a not-for-profit NGO involved in activities related to the Indian Knowledge System (IKS), including Ramayana awareness programs, book publications, Kirtan jamming, and online & offline educational & value-based programs.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕉️</text></svg>">
+</head>
+
+<body>
+
+  <!-- Floating Starfield Canvas -->
+  <canvas id="celestial-canvas"></canvas>
+
+  <!-- Global Header Navigation -->
+  <header class="main-header" id="main-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="brand-logo">
+        <svg class="yantra-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#e6b747" stroke-width="1.5" stroke-dasharray="4 2" />
+          <circle cx="50" cy="50" r="38" stroke="#fbe69b" stroke-width="1.2" />
+          <polygon points="50,15 82,72 18,72" stroke="#e6b747" stroke-width="1.8" fill="rgba(230,183,71,0.08)" />
+          <polygon points="50,85 82,28 18,28" stroke="#e6b747" stroke-width="1.8" fill="rgba(230,183,71,0.08)" />
+          <polygon points="50,26 72,66 28,66" stroke="#fbe69b" stroke-width="1.2" />
+          <polygon points="50,74 72,34 28,34" stroke="#fbe69b" stroke-width="1.2" />
+          <circle cx="50" cy="50" r="4" fill="#fbe69b" />
+        </svg>
+        <div class="brand-title-wrap">
+          <span class="brand-name">Guhya Gyan Foundation</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-link active" id="nav-home">Home</a></li>
+          <li><a href="#speaker" class="nav-link" id="nav-speaker">About the Speaker</a></li>
+          <li><a href="#realms" class="nav-link" id="nav-realms">Sacred Realms</a></li>
+          <li><a href="#sutra-oracle" class="nav-link" id="nav-oracle">Daily Sutra</a></li>
+          <li><a href="#interactive-sadhana" class="nav-link" id="nav-sadhana">Sadhana Studio</a></li>
+          <li><a href="sanctuary.html" class="nav-link" id="nav-sanctuary-link" style="display: none;">Seeker Portal</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Auth Actions Dynamic Container -->
+      <div class="nav-actions" id="nav-auth-actions">
+        <!-- Rendered dynamically by js/auth.js -->
+        <a href="login.html" class="btn btn-ghost btn-sm" id="nav-login-btn">Log In</a>
+        <a href="register.html" class="btn btn-primary btn-sm" id="nav-register-btn">
+          <span>Initiate</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-glow-orb hero-glow-1"></div>
+    <div class="hero-glow-orb hero-glow-2"></div>
+
+    <div class="container hero-content">
+      <div class="sacred-badge">
+        <span>✦</span>
+        <span>Guhya Gyan Foundation • Not-For-Profit NGO</span>
+        <span>✦</span>
+      </div>
+
+      <h1 class="hero-title">
+        Reviving & Illuminating the <br>
+        <span class="gold-gradient-text">Indian Knowledge System</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Welcome to <strong>Guhya Gyan Foundation</strong> — a not-for-profit NGO dedicated to active initiatives in the
+        <strong>Indian Knowledge System (IKS)</strong>, including <em>Ramayana awareness programs</em>, <em>sacred book
+          publications</em>, <em>devotional Kirtan jamming</em>, and transformative <em>online & offline educational and
+          value-based programs</em>.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#speaker" class="btn btn-primary btn-lg" id="hero-speaker-btn">
+          <span>About the Speaker</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
+        <a href="#interactive-sadhana" class="btn btn-outline btn-lg" id="hero-listen-btn">
+          <span>Sacred 432Hz Sound</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Trust & Sadhana Stats -->
+      <div class="hero-stats-bar">
+        <div class="stat-item">
+          <span class="stat-number">AIR 24</span>
+          <span class="stat-label">GATE Philosophy 2023</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">BITS Pilani</span>
+          <span class="stat-label">Computer Science & Ex-Cisco</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">RYT® 500</span>
+          <span class="stat-label">Yoga Alliance & Vedic Scholar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the Speaker Section: Dhananjay Vashistha -->
+  <section class="section-padding" id="speaker"
+    style="position: relative; background: radial-gradient(circle at 50% 25%, rgba(28, 22, 54, 0.5) 0%, rgba(7, 7, 15, 0.98) 100%); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="sanskrit-subtitle">विद्वत् परिचय • Meet the Visionary & Scholar</div>
+        <h2 class="section-title">About the Speaker: <span class="gold-gradient-text">Dhananjay Vashistha</span></h2>
+        <p class="section-desc">
+          A rare blend of high-technology acumen and deep-rooted mastery in Indian Knowledge Systems (IKS), Vedic
+          Hermeneutics, and spiritual mentorship.
+        </p>
+      </div>
+
+      <!-- Hero Speaker Layout -->
+      <div class="speaker-hero-layout">
+        <!-- Left: Profile Card -->
+        <div class="speaker-profile-card">
+          <div class="speaker-avatar">
+            <span class="monogram">DV</span>
+          </div>
+          <h3 class="speaker-name">Dhananjay Vashistha</h3>
+          <p class="speaker-role">Vedic Hermeneutist • B.E. (BITS Pilani) • AIR-24 (Philosophy)</p>
+
+          <div class="speaker-tags-list">
+            <div class="speaker-tag-item">
+              <span class="icon">🏛️</span>
+              <span><strong>Philosophy:</strong> AIR 24 in GATE 2023</span>
+            </div>
+            <div class="speaker-tag-item">
+              <span class="icon">🎓</span>
+              <span><strong>BRC, Mumbai University:</strong> Research Associate</span>
+            </div>
+            <div class="speaker-tag-item">
+              <span class="icon">🏆</span>
+              <span><strong>Theology:</strong> National Gita & Ramayan Topper</span>
+            </div>
+            <div class="speaker-tag-item">
+              <span class="icon">🕉️</span>
+              <span><strong>Yoga:</strong> RYT® 500 (Yoga Alliance) & Diploma</span>
+            </div>
+            <div class="speaker-tag-item">
+              <span class="icon">💻</span>
+              <span><strong>Tech:</strong> BITS Pilani (CS) & Cisco (6+ yrs)</span>
+            </div>
+            <div class="speaker-tag-item">
+              <span class="icon">📈</span>
+              <span><strong>Financial Advisor:</strong> Author of <em>Money Matters</em></span>
+            </div>
+            <div class="speaker-tag-item">
+              <span class="icon">🧠</span>
+              <span><strong>Counseling:</strong> Psycho-Philosophical Counselor</span>
+            </div>
+          </div>
+
+          <div class="speaker-quick-actions">
+            <a href="https://rzp.io/rzp/DhananjayVashistha" target="_blank" rel="noopener noreferrer"
+              class="btn btn-primary" style="width: 100%;">
+              <span>Book Consultation / Services</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </a>
+            <a href="https://www.dhananjayvashistha.com/p/valmiki-ramayan-series.html" target="_blank"
+              rel="noopener noreferrer" class="btn btn-outline" style="width: 100%;">
+              <span>Valmiki Ramayan Series</span>
+            </a>
+            <a href="mailto:connect@dhananjayvashistha.com" class="btn btn-ghost"
+              style="width: 100%; font-size: 0.85rem;">
+              <span>✉️ connect@dhananjayvashistha.com</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Biography & Narrative Details -->
+        <div class="speaker-bio-container">
+          <div class="speaker-bio-quote">
+            “Connecting ancient philosophy with contemporary thought — bridging the rigor of technology with the
+            transcendental depth of Vedic wisdom.”
+          </div>
+
+          <p class="speaker-bio-paragraph">
+            <strong>Dhananjay Vashistha</strong> is a rare blend of technical expertise and deep-rooted wisdom in Indian
+            Knowledge Systems. A Computer Science graduate from <strong>BITS Pilani</strong>, he spent several years at
+            <strong>Cisco Systems</strong> as a Network Consulting Engineer in Bangalore, optimizing large-scale global
+            networks. However, driven by a profound passion for ancient wisdom, he transitioned into the sacred realm of
+            Vedic studies, leadership, and spiritual mentorship.
+          </p>
+
+          <p class="speaker-bio-paragraph">
+            Currently serving as a <strong>Research Associate</strong> at one of the leading Research Centers affiliated
+            with <strong>Mumbai University</strong>, he is deeply involved in pioneering projects connecting classical
+            Vedic philosophy with modern leadership and contemporary thought. His areas of core expertise encompass the
+            <strong>Bhagavad Gita</strong>, <strong>Vedic Hermeneutics</strong>, community development principles, and
+            the timeless leadership paradigms found across Vedic texts.
+          </p>
+
+          <p class="speaker-bio-paragraph">
+            Beyond academia, Dhananjay is an accomplished Bhagavad Gita teacher, <strong>Certified Yoga
+              Trainer</strong>, <strong>Certified Chakra Healer</strong>, and <strong>Heritage Interpreter</strong>,
+            bringing sacred narratives alive for seekers worldwide. His service extends to mentoring youth, conducting
+            spiritual discourses, and spearheading transformative initiatives such as the global <em>‘Amrit
+              Droplets’</em> project across multiple languages.
+          </p>
+
+          <p class="speaker-bio-paragraph">
+            As the Topper of the <strong>National Bhagavad Gita Championship</strong> and an <strong>All India Rank
+              24</strong> holder in GATE Philosophy, his scholarly work is backed by rigorous traditional discipline —
+            having completed the revered <strong>Bhakti Shastri</strong> program and currently pursuing <strong>Bhakti
+              Vaibhav</strong>. He also serves as the <strong>Project Head of Guhya Gyan Academy</strong>, spearheading
+            the production of pristine, high-fidelity audiobooks on Vedic scriptures.
+          </p>
+
+          <p class="speaker-bio-paragraph">
+            Dhananjay shares daily Vedic wisdom under the banner <strong>Bhagavatam Droplets</strong>, with a
+            comprehensive book launching soon. He has also initiated the celebrated <strong>Online Valmiki Ramayan
+              Series</strong> — conducting daily 30-minute intensive classes directly from the original Sanskrit verses
+            composed by Maharishi Valmiki, beginning from the fourth canto (<em>Kishkindha Kand</em>).
+          </p>
+
+          <p class="speaker-bio-paragraph">
+            In the domain of wealth and life stewardship, he is the author of the book <strong><em>Money
+                Matters</em></strong>. As an Investment Adviser, he empowers clients to achieve true financial freedom,
+            optimized tax structures, and disciplined retirement corpora. Backed by his multifaceted expertise, he
+            provides specialized consultancy in <strong>Psycho-Philosophical Counseling & Therapy</strong>, Yoga &
+            Pranayama, Financial Planning, Personal Mentorship, and Web Development.
+          </p>
+
+          <!-- Core Domains Grid -->
+          <div class="speaker-domains-grid">
+            <!-- Domain 1: Philosophy -->
+            <div class="speaker-domain-card">
+              <div class="domain-card-header">
+                <div class="domain-icon">🏛️</div>
+                <h4 class="domain-title">Philosophy</h4>
+              </div>
+              <ul class="domain-points-list">
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>AIR - 24 in GATE 2023</strong> in
+                  Philosophy</li>
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>Research Associate</strong> at BRC,
+                  Mumbai University</li>
+                <li class="domain-point-item"><span class="bullet">✦</span> Academic research connecting ancient Indian
+                  thought with modern philosophy</li>
+              </ul>
+            </div>
+
+            <!-- Domain 2: Theology -->
+            <div class="speaker-domain-card">
+              <div class="domain-card-header">
+                <div class="domain-icon">📜</div>
+                <h4 class="domain-title">Theology</h4>
+              </div>
+              <ul class="domain-points-list">
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>Topper</strong> of National Gita
+                  Championship</li>
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>Topper</strong> of National Valmiki
+                  Ramayan Championship</li>
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>Bhakti Shastri</strong> (currently
+                  pursuing Bhakti Vaibhav)</li>
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>Vedic Hermeneutist</strong> &
+                  Heritage Interpreter</li>
+              </ul>
+            </div>
+
+            <!-- Domain 3: Yoga & Healing -->
+            <div class="speaker-domain-card">
+              <div class="domain-card-header">
+                <div class="domain-icon">🧘</div>
+                <h4 class="domain-title">Yoga & Healing</h4>
+              </div>
+              <ul class="domain-points-list">
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>Diploma in Yoga Education</strong>
+                </li>
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>Registered Yoga Trainer</strong> at
+                  Yoga Alliance (RYT® 500)</li>
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>Certified Chakra Healer</strong> &
+                  Pranayama Practitioner</li>
+              </ul>
+            </div>
+
+            <!-- Domain 4: Technology -->
+            <div class="speaker-domain-card">
+              <div class="domain-card-header">
+                <div class="domain-icon">💻</div>
+                <h4 class="domain-title">Technology</h4>
+              </div>
+              <ul class="domain-points-list">
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>B.E. Computer Science</strong>, BITS
+                  Pilani</li>
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>6+ Years with Cisco Systems</strong>
+                  (Bangalore) as Network Consulting Engineer</li>
+                <li class="domain-point-item"><span class="bullet">✦</span> System architecture, digital platforms & Web
+                  Development</li>
+              </ul>
+            </div>
+
+            <!-- Domain 5: Advisory & Authorship -->
+            <div class="speaker-domain-card">
+              <div class="domain-card-header">
+                <div class="domain-icon">📈</div>
+                <h4 class="domain-title">Advisory & Authorship</h4>
+              </div>
+              <ul class="domain-points-list">
+                <li class="domain-point-item"><span class="bullet">✦</span> Author of the book <strong><em>Money
+                      Matters</em></strong></li>
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>Financial Investments</strong> &
+                  Retirement Advisor</li>
+                <li class="domain-point-item"><span class="bullet">✦</span> Strategic tax planning & wealth stewardship
+                </li>
+              </ul>
+            </div>
+
+            <!-- Domain 6: Mentorship & Counseling -->
+            <div class="speaker-domain-card">
+              <div class="domain-card-header">
+                <div class="domain-icon">🤝</div>
+                <h4 class="domain-title">Mentorship & Counseling</h4>
+              </div>
+              <ul class="domain-points-list">
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>Psycho-Philosophical
+                    Counselor</strong> & Therapist</li>
+                <li class="domain-point-item"><span class="bullet">✦</span> <strong>Spiritual Mentor</strong> for youth
+                  & seekers</li>
+                <li class="domain-point-item"><span class="bullet">✦</span> Life coaching, leadership & dharmic
+                  orientation</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Featured Initiatives Spotlight -->
+          <div class="speaker-feature-spotlight">
+            <div>
+              <div
+                style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-light); font-weight: 700; margin-bottom: 0.35rem;">
+                Flagship Academic & Scriptural Initiatives
+              </div>
+              <h4 style="font-size: 1.25rem; color: #fff; margin-bottom: 0.5rem;">
+                Online Valmiki Ramayan Series & Guhya Gyan Audiobooks
+              </h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 580px; line-height: 1.6;">
+                Daily 30-minute verse-by-verse classes direct from Maharishi Valmiki’s original Sanskrit text (starting
+                from Kishkindha Kand), along with upcoming publication <em>Bhagavatam Droplets</em> and Vedic
+                audiobooks.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="https://www.dhananjayvashistha.com/p/valmiki-ramayan-series.html" target="_blank"
+                rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <span>View Valmiki Ramayan Series</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <a href="https://rzp.io/rzp/DhananjayVashistha" target="_blank" rel="noopener noreferrer"
+                class="btn btn-outline btn-sm">
+                <span>Avail Consultancy Services</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sacred Realms Section -->
+  <section class="section-padding" id="realms">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="sanskrit-subtitle">षड् ज्ञान मार्ग • The Six Sacred Wisdom Gateways</div>
+        <h2 class="section-title">Explore the Pillars of <span class="gold-gradient-text">Guhya Vidya</span></h2>
+        <p class="section-desc">Each realm unlocks a distinct dimension of mystical understanding, dissolving the veil
+          between the observed and the observer.</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Realm 1 -->
+        <article class="sacred-card">
+          <div class="card-icon-wrap">🪷</div>
+          <h3 class="card-title">Advaita Vedanta</h3>
+          <p class="card-desc">
+            Direct realization of non-duality through the Mahavakyas and Upanishadic dialogues. Discover the timeless
+            truth that your essential nature is pure, unbroken consciousness.
+          </p>
+          <a href="register.html" class="card-link">
+            <span>Contemplate Non-Duality</span>
+            <span>→</span>
+          </a>
+        </article>
+
+        <!-- Realm 2 -->
+        <article class="sacred-card">
+          <div class="card-icon-wrap">⚡</div>
+          <h3 class="card-title">Kundalini & Chakras</h3>
+          <p class="card-desc">
+            Awaken the dormant primordial serpent power (Kundalini Shakti) resting at the Muladhara, purifying the
+            subtle nadis upward into Sahasrara enlightenment.
+          </p>
+          <a href="register.html" class="card-link">
+            <span>Explore Pranic Energy</span>
+            <span>→</span>
+          </a>
+        </article>
+
+        <!-- Realm 3 -->
+        <article class="sacred-card">
+          <div class="card-icon-wrap">🔔</div>
+          <h3 class="card-title">Nada Yoga & Sacred Mantras</h3>
+          <p class="card-desc">
+            The esoteric science of celestial sound and primordial resonance (Shabda Brahman). Utilize sacred mantras,
+            Bija sounds, and sonic vibrations to still mental fluctuations.
+          </p>
+          <a href="#interactive-sadhana" class="card-link">
+            <span>Listen to Harmonics</span>
+            <span>→</span>
+          </a>
+        </article>
+
+        <!-- Realm 4 -->
+        <article class="sacred-card">
+          <div class="card-icon-wrap">👁️</div>
+          <h3 class="card-title">Kashmir Shaivism & Spanda</h3>
+          <p class="card-desc">
+            The tantric science of divine pulsating consciousness (Spanda) and Shiva-Shakti union as expounded in the
+            Shiva Sutras and Vijnana Bhairava Tantra.
+          </p>
+          <a href="register.html" class="card-link">
+            <span>Attune to Spanda</span>
+            <span>→</span>
+          </a>
+        </article>
+
+        <!-- Realm 5 -->
+        <article class="sacred-card">
+          <div class="card-icon-wrap">🌬️</div>
+          <h3 class="card-title">Raja Yoga & Sacred Prana</h3>
+          <p class="card-desc">
+            Master the subtle inner breath through classical Kumbhaka, Sama-Vritti, and Sushumna purification, calming
+            the senses and entering timeless Samadhi.
+          </p>
+          <a href="#interactive-sadhana" class="card-link">
+            <span>Practice Pranayama</span>
+            <span>→</span>
+          </a>
+        </article>
+
+        <!-- Realm 6 -->
+        <article class="sacred-card">
+          <div class="card-icon-wrap">📜</div>
+          <h3 class="card-title">Secret Himalayan Granthas</h3>
+          <p class="card-desc">
+            Rare esoteric manuscripts, ancient palm-leaf scriptures, and Guru-Shishya lineage commentaries translated
+            for the modern contemplative seeker.
+          </p>
+          <a href="register.html" class="card-link">
+            <span>Enter the Vault</span>
+            <span>→</span>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Showcase Split: The Kundalini Awakening -->
+  <section class="section-padding"
+    style="background: rgba(13, 14, 28, 0.4); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container feature-split">
+      <div class="feature-media">
+        <img src="assets/images/kundalini-chakras.jpg" alt="Luminous 7 Chakras and Meditating Seeker in Cosmic Harmony"
+          loading="lazy">
+        <div class="feature-overlay-badge">
+          <div style="color: var(--gold-light); font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem;">
+            षट्चक्र भेदन • The Alignment of Seven Sacred Vortices
+          </div>
+          <div style="font-size: 0.85rem; color: var(--text-secondary);">
+            Muladhara to Sahasrara — transcending karmic knots (Granthis) into luminous boundless bliss.
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-text-content">
+        <div class="sanskrit-subtitle" style="justify-content: flex-start;">कुण्डलिनी योग • Sacred Alchemy</div>
+        <h2 class="section-title">Harmonize the Pranic Energy of Your <span class="purple-gradient-text">Subtle
+            Body</span></h2>
+        <p class="section-desc" style="margin-left: 0; margin-bottom: 1.5rem;">
+          Within the spine lies the cosmic meridian — Sushumna Nadi. Flanked by Ida (the lunar cool stream) and Pingala
+          (the solar fiery flow), it holds the celestial light that dissolves the illusion of separate existence.
+        </p>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+          <li style="display: flex; align-items: center; gap: 0.85rem; color: var(--text-secondary);">
+            <span style="color: var(--gold-light); font-size: 1.2rem;">✧</span>
+            <span><strong>Chakra Bija Invocations</strong>: Direct resonance tuning for Muladhara, Svadhisthana,
+              Manipura, Anahata, Vishuddha, Ajna, and Sahasrara.</span>
+          </li>
+          <li style="display: flex; align-items: center; gap: 0.85rem; color: var(--text-secondary);">
+            <span style="color: var(--gold-light); font-size: 1.2rem;">✧</span>
+            <span><strong>Nadi Shodhana</strong>: Subtle psychic purification harmonizing cerebral hemispheres and
+              tranquilizing the subconscious.</span>
+          </li>
+          <li style="display: flex; align-items: center; gap: 0.85rem; color: var(--text-secondary);">
+            <span style="color: var(--gold-light); font-size: 1.2rem;">✧</span>
+            <span><strong>Samadhi Integration</strong>: Grounding ecstatic mystical experiences into compassionate daily
+              living.</span>
+          </li>
+        </ul>
+        <a href="register.html" class="btn btn-outline" id="feature-awakening-btn">Awaken Your Chakras</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Sutra Contemplation Oracle -->
+  <section class="section-padding" id="sutra-oracle">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="sanskrit-subtitle">नित्य चिन्तनम् • Daily Contemplation Oracle</div>
+        <h2 class="section-title">The Sacred Sutra of the <span class="gold-gradient-text">Eternal Moment</span></h2>
+        <p class="section-desc">Receive today's contemplative seed from ancient sages. Allow these words to reverberate
+          beyond intellectual thought.</p>
+      </div>
+
+      <div class="sutra-oracle-box" id="daily-sutra-box">
+        <div style="font-size: 2.2rem; color: var(--gold-primary); margin-bottom: 1rem;">ॐ</div>
+        <div class="sanskrit-verse" id="sutra-sanskrit">अयमात्मा ब्रह्म ॥</div>
+        <p class="sutra-english" id="sutra-english">“This inner individual Self is none other than the Infinite
+          Conscious Reality (Brahman).”</p>
+        <div class="sutra-source" id="sutra-source">Mandukya Upanishad — 1.2</div>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;">
+          <button class="btn btn-primary btn-sm" id="shuffle-sutra-btn">
+            <span>Reveal Another Sutra</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" />
+            </svg>
+          </button>
+          <button class="btn btn-outline btn-sm" id="copy-sutra-btn">
+            <span>Copy Sacred Verse</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Sadhana Studio (Web Audio Synthesizer + Guided Breathwork) -->
+  <section class="section-padding" id="interactive-sadhana"
+    style="background: radial-gradient(circle at 50% 50%, rgba(20, 24, 52, 0.5) 0%, rgba(7, 7, 15, 0.9) 100%);">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="sanskrit-subtitle">साधना पीठ • Interactive Meditation Studio</div>
+        <h2 class="section-title">Attune Your Spirit with <span class="gold-gradient-text">Resonant Sadhana</span></h2>
+        <p class="section-desc">Experience real-time celestial acoustics and breathwork right in your browser. No
+          downloads or external apps needed.</p>
+      </div>
+
+      <div class="interactive-studio-grid">
+        <!-- Module 1: Web Audio 432Hz Om Synthesizer -->
+        <div class="studio-card">
+          <div class="card-icon-wrap" style="color: var(--gold-light);">🕉️</div>
+          <h3 class="card-title">432 Hz Cosmic Om Drone</h3>
+          <p class="card-desc" id="sound-status-text">
+            Soundscape is silent. Press play to awaken celestial frequencies.
+          </p>
+
+          <div id="sound-wave-indicator"
+            style="display: flex; gap: 4px; height: 32px; align-items: flex-end; margin: 1rem 0; opacity: 0.3; transition: opacity 0.3s ease;">
+            <div style="width: 4px; height: 18px; background: var(--gold-primary); border-radius: 2px;"></div>
+            <div style="width: 4px; height: 28px; background: var(--gold-light); border-radius: 2px;"></div>
+            <div style="width: 4px; height: 12px; background: var(--mystic-purple); border-radius: 2px;"></div>
+            <div style="width: 4px; height: 32px; background: var(--gold-primary); border-radius: 2px;"></div>
+            <div style="width: 4px; height: 22px; background: var(--gold-light); border-radius: 2px;"></div>
+            <div style="width: 4px; height: 15px; background: var(--mystic-purple); border-radius: 2px;"></div>
+          </div>
+
+          <button class="btn btn-primary" id="sound-toggle-btn" onclick="window.sacredSoundEngine.toggleSound()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Play 432Hz Om Drone</span>
+          </button>
+
+          <div class="sound-controls">
+            <div class="sound-slider-wrap">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Volume Resonance</span>
+              <input type="range" class="range-slider" id="sound-volume-slider" min="0" max="1" step="0.05" value="0.35"
+                oninput="window.sacredSoundEngine.setVolume(this.value)">
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;">
+              Pure synthesis with Web Audio: Harmonic overtones at 108Hz, 216Hz, 432Hz, and binaural theta waves.
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2: Pranayama Breathwork Sphere -->
+        <div class="studio-card">
+          <div class="card-icon-wrap" style="color: #5eead4;">🌬️</div>
+          <h3 class="card-title">Sama-Vritti Pranayama</h3>
+          <p class="card-desc">
+            Sacred Box Breathing (4-4-4-4): Synchronize prana to calm nervous impulses and clear the mental atmosphere.
+          </p>
+
+          <div class="breath-visualizer">
+            <div class="breath-circle" id="breath-sphere">
+              <span class="breath-instruction" id="breath-action-text">Ready</span>
+              <span class="breath-timer" id="breath-count-text">4-4-4-4</span>
+            </div>
+          </div>
+
+          <button class="btn btn-outline" id="pranayama-toggle-btn">
+            Begin 4-4-4-4 Pranayama
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Himalayan Sanctuary Scripture Archive -->
+  <section class="section-padding">
+    <div class="container feature-split" style="direction: rtl;">
+      <div class="feature-media" style="direction: ltr;">
+        <img src="assets/images/sanctum-library.jpg" alt="Ancient Himalayan Wisdom Library with Palm Leaf Manuscripts"
+          loading="lazy">
+        <div class="feature-overlay-badge">
+          <div style="color: var(--gold-light); font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem;">
+            गुह्य ग्रन्थ भण्डार • The Himalayan Hermetic Sanctum
+          </div>
+          <div style="font-size: 0.85rem; color: var(--text-secondary);">
+            Preserved for centuries across quiet monastic cave libraries, now accessible to sincere seekers.
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-text-content" style="direction: ltr;">
+        <div class="sanskrit-subtitle" style="justify-content: flex-start;">ज्ञान दीक्षा • Sacred Initiation</div>
+        <h2 class="section-title">Join the Inner Circle of <span class="gold-gradient-text">GuhyaGyan Seekers</span>
+        </h2>
+        <p class="section-desc" style="margin-left: 0; margin-bottom: 1.5rem;">
+          True wisdom is not merely acquired information; it is the total awakening to what you already are. Register
+          today to maintain your personal sadhana log, receive sacred contemplations, and connect with global truth
+          seekers.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="register.html" class="btn btn-primary btn-lg" id="cta-register-bottom">Create Seeker Account</a>
+          <a href="login.html" class="btn btn-outline btn-lg" id="cta-login-bottom">Seeker Login</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logout Confirmation Modal Dialog -->
+  <div class="modal-overlay" id="logout-modal">
+    <div class="modal-dialog">
+      <div style="font-size: 3rem; margin-bottom: 1rem;">🕉️</div>
+      <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #fff;">Conclude Sacred Session?</h3>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6;">
+        Honored seeker, are you ready to log out and return to the realm of silence? Your sadhana progress will be
+        safely preserved in the inner vault.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1rem;">
+        <button class="btn btn-ghost" onclick="window.closeLogoutModal()" id="cancel-logout-btn">Remain in
+          Sanctum</button>
+        <button class="btn btn-danger" onclick="window.executeLogout()" id="confirm-logout-btn">Confirm Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="brand-name">GuhyaGyan</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; max-width: 340px;">
+            A sanctuary dedicated to preserving, illuminating, and practicing timeless esoteric wisdom, Vedantic
+            non-duality, and inner transformation.
+          </p>
+          <div
+            style="margin-top: 1.25rem; font-family: var(--font-editorial); font-size: 1.15rem; color: var(--gold-light); font-style: italic;">
+            ॐ शान्तिः शान्तिः शान्तिः ॥
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Sanctuary</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Sacred Home</a></li>
+            <li><a href="#speaker">About the Speaker</a></li>
+            <li><a href="#realms">Six Wisdom Realms</a></li>
+            <li><a href="#sutra-oracle">Daily Sutra Oracle</a></li>
+            <li><a href="#interactive-sadhana">Sadhana Studio</a></li>
+            <li><a href="sanctuary.html">Seeker Portal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Traditions</h4>
+          <ul class="footer-links">
+            <li><a href="#realms">Advaita Vedanta</a></li>
+            <li><a href="#realms">Kundalini Vidya</a></li>
+            <li><a href="#realms">Kashmir Shaivism</a></li>
+            <li><a href="#realms">Nada & Sound Yoga</a></li>
+            <li><a href="#realms">Raja Yoga & Prana</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Seeker Gateways</h4>
+          <ul class="footer-links">
+            <li><a href="login.html">Sanctum Login</a></li>
+            <li><a href="register.html">Initiation Registration</a></li>
+            <li><a href="sanctuary.html">Sadhana Tracker</a></li>
+            <li><a href="javascript:void(0)"
+                onclick="window.authManager.loginDemo(); window.showToast('Demo Seeker Ananda Giri awakened!', 'success'); setTimeout(()=>window.location.href='sanctuary.html', 800);">Quick
+                Demo Seeker</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 GuhyaGyan. All sacred knowledge freely offered in devotion to truth.
+        </div>
+        <div style="color: var(--gold-light);">
+          असतो मा सद्गमय • तमसो मा ज्योतिर्गमय • मृत्योर्मा अमृतं गमय
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/auth.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

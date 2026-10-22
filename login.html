@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanctum Login — GuhyaGyan</title>
+  <meta name="description" content="Log in to your sacred GuhyaGyan account. Re-enter your inner meditation sanctuary, sadhana streaks, and esoteric scriptures.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕉️</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Starfield Canvas -->
+  <canvas id="celestial-canvas"></canvas>
+
+  <!-- Global Header Navigation -->
+  <header class="main-header" id="main-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="brand-logo">
+        <svg class="yantra-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#e6b747" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <circle cx="50" cy="50" r="38" stroke="#fbe69b" stroke-width="1.2"/>
+          <polygon points="50,15 82,72 18,72" stroke="#e6b747" stroke-width="1.8" fill="rgba(230,183,71,0.08)"/>
+          <polygon points="50,85 82,28 18,28" stroke="#e6b747" stroke-width="1.8" fill="rgba(230,183,71,0.08)"/>
+          <circle cx="50" cy="50" r="4" fill="#fbe69b"/>
+        </svg>
+        <div class="brand-title-wrap">
+          <span class="brand-name">GuhyaGyan</span>
+          <span class="brand-sub">गुह्य ज्ञान • Sacred Wisdom</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-link">Sanctuary</a></li>
+          <li><a href="index.html#realms" class="nav-link">Sacred Realms</a></li>
+          <li><a href="index.html#sutra-oracle" class="nav-link">Daily Sutra</a></li>
+          <li><a href="index.html#interactive-sadhana" class="nav-link">Sadhana Studio</a></li>
+          <li><a href="sanctuary.html" class="nav-link" id="nav-sanctuary-link" style="display: none;">Seeker Portal</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions" id="nav-auth-actions">
+        <a href="login.html" class="btn btn-primary btn-sm active" id="nav-login-btn">Log In</a>
+        <a href="register.html" class="btn btn-outline btn-sm" id="nav-register-btn">Initiate</a>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Login Page Main Container -->
+  <main class="auth-page-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-yantra-glyph">🕉️</div>
+        <div class="sanskrit-subtitle">प्रवेश द्वार • Sanctum Entrance</div>
+        <h1 class="font-cinzel" style="font-size: 2rem; margin-bottom: 0.5rem;">Enter The <span class="gold-gradient-text">Inner Sanctum</span></h1>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+          Welcome back, devoted seeker. Re-enter your sacred sanctuary and resume your contemplative sadhana.
+        </p>
+      </div>
+
+      <!-- Quick Demo Account Banner for Instant Testing -->
+      <div style="background: rgba(230, 183, 71, 0.08); border: 1px dashed var(--border-gold); border-radius: 16px; padding: 1rem 1.25rem; margin-bottom: 1.75rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+        <div>
+          <div style="font-size: 0.85rem; font-weight: 700; color: var(--gold-light);">🌟 Explore Instantly as Demo Seeker?</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">Account: <code>seeker@guhyagyan.org</code> (Pass: <code>omshanti108</code>)</div>
+        </div>
+        <button type="button" class="btn btn-outline btn-sm" id="one-click-demo-btn" onclick="fillAndLoginDemo()">
+          <span>Instant Demo Log In</span>
+          <span>⚡</span>
+        </button>
+      </div>
+
+      <form id="login-form" novalidate>
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="login-email">Sacred Seeker Email <span class="req">*</span></label>
+          <div class="input-with-icon">
+            <span class="input-icon">✉️</span>
+            <input type="email" id="login-email" class="form-input" placeholder="seeker@guhyagyan.org" required autocomplete="email">
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <label class="form-label" for="login-password" style="margin-bottom: 0;">Sacred Passphrase <span class="req">*</span></label>
+            <a href="javascript:void(0)" onclick="window.showToast('Recite the Gayatri Mantra or reset your passphrase with inner silence.', 'info')" style="font-size: 0.8rem; color: var(--gold-primary); text-decoration: none;">Forgotten Passphrase?</a>
+          </div>
+          <div class="input-with-icon">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="login-password" class="form-input" placeholder="Enter your passphrase" required autocomplete="current-password">
+            <button type="button" class="input-action-btn" id="toggle-login-pass" aria-label="Toggle password visibility">👁️</button>
+          </div>
+        </div>
+
+        <!-- Remember Me -->
+        <div class="form-group" style="margin-bottom: 2rem;">
+          <label class="checkbox-wrap">
+            <input type="checkbox" id="login-remember" checked>
+            <span class="checkbox-label">Remember this mortal vessel across visits</span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" id="submit-login-btn">
+          <span>Enter Inner Sanctum</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+        <div style="text-align: center; margin-top: 1.75rem; font-size: 0.95rem; color: var(--text-muted);">
+          New to GuhyaGyan? 
+          <a href="register.html" style="color: var(--gold-light); font-weight: 600; text-decoration: none; margin-left: 0.35rem;" id="go-to-register-link">Initiate as a Seeker (Register) →</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Logout Confirmation Modal Dialog -->
+  <div class="modal-overlay" id="logout-modal">
+    <div class="modal-dialog">
+      <div style="font-size: 3rem; margin-bottom: 1rem;">🕉️</div>
+      <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #fff;">Conclude Sacred Session?</h3>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem;">
+        Honored seeker, are you ready to log out and return to the realm of silence?
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1rem;">
+        <button class="btn btn-ghost" onclick="window.closeLogoutModal()">Remain in Sanctum</button>
+        <button class="btn btn-danger" onclick="window.executeLogout()">Confirm Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Demo account quick login
+    async function fillAndLoginDemo() {
+      document.getElementById('login-email').value = 'seeker@guhyagyan.org';
+      document.getElementById('login-password').value = 'omshanti108';
+      
+      try {
+        const user = await window.authManager.loginDemo();
+        window.showToast(`Welcome back, ${user.name}! Entering the sacred sanctum...`, 'success');
+        setTimeout(() => {
+          window.location.href = 'sanctuary.html';
+        }, 1000);
+      } catch (err) {
+        window.showToast(err.message, 'error');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // If already logged in, notify user or offer quick jump
+      const current = window.authManager.getCurrentUser();
+      if (current) {
+        window.showToast(`Already logged in as ${current.name}.`, 'info');
+      }
+
+      // Toggle Password Visibility
+      const passInput = document.getElementById('login-password');
+      const toggleBtn = document.getElementById('toggle-login-pass');
+      if (toggleBtn && passInput) {
+        toggleBtn.addEventListener('click', () => {
+          const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passInput.setAttribute('type', type);
+          toggleBtn.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+      }
+
+      // Handle Login Form Submission
+      const form = document.getElementById('login-form');
+      const submitBtn = document.getElementById('submit-login-btn');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+
+        if (!email || !password) {
+          window.showToast('Please provide both your sacred address and passphrase.', 'error');
+          return;
+        }
+
+        const origBtnContent = submitBtn ? submitBtn.innerHTML : '';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span>Verifying Seeker...</span> <span style="display:inline-block; animation: spin 1s linear infinite;">⏳</span>';
+        }
+
+        try {
+          const seeker = await window.authManager.login(email, password);
+          window.showToast(`Namaste, Seeker ${seeker.name}. The sanctum doors are open.`, 'success');
+          
+          setTimeout(() => {
+            window.location.href = 'sanctuary.html';
+          }, 1100);
+        } catch (err) {
+          window.showToast(err.message || 'Verification failed. Please re-enter.', 'error');
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = origBtnContent;
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

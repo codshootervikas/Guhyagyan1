@@ -1,0 +1,12 @@
+{
+  "name": "guhyagyan-spiritual-sanctuary",
+  "version": "1.0.0",
+  "description": "GuhyaGyan Spiritual Sanctuary Web Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
