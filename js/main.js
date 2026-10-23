@@ -112,7 +112,7 @@ window.showToast = function(message, type = 'info') {
   toast.className = `toast toast-${type}`;
   
   let icon = '✨';
-  if (type === 'success') icon = '🕉️';
+  if (type === 'success') icon = '✨';
   if (type === 'error') icon = '⚠️';
 
   toast.innerHTML = `

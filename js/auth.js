@@ -16,7 +16,7 @@ const DEFAULT_DEMO_SEEKER = {
   password: 'omshanti108',
   path: 'Advaita Vedanta & Kundalini Vidya',
   level: 'Dedicated Seeker (Madhyama Sadhaka)',
-  avatar: '🕉️',
+  avatar: '🪷',
   sadhanaStreak: 14,
   joinedDate: 'Vasant Panchami 2026',
   intention: 'Seeking direct realization of Non-Duality (Brahman) and inner stillness through silent contemplation.'
@@ -88,7 +88,7 @@ class AuthManager {
             spiritual_name: userData.spiritualName ? userData.spiritualName.trim() : userData.name.trim(),
             path: userData.path || 'Classical Yoga & Meditation',
             level: userData.level || 'Beginning Seeker (Aarambha)',
-            avatar: userData.avatar || '🕉️'
+            avatar: userData.avatar || '🪷'
           }
         }
       });
@@ -113,7 +113,7 @@ class AuthManager {
               name: userData.name.trim(),
               path: userData.path || 'Classical Yoga & Meditation',
               level: userData.level || 'Beginning Seeker (Aarambha)',
-              avatar: userData.avatar || '🕉️'
+              avatar: userData.avatar || '🪷'
             }
           ]);
           if (tableErr) {
@@ -133,7 +133,7 @@ class AuthManager {
         email: normalizedEmail,
         path: userData.path || 'Classical Yoga & Meditation',
         level: userData.level || 'Beginning Seeker (Aarambha)',
-        avatar: userData.avatar || '🕉️',
+        avatar: userData.avatar || '🪷',
         sadhanaStreak: 1,
         joinedDate: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
         intention: userData.intention || 'Cultivating peace and divine truth within.'
@@ -163,7 +163,7 @@ class AuthManager {
       password: userData.password,
       path: userData.path || 'Classical Yoga & Meditation',
       level: userData.level || 'Beginning Seeker (Aarambha)',
-      avatar: userData.avatar || '🕉️',
+      avatar: userData.avatar || '🪷',
       sadhanaStreak: 1,
       joinedDate: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
       intention: userData.intention || 'Cultivating peace and divine truth within.'
@@ -217,7 +217,7 @@ class AuthManager {
           email: data.user.email,
           path: profileData?.path || metadata.path || 'Classical Yoga & Meditation',
           level: profileData?.level || metadata.level || 'Dedicated Seeker (Madhyama Sadhaka)',
-          avatar: profileData?.avatar || metadata.avatar || '🕉️',
+          avatar: profileData?.avatar || metadata.avatar || '🪷',
           sadhanaStreak: 1
         };
 
@@ -270,7 +270,7 @@ class AuthManager {
       }
       navActions.innerHTML = `
         <a href="sanctuary.html" class="user-nav-profile" title="View Seeker Sanctuary">
-          <div class="avatar-badge">${currentUser.avatar || '🕉️'}</div>
+          <div class="avatar-badge">${currentUser.avatar || '🪷'}</div>
           <span class="user-nav-name">${currentUser.name}</span>
         </a>
         <button id="nav-logout-btn" class="btn btn-outline btn-sm" onclick="window.confirmLogoutModal()">
@@ -352,7 +352,7 @@ async function syncActiveSession() {
           email: session.user.email,
           path: profileData?.path || metadata.path || 'Classical Yoga & Meditation',
           level: profileData?.level || metadata.level || 'Dedicated Seeker (Madhyama Sadhaka)',
-          avatar: profileData?.avatar || metadata.avatar || '🕉️',
+          avatar: profileData?.avatar || metadata.avatar || '🪷',
           sadhanaStreak: 1
         };
         window.authManager.setCurrentUser(seeker);
