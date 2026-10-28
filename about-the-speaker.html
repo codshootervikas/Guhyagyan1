@@ -7,7 +7,7 @@
   <title>About the Speaker — Dhananjay Vashistha | Guhya Gyan Foundation</title>
   <meta name="description"
     content="Comprehensive profile of Dhananjay Vashistha — Vedic Hermeneutist, Research Associate at BRC Mumbai University, BITS Pilani (CS), AIR 24 in GATE Philosophy, and Project Head of Guhya Gyan Academy.">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3.0">
   <link rel="icon" type="image/png" href="assets/images/logo.png">
 </head>
 
@@ -32,6 +32,7 @@
         <ul class="nav-links" id="nav-links">
           <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
           <li><a href="about-the-speaker.html" class="nav-link active" id="nav-speaker">About the Speaker</a></li>
+          <li><a href="index.html#discourses" class="nav-link" id="nav-discourses">Discourses</a></li>
           <li><a href="index.html#realms" class="nav-link" id="nav-realms">Sacred Realms</a></li>
           <li><a href="index.html#sutra-oracle" class="nav-link" id="nav-oracle">Daily Sutra</a></li>
           <li><a href="index.html#interactive-sadhana" class="nav-link" id="nav-sadhana">Sadhana Studio</a></li>
@@ -79,10 +80,48 @@
       <!-- Executive Profile Hero Card -->
       <div class="speaker-profile-hero">
         <div class="speaker-hero-top">
-          <div class="speaker-avatar-wrap">
-            <div class="speaker-avatar-disc">
-              <span class="speaker-monogram">DV</span>
+          <!-- Animated Speaker Portrait Showcase with Nice View Animation -->
+          <div class="speaker-portrait-wrap" id="speaker-portrait-card">
+            <!-- Pulsing ethereal cosmic aura -->
+            <div class="speaker-portrait-aura"></div>
+            
+            <!-- Interactive Animated Portrait Frame -->
+            <div class="speaker-portrait-frame" id="speaker-portrait-frame" title="Click to view full photo">
+              <!-- Moving Golden Light Shimmer Sweep -->
+              <div class="speaker-portrait-shimmer"></div>
+              
+              <!-- Speaker Photo -->
+              <img 
+                src="assets/images/speaker.jpg" 
+                alt="Dhananjay Vashistha - Project Head & Vedic Scholar" 
+                class="speaker-portrait-img"
+                id="speaker-portrait-image"
+                loading="eager"
+              />
+              
+              <!-- Ambient Vignette -->
+              <div class="speaker-portrait-vignette"></div>
+              
+              <!-- Floating Live Beacon Badge -->
+              <div class="speaker-portrait-badge">
+                <span class="speaker-live-beacon"></span>
+                <span class="speaker-badge-text">Visionary & Vedic Scholar</span>
+              </div>
+
+              <!-- Enlarge Button -->
+              <button class="speaker-portrait-expand-btn" id="speaker-expand-btn" aria-label="Enlarge Speaker Portrait" title="Click to view full photo">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <polyline points="9 21 3 21 3 15"></polyline>
+                  <line x1="21" y1="3" x2="14" y2="10"></line>
+                  <line x1="3" y1="21" x2="10" y2="14"></line>
+                </svg>
+              </button>
             </div>
+            
+            <!-- Sacred Corner Accents -->
+            <div class="portrait-corner-accent corner-tl"></div>
+            <div class="portrait-corner-accent corner-br"></div>
           </div>
           <div class="speaker-hero-meta">
             <div class="speaker-status-pill">
@@ -375,6 +414,7 @@
         </div>
       </div>
 
+
     </div>
   </main>
 
@@ -448,6 +488,7 @@
             <li><a href="login.html">Sanctum Login</a></li>
             <li><a href="register.html">Initiation Registration</a></li>
             <li><a href="sanctuary.html">Sadhana Tracker</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
             <li><a href="login.html?demo=true">Quick Demo Seeker</a></li>
           </ul>
         </div>
@@ -464,9 +505,75 @@
     </div>
   </footer>
 
+  <!-- High-Definition Speaker Photo Lightbox Modal -->
+  <div class="speaker-lightbox-modal" id="speaker-lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="speaker-lightbox-backdrop" id="speaker-lightbox-backdrop"></div>
+    <div class="speaker-lightbox-dialog">
+      <button class="speaker-lightbox-close" id="speaker-lightbox-close" aria-label="Close Lightbox">✕</button>
+      <div class="speaker-lightbox-frame">
+        <img src="assets/images/speaker.jpg" alt="Dhananjay Vashistha - Project Head & Vedic Scholar" class="speaker-lightbox-img" />
+        <div class="speaker-lightbox-caption">
+          <h4 class="font-cinzel">Dhananjay <span class="gold-gradient-text">Vashistha</span></h4>
+          <p>Visionary, Vedic Hermeneutist & Project Head — Guhya Gyan Academy</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating 3D Spiritual Soundscape Widget -->
+  <aside class="spiritual-sound-dock" id="spiritual-sound-dock" title="Toggle Sacred 432Hz Ambient Sound">
+    <button class="sound-dock-btn" id="sound-dock-toggle" aria-label="Toggle 432Hz Cosmic Sound">
+      <div class="sound-wave-rings">
+        <span class="ring-pulse"></span>
+        <span class="ring-pulse ring-delay"></span>
+      </div>
+      <span class="sound-om-icon">ॐ</span>
+      <span class="sound-dock-text">432Hz Sound</span>
+      <span class="sound-dock-state" id="sound-dock-state">Play</span>
+    </button>
+  </aside>
+
   <!-- Scripts -->
   <script src="js/auth.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/spiritual-3d.js"></script>
+  <script>
+    // Speaker Photo Lightbox Interactivity
+    (function() {
+      const portraitFrame = document.getElementById('speaker-portrait-frame');
+      const expandBtn = document.getElementById('speaker-expand-btn');
+      const modal = document.getElementById('speaker-lightbox');
+      const backdrop = document.getElementById('speaker-lightbox-backdrop');
+      const closeBtn = document.getElementById('speaker-lightbox-close');
+
+      function openModal() {
+        if (!modal) return;
+        modal.classList.add('is-active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('is-active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      if (portraitFrame) portraitFrame.addEventListener('click', openModal);
+      if (expandBtn) expandBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openModal();
+      });
+      if (backdrop) backdrop.addEventListener('click', closeModal);
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

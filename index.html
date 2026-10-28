@@ -7,7 +7,7 @@
   <title>Guhya Gyan Foundation — Indian Knowledge System (IKS) & Sacred Wisdom</title>
   <meta name="description"
     content="Guhya Gyan Foundation is a not-for-profit NGO involved in activities related to the Indian Knowledge System (IKS), including Ramayana awareness programs, book publications, Kirtan jamming, and online & offline educational & value-based programs.">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3.0">
   <link rel="icon" type="image/png" href="assets/images/logo.png">
 </head>
 
@@ -34,6 +34,7 @@
           <li><a href="about-the-speaker.html" class="nav-link" id="nav-speaker">About the Speaker</a></li>
           <li><a href="#realms" class="nav-link" id="nav-realms">Sacred Realms</a></li>
           <li><a href="#sutra-oracle" class="nav-link" id="nav-oracle">Daily Sutra</a></li>
+          <li><a href="#discourses" class="nav-link" id="nav-discourses">Discourses</a></li>
           <li><a href="#interactive-sadhana" class="nav-link" id="nav-sadhana">Sadhana Studio</a></li>
           <li><a href="sanctuary.html" class="nav-link" id="nav-sanctuary-link" style="display: none;">Seeker Portal</a>
           </li>
@@ -94,6 +95,21 @@
             <polygon points="5 3 19 12 5 21 5 3"></polygon>
           </svg>
         </a>
+      </div>
+
+      <!-- 3D Sacred Sri Yantra / Cosmic Mandala Interactive Visualizer -->
+      <div class="hero-3d-mandala-container">
+        <div class="mandala-3d-orb-halo"></div>
+        <div class="sacred-3d-canvas-wrap">
+          <canvas id="mandala-3d-canvas" class="mandala-3d-canvas" width="460" height="460"></canvas>
+          <div class="mandala-mantra-orbit">
+            <span>॥ हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे • हरे राम हरे राम राम राम हरे हरे ॥</span>
+          </div>
+        </div>
+        <div class="mandala-interaction-hint">
+          <span class="pulse-dot"></span>
+          <span>Interactive 3D Sacred Geometry • Move Mouse to Tilt</span>
+        </div>
       </div>
 
       <!-- Trust & Sadhana Stats -->
@@ -214,7 +230,7 @@
 
   <!-- Feature Showcase Split: The Kundalini Awakening -->
   <section class="section-padding"
-    style="background: rgba(13, 14, 28, 0.4); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    style="background: rgba(38, 14, 5, 0.45); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
     <div class="container feature-split">
       <div class="feature-media">
         <img src="assets/images/kundalini-chakras.jpg" alt="Luminous 7 Chakras and Meditating Seeker in Cosmic Harmony"
@@ -259,31 +275,63 @@
     </div>
   </section>
 
-  <!-- Daily Sutra Contemplation Oracle -->
+  <!-- Daily Sutra & Maha-Mantra Contemplation Shrine (3D Sacred Card) -->
   <section class="section-padding" id="sutra-oracle">
     <div class="container">
       <div class="section-header text-center">
-        <div class="sanskrit-subtitle">नित्य चिन्तनम् • Daily Contemplation Oracle</div>
-        <h2 class="section-title">The Sacred Sutra of the <span class="gold-gradient-text">Eternal Moment</span></h2>
-        <p class="section-desc">Receive today's contemplative seed from ancient sages. Allow these words to reverberate
-          beyond intellectual thought.</p>
+        <div class="sanskrit-subtitle">परम तारक मन्त्र • The Supreme Maha-Mantra</div>
+        <h2 class="section-title">The Sacred Mantra of <span class="gold-gradient-text">Eternal Awakening</span></h2>
+        <p class="section-desc">Experience the transcendental vibration of the Maha-Mantra. Immerse your consciousness
+          in divine sound and eternal love.</p>
       </div>
 
-      <div class="sutra-oracle-box" id="daily-sutra-box">
-        <div class="sanskrit-verse" id="sutra-sanskrit">अयमात्मा ब्रह्म ॥</div>
-        <p class="sutra-english" id="sutra-english">“This inner individual Self is none other than the Infinite
-          Conscious Reality (Brahman).”</p>
-        <div class="sutra-source" id="sutra-source">Mandukya Upanishad — 1.2</div>
+      <!-- 3D Sacred Shrine Card -->
+      <div class="sutra-oracle-box mantra-3d-box" id="daily-sutra-box">
+        <!-- 3D Saffron & Golden Aura -->
+        <div class="mantra-3d-aura"></div>
 
-        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;">
+        <!-- 3D Corner Sacred Filigrees -->
+        <div class="mantra-corner corner-top-left"></div>
+        <div class="mantra-corner corner-top-right"></div>
+        <div class="mantra-corner corner-bottom-left"></div>
+        <div class="mantra-corner corner-bottom-right"></div>
+
+        <!-- Divine Auspicious Badge -->
+        <div class="mantra-divine-badge">
+          <span class="sacred-diya-flame">🪔</span>
+          <span>परम महामन्त्र • MAHA-MANTRA</span>
+          <span class="sacred-diya-flame">🪔</span>
+        </div>
+
+        <!-- Devanagari Maha-Mantra in 3D Gold / Saffron -->
+        <div class="sanskrit-verse maha-mantra-title" id="sutra-sanskrit">
+          हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे ।<br>
+          हरे राम हरे राम राम राम हरे हरे ॥
+        </div>
+
+        <!-- International Romanized Transliteration -->
+        <div class="maha-mantra-transliteration" id="sutra-transliteration">
+          HARE KRSNA HARE KRSNA KRSNA KRSNA HARE HARE<br>
+          HARE RAM HARE RAM RAM RAM HARE HARE
+        </div>
+
+        <!-- Sacred English Realization -->
+        <p class="sutra-english" id="sutra-english">
+          “O Supreme All-Attractive Lord Krishna, O Supreme Blissful Lord Rama, O Divine Energy of the Lord Hare —
+          please engage my soul in Your eternal, loving transcendental service.”
+        </p>
+
+        <!-- Sacred Interactive Actions -->
+        <div
+          style="display: flex; justify-content: center; gap: 1.25rem; margin-top: 2.5rem; flex-wrap: wrap; position: relative; z-index: 2;">
           <button class="btn btn-primary btn-sm" id="shuffle-sutra-btn">
-            <span>Reveal Another Sutra</span>
+            <span>Recite & Meditate 📿</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" />
             </svg>
           </button>
           <button class="btn btn-outline btn-sm" id="copy-sutra-btn">
-            <span>Copy Sacred Verse</span>
+            <span>Copy Sacred Mantra 📋</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -294,9 +342,74 @@
     </div>
   </section>
 
+  <!-- Spiritual Discourses & Video Library (Explore Categories + Video Form) -->
+  <section class="section-padding discourse-library-section" id="discourses">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="sanskrit-subtitle">परम ज्ञान अमृत • Sacred Discourses & Video Library</div>
+        <h2 class="section-title">Spiritual Discourses & <span class="gold-gradient-text">Sacred Recordings</span></h2>
+        <p class="section-desc">Explore sacred wisdom discourses, verse-by-verse scriptural reading, and philosophical lectures delivered with profound devotion and clarity.</p>
+      </div>
+
+      <!-- Section 1: Explore Categories (Image 2 style) -->
+      <div class="category-explorer-block">
+        <div class="explorer-section-heading">
+          <span class="explorer-folder-icon">📁</span>
+          <h3 class="explorer-heading-title">Explore Categories</h3>
+        </div>
+        <div class="category-cards-grid" id="category-cards-grid">
+          <!-- Dynamically populated with rich category cards by js/discourses.js -->
+        </div>
+      </div>
+
+      <!-- Section 2: Discourses & Recordings (Image 1 style) -->
+      <div class="recordings-explorer-block" id="recordings-list-section">
+        <div class="recordings-top-bar">
+          <div class="recordings-title-group">
+            <div class="explorer-section-heading" style="margin-bottom: 0.25rem;">
+              <span class="explorer-folder-icon">📁</span>
+              <h3 class="explorer-heading-title">Discourses & Recordings</h3>
+            </div>
+            <div class="recordings-meta-info">
+              <span class="recordings-count-badge" id="recordings-count-badge">0 recordings found</span>
+              <div id="active-category-chip-wrap" style="display: inline-block;"></div>
+            </div>
+          </div>
+
+          <div class="recordings-controls-group">
+            <div class="recordings-search-wrap">
+              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="recordings-search-input" placeholder="Search recordings, topics, tags..." class="recordings-search-input" autocomplete="off">
+              <button id="clear-search-btn" class="clear-search-btn" style="display: none;" title="Clear search">&times;</button>
+            </div>
+
+            <div class="recordings-sort-wrap">
+              <label for="recordings-sort-select" class="sort-label">Sort by</label>
+              <select id="recordings-sort-select" class="recordings-sort-select">
+                <option value="default">Default</option>
+                <option value="newest">Newest First</option>
+                <option value="longest">Longest Duration</option>
+                <option value="title">Alphabetical (A-Z)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Rows List (Video Form) -->
+        <div class="discourse-video-list" id="discourse-video-list">
+          <!-- Dynamically rendered rows by js/discourses.js -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Interactive Sadhana Studio (Web Audio Synthesizer + Guided Breathwork) -->
   <section class="section-padding" id="interactive-sadhana"
-    style="background: radial-gradient(circle at 50% 50%, rgba(20, 24, 52, 0.5) 0%, rgba(7, 7, 15, 0.9) 100%);">
+    style="background: radial-gradient(circle at 50% 50%, rgba(46, 17, 7, 0.6) 0%, rgba(18, 6, 2, 0.95) 100%);">
     <div class="container">
       <div class="section-header text-center">
         <div class="sanskrit-subtitle">साधना पीठ • Interactive Meditation Studio</div>
@@ -402,7 +515,8 @@
   <!-- Logout Confirmation Modal Dialog -->
   <div class="modal-overlay" id="logout-modal">
     <div class="modal-dialog">
-      <img src="assets/images/logo.png" alt="Guhya Gyan Foundation" class="brand-logo-img" style="width: 48px; height: 48px; margin: 0 auto 1rem auto; display: block;">
+      <img src="assets/images/logo.png" alt="Guhya Gyan Foundation" class="brand-logo-img"
+        style="width: 48px; height: 48px; margin: 0 auto 1rem auto; display: block;">
       <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; color: #fff;">Conclude Sacred Session?</h3>
       <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6;">
         Honored seeker, are you ready to log out and return to the realm of silence? Your sadhana progress will be
@@ -470,6 +584,7 @@
             <li><a href="login.html">Sanctum Login</a></li>
             <li><a href="register.html">Initiation Registration</a></li>
             <li><a href="sanctuary.html">Sadhana Tracker</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
             <li><a href="javascript:void(0)"
                 onclick="window.authManager.loginDemo(); window.showToast('Demo Seeker Ananda Giri awakened!', 'success'); setTimeout(()=>window.location.href='sanctuary.html', 800);">Quick
                 Demo Seeker</a></li>
@@ -488,10 +603,25 @@
     </div>
   </footer>
 
+  <!-- Floating 3D Spiritual Soundscape Widget -->
+  <aside class="spiritual-sound-dock" id="spiritual-sound-dock" title="Toggle Sacred 432Hz Ambient Sound">
+    <button class="sound-dock-btn" id="sound-dock-toggle" aria-label="Toggle 432Hz Cosmic Sound">
+      <div class="sound-wave-rings">
+        <span class="ring-pulse"></span>
+        <span class="ring-pulse ring-delay"></span>
+      </div>
+      <span class="sound-om-icon">ॐ</span>
+      <span class="sound-dock-text">432Hz Sound</span>
+      <span class="sound-dock-state" id="sound-dock-state">Play</span>
+    </button>
+  </aside>
+
   <!-- Scripts -->
   <script src="js/auth.js"></script>
   <script src="js/sound.js"></script>
+  <script src="js/discourses.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/spiritual-3d.js"></script>
 </body>
 
 </html>

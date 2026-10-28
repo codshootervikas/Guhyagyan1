@@ -2,49 +2,13 @@
  * GuhyaGyan - Core Application Logic & Spiritual Interactive Features
  */
 
-// Daily Sacred Sutras Library
+// Sacred Maha-Mantra Library (User Curated)
 const SACRED_SUTRAS = [
   {
-    sanskrit: "अयमात्मा ब्रह्म ॥",
-    transliteration: "Ayam Ātmā Brahma",
-    english: "This inner individual Self is none other than the Infinite Conscious Reality (Brahman).",
-    source: "Mandukya Upanishad — 1.2"
-  },
-  {
-    sanskrit: "तत्त्वमसि श्वेताकेतो ॥",
-    transliteration: "Tat Tvam Asi, Shvetaketo",
-    english: "That Boundless Mystery which permeates all existence — That Thou Art, O Seeker.",
-    source: "Chandogya Upanishad — 6.8.7"
-  },
-  {
-    sanskrit: "चित्तमेव हि संसारम् तत्प्रयत्नेन शोधयेत् ॥",
-    transliteration: "Chittameva hi samsāram tat prayatnena shodhayet",
-    english: "One's own state of mind is the universe itself; let the wise seeker purify mind with reverent diligence.",
-    source: "Maitri Upanishad — 4.3"
-  },
-  {
-    sanskrit: "यदा सर्वे प्रमुच्यन्ते कामा येऽस्य हृदि श्रिताः । अथ मर्त्योऽमृतो भवत्यत्र ब्रह्म समश्नुते ॥",
-    transliteration: "Yadā sarve pramucyante kāmā ye'sya hṛdi śritāḥ...",
-    english: "When all desires clinging to the heart dissolve completely, then the mortal becomes immortal, tasting the Eternal here in this life.",
-    source: "Katha Upanishad — 2.3.14"
-  },
-  {
-    sanskrit: "चैतन्यमात्मा ॥",
-    transliteration: "Chaitanyam Ātmā",
-    english: "Pure, supreme Consciousness alone is the Self.",
-    source: "Shiva Sutras — 1.1 (Kashmir Shaivism)"
-  },
-  {
-    sanskrit: "मुक्तिमिच्छसि चेत्तात विषयान् विषवत्त्यज । क्षमार्जवदयातोषसत्यं पीयूषवद्भज ॥",
-    transliteration: "Muktim icchasi chet tāta vishayān vishavat tyaja...",
-    english: "If you seek true liberation, my friend, cast aside worldly compulsions like poison, and drink compassion, truth, forgiveness, and stillness like nectar.",
-    source: "Ashtavakra Gita — 1.2"
-  },
-  {
-    sanskrit: "अहं निर्विकल्पो निराकार रूपो विभुत्वाच्च सर्वत्र सर्वेन्द्रियाणाम् ॥",
-    transliteration: "Aham nirvikalpo nirākāra rūpo...",
-    english: "I am devoid of concepts, free of physical form; I pervade all sensations throughout the cosmos as boundless bliss and awareness.",
-    source: "Nirvana Shatkam — Adi Shankaracharya"
+    sanskrit: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे ।\nहरे राम हरे राम राम राम हरे हरे ॥",
+    transliteration: "HARE KRSNA HARE KRSNA KRSNA KRSNA HARE HARE\nHARE RAM HARE RAM RAM RAM HARE HARE",
+    english: "O Supreme All-Attractive Lord Krishna, O Supreme Blissful Lord Rama, O Divine Energy of the Lord Hare — please engage my soul in Your eternal, loving transcendental service.",
+    source: "Kali-Santarana Upanishad • Agni Purana"
   }
 ];
 
@@ -129,7 +93,7 @@ window.showToast = function(message, type = 'info') {
   }, 4200);
 };
 
-// Daily Sutra Contemplation Handler
+// Sacred Maha-Mantra Contemplation Handler
 function initSutraOracle() {
   const sutraBox = document.getElementById('daily-sutra-box');
   const shuffleBtn = document.getElementById('shuffle-sutra-btn');
@@ -140,37 +104,38 @@ function initSutraOracle() {
   function renderSutra(index) {
     const sutra = SACRED_SUTRAS[index % SACRED_SUTRAS.length];
     const sanskritEl = document.getElementById('sutra-sanskrit');
+    const translitEl = document.getElementById('sutra-transliteration');
     const englishEl = document.getElementById('sutra-english');
     const sourceEl = document.getElementById('sutra-source');
 
-    if (sanskritEl) sanskritEl.textContent = sutra.sanskrit;
+    if (sanskritEl) sanskritEl.innerHTML = sutra.sanskrit.replace(/\n/g, '<br>');
+    if (translitEl) translitEl.innerHTML = sutra.transliteration.replace(/\n/g, '<br>');
     if (englishEl) englishEl.textContent = `“${sutra.english}”`;
     if (sourceEl) sourceEl.textContent = sutra.source;
   }
 
-  // Load verse based on day of month
-  const todayIndex = new Date().getDate();
-  renderSutra(todayIndex);
+  // Load Maha-Mantra initially
+  renderSutra(0);
 
   if (shuffleBtn) {
     shuffleBtn.addEventListener('click', () => {
-      const randomIndex = Math.floor(Math.random() * SACRED_SUTRAS.length);
-      renderSutra(randomIndex);
-      window.showToast('Another sacred contemplation has revealed itself.', 'success');
+      renderSutra(0);
+      sutraBox.classList.add('sutra-chant-pulse');
+      setTimeout(() => sutraBox.classList.remove('sutra-chant-pulse'), 1200);
+      window.showToast('॥ हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे । हरे राम हरे राम राम राम हरे हरे ॥', 'success');
     });
   }
 
   if (copyBtn) {
     copyBtn.addEventListener('click', () => {
-      const sanskrit = document.getElementById('sutra-sanskrit')?.textContent || '';
-      const english = document.getElementById('sutra-english')?.textContent || '';
-      const source = document.getElementById('sutra-source')?.textContent || '';
-      const text = `${sanskrit}\n${english}\n— ${source}\n(via GuhyaGyan.org)`;
+      const sanskrit = "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे ।\nहरे राम हरे राम राम राम हरे हरे ॥";
+      const transliteration = "HARE KRSNA HARE KRSNA KRSNA KRSNA HARE HARE\nHARE RAM HARE RAM RAM RAM HARE HARE";
+      const text = `${sanskrit}\n\n${transliteration}\n— Kali-Santarana Upanishad (via GuhyaGyan.org)`;
       
       navigator.clipboard.writeText(text).then(() => {
-        window.showToast('Sacred Sutra copied to clipboard.', 'success');
+        window.showToast('Sacred Maha-Mantra copied to clipboard.', 'success');
       }).catch(() => {
-        window.showToast('Copied verse to contemplation memory.', 'info');
+        window.showToast('Maha-Mantra revered in heart.', 'info');
       });
     });
   }
@@ -253,10 +218,39 @@ function initNavigation() {
   });
 
   if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       navLinks.classList.toggle('open');
       const isOpen = navLinks.classList.contains('open');
       mobileToggle.setAttribute('aria-expanded', isOpen);
+      mobileToggle.innerHTML = isOpen ? '✕' : '☰';
+    });
+
+    // Auto-close menu when clicking any nav item on mobile
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggle.innerHTML = '☰';
+      });
+    });
+
+    // Close when clicking outside menu
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+        navLinks.classList.remove('open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggle.innerHTML = '☰';
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggle.innerHTML = '☰';
+      }
     });
   }
 }

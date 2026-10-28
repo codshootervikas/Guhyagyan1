@@ -6,35 +6,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* Mystical Color Palette */
-  --bg-primary: #07070f;
-  --bg-secondary: #0d0e1c;
-  --bg-tertiary: #13152a;
-  --bg-card: rgba(19, 21, 42, 0.65);
-  --bg-card-hover: rgba(28, 32, 62, 0.85);
-  --bg-glass: rgba(14, 16, 33, 0.75);
-  --bg-input: rgba(11, 13, 27, 0.85);
+  /* Spiritual Vedic Color Palette (केसरिया, सुवर्ण, चन्दन, कुमकुम) */
+  --bg-primary: #120804;           /* Deep Sacred Chandan Sandalwood Night */
+  --bg-secondary: #1a0c06;         /* Warm Vedic Temple Amber Dark */
+  --bg-tertiary: #271209;          /* Rich Sacred Kesariya Wood */
+  --bg-card: rgba(42, 18, 8, 0.76);/* Warm Saffron-Chandan Glass Card */
+  --bg-card-hover: rgba(62, 26, 11, 0.9);
+  --bg-glass: rgba(32, 14, 6, 0.82);
+  --bg-input: rgba(24, 10, 4, 0.9);
 
-  /* Golden & Sacred Accents */
-  --gold-primary: #e6b747;
-  --gold-light: #fbe69b;
-  --gold-dark: #b8861d;
-  --gold-glow: rgba(230, 183, 71, 0.35);
-  --gold-subtle: rgba(230, 183, 71, 0.12);
+  /* Golden & Sacred Saffron Accents (केसरिया एवं स्वर्ण) */
+  --saffron-primary: #ea580c;      /* Pure Sacred Kesariya / भगवा */
+  --saffron-light: #fb923c;        /* Luminous Saffron */
+  --saffron-glow: rgba(234, 88, 12, 0.45);
+  --gold-primary: #f59e0b;         /* Royal Temple Gold */
+  --gold-light: #fef08a;           /* Morning Surya Ray Gold */
+  --gold-dark: #b45309;            /* Deep Vedic Bronze */
+  --gold-glow: rgba(245, 158, 11, 0.45);
+  --gold-subtle: rgba(245, 158, 11, 0.15);
 
-  /* Mystical Aura Hues */
-  --prana-cyan: #4ade80;
-  --lotus-rose: #f472b6;
-  --mystic-purple: #a855f7;
-  --ajna-indigo: #6366f1;
-  --celestial-blue: #38bdf8;
-  --sacred-vermilion: #f97316;
+  /* Divine Spiritual Accents */
+  --kumkum-red: #dc2626;           /* Sacred Temple Kumkum */
+  --tulsi-green: #10b981;          /* Auspicious Tulsi Vidya */
+  --chandan-cream: #fff7ed;        /* Sacred Chandan Sandalwood */
+  --marigold-yellow: #fde047;      /* Genda / Marigold Petals */
+  --yamuna-blue: #0284c7;          /* Sacred Yamuna Stream */
 
   /* Typography Colors */
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --text-gold: #fbe69b;
+  --text-primary: #fffbeb;         /* Warm Sandalwood White */
+  --text-secondary: #fed7aa;       /* Soft Kesariya Warmth */
+  --text-muted: #d97706;           /* Golden Amber Muted */
+  --text-gold: #fef08a;
 
   /* Enhanced Typography Families */
   --font-serif: 'Cinzel', Georgia, serif;
@@ -42,12 +44,13 @@
   --font-editorial: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Borders & Shadows */
-  --border-gold: rgba(230, 183, 71, 0.3);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glow: 0 0 25px rgba(230, 183, 71, 0.25);
-  --shadow-card: 0 16px 36px -10px rgba(0, 0, 0, 0.7);
-  --shadow-elevation: 0 24px 60px -15px rgba(0, 0, 0, 0.85);
+  /* Borders & Divine Elevation */
+  --border-gold: rgba(245, 158, 11, 0.45);
+  --border-saffron: rgba(234, 88, 12, 0.4);
+  --border-subtle: rgba(251, 146, 60, 0.18);
+  --border-glow: 0 0 30px rgba(245, 158, 11, 0.35);
+  --shadow-card: 0 16px 36px -10px rgba(0, 0, 0, 0.8);
+  --shadow-elevation: 0 25px 60px -12px rgba(0, 0, 0, 0.9), 0 0 45px rgba(234, 88, 12, 0.25);
 
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -60,6 +63,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 html {
@@ -75,7 +83,7 @@ body {
   line-height: 1.65;
   overflow-x: hidden;
   position: relative;
-  background: radial-gradient(circle at 50% 0%, #15102a 0%, #07070f 55%, #05050a 100%);
+  background: radial-gradient(circle at 50% 0%, #3a1306 0%, #200a04 42%, #110502 75%, #0c0301 100%);
   background-attachment: fixed;
 }
 
@@ -545,7 +553,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(180deg, rgba(7, 7, 15, 0.6) 0%, rgba(7, 7, 15, 0.85) 60%, #07070f 100%), url('../assets/images/hero-bg.jpg');
+  background-image: linear-gradient(180deg, rgba(38, 14, 5, 0.65) 0%, rgba(24, 8, 3, 0.88) 60%, #120502 100%), url('../assets/images/hero-bg.jpg');
   background-size: cover;
   background-position: center center;
   z-index: 0;
@@ -565,14 +573,14 @@ h1 {
   top: 15%;
   left: 50%;
   transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(230, 183, 71, 0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.32) 0%, transparent 70%);
   animation: floatOrb1 15s ease-in-out infinite alternate;
 }
 
 .hero-glow-2 {
   top: 30%;
   left: 20%;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(234, 88, 12, 0.28) 0%, transparent 70%);
   animation: floatOrb2 18s ease-in-out infinite alternate;
 }
 
@@ -809,13 +817,391 @@ h1 {
 }
 
 .speaker-hero-top {
-  display: flex;
-  gap: 2.25rem;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2.75rem;
   align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
+  margin-bottom: 2.25rem;
 }
 
+@media (max-width: 992px) {
+  .speaker-hero-top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ================= Animated Speaker Portrait Showcase ================= */
+.speaker-portrait-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  perspective: 1000px;
+  animation: portraitEntrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Pulsing Ethereal Halo Aura */
+.speaker-portrait-aura {
+  position: absolute;
+  inset: -14px;
+  background: radial-gradient(circle at 50% 50%, rgba(230, 183, 71, 0.35) 0%, rgba(138, 92, 246, 0.2) 48%, transparent 74%);
+  border-radius: 30px;
+  filter: blur(24px);
+  z-index: 1;
+  pointer-events: none;
+  animation: portraitAuraBreathe 6s ease-in-out infinite;
+}
+
+@keyframes portraitAuraBreathe {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.05);
+    filter: blur(30px);
+  }
+}
+
+/* Main Portrait Frame with Ambient Floating */
+.speaker-portrait-frame {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #090a16;
+  border: 1.5px solid rgba(230, 183, 71, 0.45);
+  box-shadow: 
+    0 18px 40px -10px rgba(0, 0, 0, 0.85),
+    0 0 30px rgba(230, 183, 71, 0.22),
+    inset 0 0 20px rgba(0, 0, 0, 0.55);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              box-shadow 0.5s ease,
+              border-color 0.5s ease;
+  animation: portraitLevitate 7s ease-in-out infinite alternate;
+  cursor: pointer;
+}
+
+.speaker-portrait-wrap:hover .speaker-portrait-frame {
+  transform: translateY(-7px) scale(1.025);
+  border-color: rgba(230, 183, 71, 0.85);
+  box-shadow: 
+    0 26px 52px -12px rgba(0, 0, 0, 0.9),
+    0 0 50px rgba(230, 183, 71, 0.45),
+    inset 0 0 30px rgba(230, 183, 71, 0.2);
+}
+
+/* High-Definition Portrait Image */
+.speaker-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
+  filter: brightness(1.02) contrast(1.04);
+}
+
+.speaker-portrait-wrap:hover .speaker-portrait-img {
+  transform: scale(1.06);
+  filter: brightness(1.08) contrast(1.06);
+}
+
+/* Vignette overlay */
+.speaker-portrait-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg, 
+    rgba(10, 11, 26, 0.02) 0%, 
+    rgba(10, 11, 26, 0.15) 55%, 
+    rgba(10, 11, 26, 0.8) 100%
+  );
+  z-index: 3;
+}
+
+/* Shimmer Light Sweep Effect */
+.speaker-portrait-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(230, 183, 71, 0.4) 50%,
+    rgba(255, 255, 255, 0.08) 70%,
+    transparent 100%
+  );
+  transform: skewX(-25deg) translateX(-180%);
+  pointer-events: none;
+  z-index: 4;
+  animation: portraitShimmerSweep 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes portraitShimmerSweep {
+  0% {
+    transform: skewX(-25deg) translateX(-180%);
+  }
+  26%, 100% {
+    transform: skewX(-25deg) translateX(320%);
+  }
+}
+
+/* Floating Status Badge inside Frame */
+.speaker-portrait-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(12, 14, 28, 0.86);
+  border: 1px solid rgba(230, 183, 71, 0.45);
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.03em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.speaker-portrait-wrap:hover .speaker-portrait-badge {
+  background: rgba(12, 14, 28, 0.96);
+  border-color: rgba(230, 183, 71, 0.8);
+  box-shadow: 0 4px 20px rgba(230, 183, 71, 0.35);
+}
+
+.speaker-live-beacon {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: beaconPulse 2s infinite;
+}
+
+@keyframes beaconPulse {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    box-shadow: 0 0 12px #34d399;
+  }
+}
+
+/* Enlarge / Full-View Button */
+.speaker-portrait-expand-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(12, 14, 28, 0.78);
+  border: 1px solid rgba(230, 183, 71, 0.45);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  opacity: 0.85;
+  transition: all 0.25s ease;
+}
+
+.speaker-portrait-expand-btn:hover {
+  opacity: 1;
+  transform: scale(1.12);
+  background: rgba(230, 183, 71, 0.25);
+  border-color: var(--gold-light);
+  color: #fff;
+  box-shadow: 0 0 14px rgba(230, 183, 71, 0.5);
+}
+
+/* Corner Accents */
+.portrait-corner-accent {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--gold-primary);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 6;
+  opacity: 0.75;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.corner-tl {
+  top: -4px;
+  left: -4px;
+  border-width: 2px 0 0 2px;
+  border-top-left-radius: 6px;
+}
+
+.corner-br {
+  bottom: -4px;
+  right: -4px;
+  border-width: 0 2px 2px 0;
+  border-bottom-right-radius: 6px;
+}
+
+.speaker-portrait-wrap:hover .portrait-corner-accent {
+  opacity: 1;
+  transform: scale(1.25);
+  border-color: var(--gold-light);
+}
+
+/* Entrance & Float Animations */
+@keyframes portraitEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.92);
+    filter: blur(8px);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.015);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes portraitLevitate {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-7px);
+  }
+}
+
+/* Lightbox Modal for High-Res View */
+.speaker-lightbox-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.speaker-lightbox-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.speaker-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 6, 15, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.speaker-lightbox-dialog {
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+  width: 100%;
+  transform: scale(0.9) translateY(24px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.speaker-lightbox-modal.is-active .speaker-lightbox-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.speaker-lightbox-frame {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(230, 183, 71, 0.5);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(230, 183, 71, 0.3);
+  background: #0d0f22;
+}
+
+.speaker-lightbox-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.speaker-lightbox-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(7, 8, 18, 0.92) 50%, rgba(7, 8, 18, 0.98) 100%);
+  border-top: 1px solid rgba(230, 183, 71, 0.2);
+}
+
+.speaker-lightbox-caption h4 {
+  color: var(--gold-light);
+  font-size: 1.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.speaker-lightbox-caption p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.speaker-lightbox-close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: all 0.2s ease;
+}
+
+.speaker-lightbox-close:hover {
+  background: var(--gold-primary);
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* Fallback Monogram Avatar */
 .speaker-avatar-wrap {
   position: relative;
   flex-shrink: 0;
@@ -1138,9 +1524,8 @@ h1 {
     padding: 1.75rem;
   }
   .speaker-hero-top {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
   }
   .speaker-domains-grid {
     grid-template-columns: 1fr;
@@ -1186,43 +1571,875 @@ h1 {
   border-radius: 16px;
 }
 
-/* Daily Sutra Oracle Card */
+/* ==========================================================================
+   3D Maha-Mantra Sacred Shrine Card (Hare Krishna Maha-Mantra 3D Card)
+   ========================================================================== */
 .sutra-oracle-box {
-  background: radial-gradient(circle at 50% 0%, rgba(30, 22, 60, 0.7) 0%, rgba(13, 14, 28, 0.85) 100%);
-  border: 1px solid var(--border-gold);
-  border-radius: 24px;
-  padding: 3rem;
-  max-width: 860px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(68, 26, 8, 0.95) 0%, rgba(32, 12, 4, 0.98) 55%, #140502 100%);
+  border: 2px solid rgba(245, 158, 11, 0.65);
+  border-radius: 28px;
+  padding: 3.5rem 2.5rem 3rem 2.5rem;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(230, 183, 71, 0.15);
+  box-shadow: 
+    0 30px 70px -15px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(234, 88, 12, 0.35),
+    inset 0 0 40px rgba(245, 158, 11, 0.15),
+    inset 0 1px 2px rgba(254, 240, 138, 0.4);
   position: relative;
+  overflow: hidden;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, border-color 0.45s ease;
 }
 
-.sanskrit-verse {
-  font-family: var(--font-editorial);
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-  font-style: italic;
+.sutra-oracle-box:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(254, 240, 138, 0.95);
+  box-shadow: 
+    0 40px 90px -15px rgba(0, 0, 0, 0.95),
+    0 0 85px rgba(234, 88, 12, 0.55),
+    inset 0 0 50px rgba(245, 158, 11, 0.25);
+}
+
+/* 3D Pulsating Saffron & Gold Halo Aura */
+.mantra-3d-aura {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.32) 0%, rgba(234, 88, 12, 0.22) 40%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+  animation: mantraAura3D 6s ease-in-out infinite alternate;
+}
+
+@keyframes mantraAura3D {
+  0% { transform: translateX(-50%) scale(0.9); opacity: 0.6; }
+  100% { transform: translateX(-50%) scale(1.15); opacity: 0.95; filter: blur(65px); }
+}
+
+/* 3D Sacred Corner Filigree Ornaments */
+.mantra-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--gold-primary);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.85;
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.corner-top-left {
+  top: 14px;
+  left: 14px;
+  border-width: 3px 0 0 3px;
+  border-top-left-radius: 10px;
+}
+
+.corner-top-right {
+  top: 14px;
+  right: 14px;
+  border-width: 3px 3px 0 0;
+  border-top-right-radius: 10px;
+}
+
+.corner-bottom-left {
+  bottom: 14px;
+  left: 14px;
+  border-width: 0 0 3px 3px;
+  border-bottom-left-radius: 10px;
+}
+
+.corner-bottom-right {
+  bottom: 14px;
+  right: 14px;
+  border-width: 0 3px 3px 0;
+  border-bottom-right-radius: 10px;
+}
+
+.sutra-oracle-box:hover .mantra-corner {
+  transform: scale(1.2);
+  border-color: var(--gold-light);
+  box-shadow: 0 0 10px var(--gold-glow);
+}
+
+/* Divine Badge */
+.mantra-divine-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.25rem;
+  background: rgba(234, 88, 12, 0.18);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  border-radius: 9999px;
   color: var(--gold-light);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.25);
+  position: relative;
+  z-index: 1;
+}
+
+.sacred-diya-flame {
+  font-size: 1.1rem;
+  filter: drop-shadow(0 0 6px #f59e0b);
+  animation: diyaFlicker 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes diyaFlicker {
+  0% { transform: scale(0.95) rotate(-3deg); filter: drop-shadow(0 0 4px #ea580c); }
+  50% { transform: scale(1.1) rotate(2deg); filter: drop-shadow(0 0 10px #fde047); }
+  100% { transform: scale(1.02) rotate(-1deg); filter: drop-shadow(0 0 8px #f59e0b); }
+}
+
+/* Maha-Mantra Verse (Radical High-Definition 3D Typography) */
+.sanskrit-verse.maha-mantra-title {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  color: #fffbeb;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef08a 40%, #fbbf24 75%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: 1.5;
-  margin-bottom: 1.25rem;
-  text-shadow: 0 0 20px rgba(230, 183, 71, 0.3);
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+  filter: drop-shadow(0 4px 20px rgba(234, 88, 12, 0.7));
+  position: relative;
+  z-index: 1;
+}
+
+.maha-mantra-transliteration {
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  color: #fb923c;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  margin-bottom: 1.35rem;
+  text-shadow: 0 0 16px rgba(234, 88, 12, 0.65), 0 2px 4px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 1;
 }
 
 .sutra-english {
-  font-size: 1.15rem;
-  color: var(--text-primary);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  font-weight: 300;
+  font-size: 1.1rem;
+  color: #ffedd5;
+  line-height: 1.8;
+  margin-bottom: 1.75rem;
+  font-style: italic;
+  font-weight: 400;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .sutra-source {
   font-family: var(--font-serif);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--gold-primary);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
+  font-weight: 600;
   text-transform: uppercase;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.mantra-actions-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* 3D Sacred Chanting Pulse Effect */
+.sutra-chant-pulse {
+  animation: divineChantPulse 1.2s ease-out;
+}
+
+@keyframes divineChantPulse {
+  0% {
+    box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.9), 0 0 60px rgba(234, 88, 12, 0.35);
+    transform: scale3d(1, 1, 1);
+  }
+  40% {
+    box-shadow: 0 45px 100px -10px rgba(0, 0, 0, 0.95), 0 0 110px rgba(245, 158, 11, 0.8), inset 0 0 60px rgba(254, 240, 138, 0.45);
+    transform: scale3d(1.035, 1.035, 1.035);
+    border-color: rgba(254, 240, 138, 1);
+  }
+  100% {
+    box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.9), 0 0 60px rgba(234, 88, 12, 0.35);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+/* ==========================================================================
+   Spiritual Discourse by Dhananjay Vashistha - Card View & Cinema Player
+   ========================================================================== */
+.discourse-filter-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.discourse-filter-pill {
+  padding: 0.55rem 1.35rem;
+  background: rgba(38, 14, 5, 0.7);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 9999px;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+}
+
+.discourse-filter-pill:hover {
+  border-color: var(--gold-light);
+  color: #fff;
+  background: rgba(234, 88, 12, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+}
+
+.discourse-filter-pill.active {
+  background: linear-gradient(135deg, #ea580c 0%, #b45309 100%);
+  color: #fff;
+  border-color: var(--gold-light);
+  box-shadow: 0 4px 20px rgba(234, 88, 12, 0.45), inset 0 1px 1px rgba(254, 240, 138, 0.5);
+}
+
+/* ==========================================================================
+   Spiritual Video Library & Discourse Explorer (Image 1 & 2 styles)
+   ========================================================================== */
+
+.discourse-library-section {
+  position: relative;
+  z-index: 2;
+}
+
+/* 1. Explore Categories (Image 2 style) */
+.category-explorer-block {
+  margin-bottom: 3.5rem;
+}
+
+.explorer-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.explorer-folder-icon {
+  font-size: 1.6rem;
+  color: #ea580c;
+  filter: drop-shadow(0 2px 8px rgba(234, 88, 12, 0.4));
+}
+
+.explorer-heading-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.category-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 992px) {
+  .category-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.category-card {
+  position: relative;
+  height: 190px;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #140603;
+  border: 2px solid rgba(245, 158, 11, 0.25);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-card:hover img {
+  transform: scale(1.07);
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(245, 158, 11, 0.8);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.85), 0 0 30px rgba(234, 88, 12, 0.35);
+}
+
+.category-card.is-active {
+  border-color: #ea580c;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.45), 0 16px 36px rgba(0, 0, 0, 0.9);
+}
+
+.category-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(12, 4, 2, 0.65) 40%, rgba(10, 3, 1, 0.96) 100%);
+  padding: 1.75rem 1.25rem 0.95rem 1.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.category-card-name {
+  color: #ffffff;
+  font-size: 1.18rem;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  letter-spacing: 0.02em;
+}
+
+.category-card-sub {
+  color: #fed7aa;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 0.2rem;
+  opacity: 0.92;
+}
+
+/* 2. Discourses & Recordings Top Bar (Image 1 style) */
+.recordings-explorer-block {
+  background: rgba(22, 8, 3, 0.55);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 24px;
+  padding: 2rem 2.25rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.recordings-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.recordings-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+}
+
+.recordings-count-badge {
+  font-size: 0.95rem;
+  color: #fed7aa;
+  font-weight: 600;
+}
+
+.active-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(234, 88, 12, 0.25);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  color: #fff;
+  padding: 0.25rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+}
+
+.active-filter-chip button {
+  background: transparent;
+  border: none;
+  color: #fca5a5;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  margin-left: 0.2rem;
+}
+
+.active-filter-chip button:hover {
+  color: #fff;
+}
+
+.recordings-controls-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.recordings-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.recordings-search-wrap .search-icon {
+  position: absolute;
+  left: 0.85rem;
+  color: #fdba74;
+  pointer-events: none;
+}
+
+.recordings-search-input {
+  background: rgba(14, 5, 2, 0.85);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 9999px;
+  padding: 0.6rem 2.2rem 0.6rem 2.5rem;
+  color: #fff;
+  font-size: 0.88rem;
+  width: 250px;
+  transition: all 0.3s ease;
+}
+
+.recordings-search-input:focus {
+  outline: none;
+  border-color: #ea580c;
+  width: 310px;
+  box-shadow: 0 0 16px rgba(234, 88, 12, 0.4);
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.clear-search-btn:hover {
+  color: #fff;
+}
+
+.recordings-sort-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.recordings-sort-select {
+  background: rgba(14, 5, 2, 0.85);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 8px;
+  color: #fed7aa;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.86rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.recordings-sort-select:focus {
+  border-color: #ea580c;
+}
+
+/* 3. Horizontal Video Rows (Image 1 style) */
+.discourse-video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.video-row-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: radial-gradient(ellipse at 15% 50%, rgba(38, 14, 6, 0.75) 0%, rgba(18, 6, 3, 0.88) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  border-radius: 16px;
+  padding: 1.15rem 1.45rem;
+  gap: 1.5rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.video-row-item:hover {
+  background: radial-gradient(ellipse at 15% 50%, rgba(55, 20, 8, 0.85) 0%, rgba(26, 9, 4, 0.95) 100%);
+  border-color: rgba(245, 158, 11, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(234, 88, 12, 0.15);
+}
+
+.video-row-left {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.video-row-thumb {
+  position: relative;
+  width: 140px;
+  min-width: 140px;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.video-row-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.video-row-thumb:hover img {
+  transform: scale(1.08);
+}
+
+.video-row-thumb-play {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.video-row-thumb:hover .video-row-thumb-play {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.video-row-thumb-play svg {
+  width: 26px;
+  height: 26px;
+  fill: #ffffff;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.85));
+}
+
+.video-row-duration {
+  position: absolute;
+  bottom: 5px;
+  right: 6px;
+  background: rgba(10, 2, 1, 0.88);
+  color: #fef08a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  font-family: monospace;
+  letter-spacing: 0.05em;
+}
+
+.video-row-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.video-row-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  line-height: 1.35;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.video-row-title:hover {
+  color: var(--gold-light);
+}
+
+.video-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  color: #d6d3d1;
+  font-size: 0.85rem;
+}
+
+.video-row-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.video-row-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.15rem;
+}
+
+.video-tag-pill {
+  background: rgba(234, 88, 12, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fef08a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.18rem 0.65rem;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Row Action Buttons (Watch, Red YouTube, Share) */
+.video-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+.btn-video-watch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, #ea580c 0%, #b45309 100%);
+  border: 1px solid #f59e0b;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.5rem 1.05rem;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-video-watch:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(234, 88, 12, 0.45);
+}
+
+/* Distinctive Red YouTube Button (matching Image 1) */
+.btn-video-yt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #cc0000;
+  color: #ffffff !important;
+  font-weight: 700;
+  border: 1px solid #ff3333;
+  padding: 0.5rem 1.05rem;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-video-yt:hover {
+  background: #e60000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(204, 0, 0, 0.55);
+}
+
+.btn-video-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fed7aa;
+  padding: 0.5rem 0.95rem;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-video-share:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border-color: #f59e0b;
+}
+
+/* Empty notice */
+.empty-video-notice {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: rgba(14, 5, 2, 0.6);
+  border: 1px dashed rgba(245, 158, 11, 0.3);
+  border-radius: 16px;
+}
+
+/* 4. Video Player Modal Popup (Image 1 style) */
+.video-modal-dialog {
+  max-width: 860px;
+  width: 94%;
+  padding: 0;
+  overflow: hidden;
+  background: #140502;
+  border: 2px solid rgba(245, 158, 11, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 35px 100px rgba(0, 0, 0, 0.95), 0 0 40px rgba(234, 88, 12, 0.3);
+  animation: modalScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScaleUp {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Warm sand/cream title bar matching Image 1 */
+.video-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f6ebd8;
+  color: #3b1b09;
+  padding: 0.9rem 1.4rem;
+  border-bottom: 1px solid #e7d3b5;
+}
+
+.video-modal-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #3b1b09;
+}
+
+.video-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #5a260d;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.video-modal-close:hover {
+  transform: scale(1.2);
+  color: #b91c1c;
+}
+
+.video-modal-body {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.video-modal-body iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 820px) {
+  .recordings-explorer-block {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .video-row-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.15rem;
+  }
+
+  .video-row-left {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .video-row-thumb {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .video-row-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .recordings-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .recordings-controls-group {
+    width: 100%;
+  }
+
+  .recordings-search-wrap,
+  .recordings-search-input {
+    width: 100%;
+  }
+
+  .recordings-search-input:focus {
+    width: 100%;
+  }
 }
 
 /* Interactive Sound & Pranayama Studio */
@@ -1874,6 +3091,8 @@ h1 {
     grid-template-columns: 1fr;
     text-align: center;
     padding: 2rem 1.5rem;
+  }
+}
 /* ==========================================================================
    Speaker Profile - Dhananjay Vashistha
    ========================================================================== */
@@ -2091,6 +3310,8 @@ h1 {
   }
   .speaker-bio-container {
     padding: 1.75rem;
+  }
+}
 /* ==========================================================================
    Interactive Studio & Sacred Sadhana Animations
    ========================================================================== */
@@ -2302,31 +3523,42 @@ h1 {
   color: #fff;
 }
 
-/* Responsive Media Queries */
-@media (max-width: 992px) {
-  .feature-split, .sanctuary-grid, .interactive-studio-grid {
-    grid-template-columns: 1fr;
-  }
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+/* ==========================================================================
+   Comprehensive Mobile & Tablet Responsive Design System
+   Breakpoints: 992px (Tablets / Small Laptops), 768px (Tablets / Large Phones), 480px (Standard / Small Mobile)
+   ========================================================================== */
 
-@media (max-width: 768px) {
+/* Tablet & Medium Screens (max-width: 992px) */
+@media (max-width: 992px) {
+  /* Navigation & Header */
+  .nav-container {
+    height: 74px;
+    padding: 0 1.25rem;
+  }
+
   .nav-links {
     position: fixed;
-    top: 80px;
+    top: 74px;
     left: 0;
+    right: 0;
     width: 100%;
-    background: rgba(7, 7, 15, 0.98);
+    max-height: calc(100vh - 74px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(14, 6, 2, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     flex-direction: column;
-    padding: 2.5rem 1.5rem;
-    gap: 1.5rem;
-    border-bottom: 1px solid var(--border-gold);
-    transform: translateY(-120%);
+    align-items: stretch;
+    padding: 1.5rem 1.25rem 2.25rem;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--border-gold);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.92);
+    transform: translateY(-130%);
     opacity: 0;
     pointer-events: none;
-    transition: all var(--transition-normal);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    z-index: 999;
   }
 
   .nav-links.open {
@@ -2335,16 +3567,867 @@ h1 {
     pointer-events: auto;
   }
 
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1.25rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fffbeb;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    min-height: 48px;
+    width: 100%;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background: rgba(234, 88, 12, 0.18);
+    border-color: rgba(245, 158, 11, 0.45);
+    color: var(--gold-light);
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
   .mobile-menu-btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(234, 88, 12, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: var(--gold-light);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .mobile-menu-btn:hover {
+    background: rgba(234, 88, 12, 0.25);
+    border-color: var(--gold-primary);
+  }
+
+  /* Grid Layouts Stack */
+  .feature-split,
+  .sanctuary-grid,
+  .interactive-studio-grid,
+  .speaker-hero-top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .speaker-profile-hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .speaker-domains-grid,
+  .speaker-initiatives-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Global Resets for Mobile */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .section-padding {
+    padding: 4.5rem 0;
+  }
+
+  /* Prevent iOS Safari auto-zoom on input focus */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  /* Header Branding */
+  .brand-logo-img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-name {
+    font-size: 1.18rem;
+    letter-spacing: 0.05em;
+  }
+
+  .brand-sub {
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+  }
+
+  .nav-actions {
+    gap: 0.5rem;
+  }
+
+  .nav-actions .btn {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.84rem;
+  }
+
+  .nav-actions #nav-login-btn {
+    display: none; /* Accessible in mobile menu drawer */
+  }
+
+  /* Hero Section */
+  .hero-section {
+    min-height: auto;
+    padding-top: 105px;
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.1rem, 7.5vw, 3.4rem);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
   }
 
   .hero-stats-bar {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
     padding: 1.5rem;
+    border-radius: 18px;
   }
 
+  .stat-item {
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+  }
+
+  .stat-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .stat-number {
+    font-size: 1.85rem;
+  }
+
+  /* 3D Sacred Geometry Canvas on Mobile */
+  .hero-3d-mandala-container {
+    max-width: 100%;
+    margin: 1.75rem auto 1rem auto;
+  }
+
+  .sacred-3d-canvas-wrap {
+    width: 290px;
+    height: 290px;
+  }
+
+  .mandala-3d-orb-halo {
+    width: 270px;
+    height: 270px;
+    filter: blur(28px);
+  }
+
+  .mandala-mantra-orbit span {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* Sacred Realms & Cards Grid */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .sacred-card {
+    padding: 1.75rem 1.35rem;
+    border-radius: 18px;
+  }
+
+  /* Maha-Mantra 3D Shrine (Daily Sutra) */
+  .sutra-oracle-box {
+    padding: 2.25rem 1.25rem 2rem 1.25rem;
+    border-radius: 22px;
+  }
+
+  .mantra-3d-aura {
+    width: 320px;
+    height: 200px;
+    filter: blur(35px);
+  }
+
+  .mantra-corner {
+    width: 18px;
+    height: 18px;
+    border-width: 2px;
+  }
+
+  .sanskrit-verse.maha-mantra-title {
+    font-size: clamp(1.3rem, 5.2vw, 1.95rem);
+    line-height: 1.45;
+  }
+
+  .maha-mantra-transliteration {
+    font-size: clamp(0.82rem, 3.4vw, 1rem);
+    letter-spacing: 0.08em;
+  }
+
+  .sutra-english {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+
+  .mantra-actions-wrap {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .mantra-actions-wrap .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Discourses & Video Library Section (index.html) */
+  .category-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .category-card {
+    height: 175px;
+  }
+
+  .recordings-explorer-block {
+    padding: 1.5rem 1.15rem;
+    border-radius: 20px;
+  }
+
+  .recordings-top-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .recordings-controls-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .recordings-search-wrap,
+  .recordings-search-input {
+    width: 100%;
+  }
+
+  .recordings-search-input:focus {
+    width: 100%;
+  }
+
+  .recordings-sort-wrap {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .recordings-sort-select {
+    flex: 1;
+  }
+
+  .video-row-item {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.15rem 1rem;
+    gap: 1rem;
+  }
+
+  .video-row-left {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.85rem;
+  }
+
+  .video-row-thumb {
+    width: 100%;
+    min-width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+  }
+
+  .video-row-actions {
+    width: 100%;
+    display: flex;
+    gap: 0.6rem;
+    justify-content: stretch;
+  }
+
+  .video-row-actions .btn {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Speaker Profile Hero Section */
+  .speaker-profile-hero {
+    padding: 1.6rem 1.15rem;
+    border-radius: 20px;
+    margin-bottom: 2.25rem;
+  }
+
+  .speaker-hero-top {
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .speaker-portrait-wrap {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .speaker-portrait-frame {
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+  }
+
+  .speaker-status-pill {
+    margin: 0 auto 0.75rem auto;
+    font-size: 0.72rem;
+  }
+
+  .speaker-hero-name {
+    font-size: clamp(1.85rem, 5.5vw, 2.4rem);
+    text-align: center;
+  }
+
+  .speaker-hero-designation {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .speaker-credentials-pills {
+    justify-content: center;
+    gap: 0.45rem;
+  }
+
+  .cred-pill {
+    font-size: 0.76rem;
+    padding: 0.35rem 0.7rem;
+  }
+
+  .speaker-quote-card {
+    font-size: 1.15rem;
+    padding: 1.15rem 1.25rem;
+    margin: 1.5rem 0;
+  }
+
+  .speaker-narrative-summary {
+    font-size: 0.94rem;
+    line-height: 1.75;
+    text-align: left;
+  }
+
+  .speaker-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .speaker-hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .speaker-domains-grid,
+  .speaker-initiatives-grid {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+
+  .domain-card,
+  .initiative-card {
+    padding: 1.6rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  .initiative-card .btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  /* Sadhana & Sound Studio */
+  .interactive-studio-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .studio-card {
+    padding: 1.85rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .breath-visualizer {
+    width: 190px;
+    height: 190px;
+    margin: 1.25rem auto;
+  }
+
+  .breath-circle {
+    width: 110px;
+    height: 110px;
+  }
+
+  .breath-circle.inhale,
+  .breath-circle.hold {
+    transform: scale(1.35); /* Prevents overflow */
+  }
+
+  .sound-slider-wrap {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .sound-slider-wrap span {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Seeker Sanctuary Dashboard */
+  .sanctuary-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .seeker-profile-card {
+    position: static;
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .sadhana-item {
+    padding: 1rem 1.15rem;
+    gap: 0.75rem;
+  }
+
+  /* Footer */
   .footer-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  /* Floating 432Hz Sound Dock */
+  .spiritual-sound-dock {
+    bottom: 18px;
+    left: 18px;
+  }
+
+  .sound-dock-btn {
+    padding: 0.45rem 0.95rem 0.45rem 0.55rem;
+    font-size: 0.8rem;
+  }
+
+  .sound-om-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+
+  /* Modals on Mobile */
+  .modal-dialog {
+    width: calc(100% - 2rem);
+    margin: 0 1rem;
+    max-width: 480px;
+    padding: 1.85rem 1.35rem;
+  }
+
+  .speaker-lightbox-dialog {
+    width: calc(100% - 2rem);
+    margin: 0 1rem;
+  }
+
+  .speaker-lightbox-close {
+    top: -12px;
+    right: 0;
+  }
+}
+
+/* Extra Small Phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section-padding {
+    padding: 3.5rem 0;
+  }
+
+  .brand-name {
+    font-size: 1.05rem;
+  }
+
+  .brand-sub {
+    display: none; /* Keep clean on 360px phones */
+  }
+
+  .hero-title {
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 2.25rem auto;
+    gap: 0.75rem;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+
+  .sanskrit-subtitle {
+    font-size: 0.95rem;
+    gap: 0.5rem;
+  }
+
+  .sanskrit-subtitle::before,
+  .sanskrit-subtitle::after {
+    width: 18px;
+  }
+
+  .sacred-3d-canvas-wrap {
+    width: 250px;
+    height: 250px;
+  }
+
+  .mandala-3d-orb-halo {
+    width: 230px;
+    height: 230px;
+  }
+
+  .speaker-quote-card {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .speaker-profile-hero {
+    padding: 1.35rem 0.95rem;
+  }
+
+  .domain-card,
+  .initiative-card,
+  .sacred-card,
+  .studio-card {
+    padding: 1.35rem 1rem;
+  }
+
+  .spiritual-sound-dock {
+    bottom: 12px;
+    left: 12px;
+  }
+
+  .sound-dock-btn {
+    padding: 0.4rem 0.75rem 0.4rem 0.45rem;
+  }
+}
+
+/* ==========================================================================
+   Spiritual 3D Sacred Geometry & Cosmic Visualizer Styles
+   ========================================================================== */
+
+.hero-3d-mandala-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2.5rem auto 1.5rem auto;
+  max-width: 500px;
+  width: 100%;
+}
+
+.mandala-3d-orb-halo {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230, 183, 71, 0.28) 0%, rgba(138, 92, 246, 0.16) 45%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: mandalaHaloPulse 7s ease-in-out infinite alternate;
+}
+
+@keyframes mandalaHaloPulse {
+  0% { transform: scale(0.92); opacity: 0.6; }
+  100% { transform: scale(1.12); opacity: 0.95; }
+}
+
+.sacred-3d-canvas-wrap {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .sacred-3d-canvas-wrap {
+    width: 440px;
+    height: 440px;
+  }
+}
+
+.mandala-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 0 25px rgba(230, 183, 71, 0.4));
+  cursor: grab;
+}
+
+.mandala-3d-canvas:active {
+  cursor: grabbing;
+}
+
+/* Orbiting Sanskrit Mantra Ring */
+.mandala-mantra-orbit {
+  position: absolute;
+  inset: -15px;
+  border-radius: 50%;
+  border: 1px dashed rgba(230, 183, 71, 0.35);
+  pointer-events: none;
+  animation: rotateMantraRing 60s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mandala-mantra-orbit span {
+  position: absolute;
+  font-family: var(--font-editorial);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--gold-light);
+  text-shadow: 0 0 10px rgba(230, 183, 71, 0.6);
+  opacity: 0.65;
+  white-space: nowrap;
+}
+
+@keyframes rotateMantraRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.mandala-interaction-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  background: rgba(12, 14, 30, 0.75);
+  border: 1px solid rgba(230, 183, 71, 0.3);
+  font-size: 0.78rem;
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.mandala-interaction-hint .pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-primary);
+  box-shadow: 0 0 8px var(--gold-primary);
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 14px var(--gold-light); }
+}
+
+/* 3D Specular Glare Overlay for Cards */
+.card-3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 10;
+  mix-blend-mode: overlay;
+}
+
+/* Floating 432Hz Spiritual Sound Sanctum Dock */
+.spiritual-sound-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999;
+}
+
+.sound-dock-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 1.15rem 0.55rem 0.65rem;
+  background: linear-gradient(135deg, rgba(20, 24, 52, 0.9) 0%, rgba(10, 12, 28, 0.95) 100%);
+  border: 1px solid rgba(230, 183, 71, 0.45);
+  border-radius: 9999px;
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(230, 183, 71, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.sound-dock-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  border-color: var(--gold-primary);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 30px rgba(230, 183, 71, 0.45);
+  color: #fff;
+}
+
+.sound-om-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(230, 183, 71, 0.18);
+  border: 1px solid var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  box-shadow: 0 0 10px rgba(230, 183, 71, 0.35);
+}
+
+.sound-dock-btn.is-playing .sound-om-icon {
+  background: var(--gold-primary);
+  color: #070814;
+  animation: omSpinPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes omSpinPulse {
+  0% { transform: scale(1); box-shadow: 0 0 12px var(--gold-light); }
+  100% { transform: scale(1.12); box-shadow: 0 0 22px #fff; }
+}
+
+.sound-dock-state {
+  font-size: 0.72rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 9999px;
+  background: rgba(230, 183, 71, 0.15);
+  border: 1px solid rgba(230, 183, 71, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sound-dock-btn.is-playing .sound-dock-state {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+  color: #34d399;
+}
+
+/* Sound Wave Pulse Rings */
+.sound-wave-rings {
+  position: absolute;
+  top: 50%;
+  left: 22px;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 38px;
+  pointer-events: none;
+}
+
+.sound-dock-btn.is-playing .ring-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(230, 183, 71, 0.6);
+  animation: soundRingWave 2.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.sound-dock-btn.is-playing .ring-delay {
+  animation-delay: 1.1s;
+}
+
+@keyframes soundRingWave {
+  0% { transform: scale(0.8); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* Spiritual Sanskrit Watermarks & Ornamental Dividers */
+.spiritual-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 3.5rem auto;
+  max-width: 600px;
+  color: var(--gold-light);
+  opacity: 0.75;
+}
+
+.spiritual-divider::before,
+.spiritual-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(230, 183, 71, 0.45), transparent);
+}
+
+.spiritual-divider-symbol {
+  font-family: var(--font-editorial);
+  font-size: 1.35rem;
+  color: var(--gold-light);
+  text-shadow: 0 0 12px rgba(230, 183, 71, 0.5);
+  letter-spacing: 0.1em;
 }

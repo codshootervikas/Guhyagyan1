@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Sanctum Dashboard — Seeker Vault | Guhya Gyan Foundation</title>
+  <meta name="description"
+    content="Administrative sanctuary dashboard for managing initiated seekers, sadhana records, spiritual lineages, and foundation members.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css?v=3.0">
+  <link rel="stylesheet" href="css/admin.css?v=3.0">
+
+  <!-- Supabase Client CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body class="sanctuary-body">
+
+  <!-- Background Orbs -->
+  <div class="hero-glow-orb hero-glow-1" style="top: 10%; left: 5%;"></div>
+  <div class="hero-glow-orb hero-glow-2" style="top: 50%; right: 5%;"></div>
+
+  <!-- Header Navigation -->
+  <header class="site-header scrolled" id="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-link" id="brand-home-link">
+        <img src="assets/images/logo.png" alt="Guhya Gyan Foundation Logo" class="brand-logo-img" id="brand-logo-img">
+        <div class="brand-title-wrap">
+          <span class="brand-name">Guhya Gyan Foundation</span>
+          <span class="brand-sub">गुह्य ज्ञान • Master Admin Sanctum</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about-the-speaker.html" class="nav-link">About the Speaker</a></li>
+          <li><a href="index.html#realms" class="nav-link">Sacred Realms</a></li>
+          <li><a href="sanctuary.html" class="nav-link">Seeker Portal</a></li>
+          <li><a href="admin.html" class="nav-link active">Admin Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions" id="nav-auth-actions">
+        <button class="btn btn-outline btn-sm" id="admin-logout-btn">
+          <span>🔒 Exit Admin</span>
+        </button>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ================= Main Admin Dashboard ================= -->
+  <main class="section-padding" id="admin-main-dashboard" style="padding-top: 130px; display: block;">
+    <div class="container">
+      
+      <!-- Top Title Bar -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem;">
+        <div>
+          <div class="sanskrit-subtitle" style="justify-content: flex-start;">साधक नामावली • Seeker Directory & Oversight</div>
+          <h1 class="font-cinzel" style="font-size: clamp(2.1rem, 4vw, 2.85rem); line-height: 1.15; margin-bottom: 0.5rem;">
+            Admin <span class="gold-gradient-text">Sanctum Dashboard</span>
+          </h1>
+          <p style="color: var(--text-secondary); font-size: 1rem; max-width: 650px;">
+            Full administrative overview of all initiated seekers, sadhana metrics, cloud synchronization state, and directory vault records.
+          </p>
+        </div>
+
+        <div class="admin-header-actions">
+          <button class="btn btn-outline btn-sm" id="admin-refresh-btn" title="Refresh Seeker Records">
+            <span>🔄 Refresh Data</span>
+          </button>
+          <button class="btn btn-outline btn-sm" id="admin-export-csv-btn" title="Download CSV Spreadsheet">
+            <span>📊 Export CSV</span>
+          </button>
+          <button class="btn btn-primary btn-sm" id="admin-add-seeker-btn">
+            <span>➕ Initiate New Seeker</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <div class="admin-stat-header">
+            <span class="admin-stat-label">Total Registered Seekers</span>
+            <div class="admin-stat-icon">👥</div>
+          </div>
+          <div class="admin-stat-value" id="stat-total-users">0</div>
+          <div class="admin-stat-sub">Initiated accounts across all platforms</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="admin-stat-header">
+            <span class="admin-stat-label">Cloud Synchronized</span>
+            <div class="admin-stat-icon">☁️</div>
+          </div>
+          <div class="admin-stat-value" id="stat-cloud-users" style="color: #7dd3fc;">0</div>
+          <div class="admin-stat-sub">Supabase live cloud authentication</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="admin-stat-header">
+            <span class="admin-stat-label">Active Sadhakas</span>
+            <div class="admin-stat-icon">🔥</div>
+          </div>
+          <div class="admin-stat-value" id="stat-active-sadhakas" style="color: #f59e0b;">0</div>
+          <div class="admin-stat-sub">Sadhakas actively tracking sadhana streak</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="admin-stat-header">
+            <span class="admin-stat-label">Average Sadhana Streak</span>
+            <div class="admin-stat-icon">🪷</div>
+          </div>
+          <div class="admin-stat-value" id="stat-avg-streak" style="color: var(--gold-light);">0</div>
+          <div class="admin-stat-sub">Continuous daily meditation average</div>
+        </div>
+      </div>
+
+      <!-- User Directory Panel -->
+      <div class="admin-panel">
+        <div class="admin-panel-header">
+          <div>
+            <h2 class="admin-panel-title font-cinzel">Initiated Seeker Directory</h2>
+            <p class="admin-panel-desc" id="filtered-count-display">Showing all seekers registered in Guhya Gyan Foundation</p>
+          </div>
+        </div>
+
+        <!-- Search and Filter Controls -->
+        <div class="admin-toolbar">
+          <div class="admin-search-box">
+            <span class="admin-search-icon">🔍</span>
+            <input type="text" id="admin-search-input" placeholder="Search by name, spiritual name, email, or ID...">
+          </div>
+
+          <div class="admin-filters">
+            <select class="admin-select" id="admin-filter-path" aria-label="Filter by Spiritual Path">
+              <option value="all">All Wisdom Lineages</option>
+              <option value="Advaita">Advaita Vedanta</option>
+              <option value="Kundalini">Kundalini Vidya</option>
+              <option value="Kashmir">Kashmir Shaivism</option>
+              <option value="Yoga">Classical Yoga</option>
+              <option value="Nada">Nada & Sound Yoga</option>
+            </select>
+
+            <select class="admin-select" id="admin-filter-source" aria-label="Filter by Storage Source">
+              <option value="all">All Storage Sources</option>
+              <option value="cloud">Supabase Cloud Only</option>
+              <option value="local">Local Vault Only</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Seeker Profile</th>
+                <th>Credentials & ID</th>
+                <th>Spiritual Path</th>
+                <th>Level</th>
+                <th>Streak</th>
+                <th>Initiated</th>
+                <th>Source</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users-tbody">
+              <!-- Dynamically rendered by js/admin.js -->
+            </tbody>
+          </table>
+
+          <!-- Empty State -->
+          <div class="admin-empty-state" id="admin-empty-state" style="display: none;">
+            <div class="admin-empty-icon">📿</div>
+            <h3 class="font-cinzel" style="color: #fff; margin-bottom: 0.5rem;">No Seekers Found</h3>
+            <p style="font-size: 0.9rem;">No registered seeker matches the current search and filter criteria.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Spiritual Discourse by Dhananjay Vashistha Panel ================= -->
+      <div class="admin-panel" id="admin-discourse-panel" style="margin-top: 3.5rem;">
+        <div class="admin-panel-header" style="flex-wrap: wrap; gap: 1rem; align-items: flex-end;">
+          <div>
+            <div class="sanskrit-subtitle" style="justify-content: flex-start; margin-bottom: 0.35rem;">प्रवचन प्रबंधन • Sacred Discourses</div>
+            <h2 class="admin-panel-title font-cinzel">Spiritual Discourse by <span class="gold-gradient-text">Dhananjay Vashistha</span></h2>
+            <p class="admin-panel-desc">Manage video discourses for the website. Add links from @guhyagyan and they appear live in the 3D card view immediately.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary btn-sm" id="admin-add-discourse-btn" onclick="window.adminOpenAddDiscourseModal()">
+              <span>➕ Add Spiritual Discourse</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Discourses Table -->
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th style="width: 120px;">Thumbnail</th>
+                <th>Discourse Title</th>
+                <th>Category</th>
+                <th>Speaker</th>
+                <th>Duration</th>
+                <th>Published</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-discourses-tbody">
+              <!-- Dynamically populated by js/discourses.js -->
+            </tbody>
+          </table>
+          <div class="admin-empty-state" id="admin-discourse-empty" style="display: none;">
+            <div class="admin-empty-icon">🪷</div>
+            <h3 class="font-cinzel" style="color: #fff; margin-bottom: 0.5rem;">No Discourses Published Yet</h3>
+            <p style="font-size: 0.9rem;">Click "Add Spiritual Discourse" to publish your first discourse by Dhananjay Vashistha.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= View Seeker Details Modal ================= -->
+  <div class="admin-modal" id="admin-user-details-modal" role="dialog" aria-modal="true">
+    <div class="admin-modal-backdrop"></div>
+    <div class="admin-modal-dialog">
+      <button class="admin-modal-close" onclick="window.adminDashboard.closeModal('admin-user-details-modal')" aria-label="Close modal">✕</button>
+      <div id="user-details-content">
+        <!-- Rendered by js/admin.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Edit Seeker Modal ================= -->
+  <div class="admin-modal" id="admin-edit-user-modal" role="dialog" aria-modal="true">
+    <div class="admin-modal-backdrop"></div>
+    <div class="admin-modal-dialog">
+      <button class="admin-modal-close" onclick="window.adminDashboard.closeModal('admin-edit-user-modal')" aria-label="Close modal">✕</button>
+      
+      <div class="sanskrit-subtitle">संशोधन • Edit Seeker Record</div>
+      <h3 class="font-cinzel" style="font-size: 1.5rem; color: #fff; margin-bottom: 1.25rem;">
+        Update <span class="gold-gradient-text">Seeker Profile</span>
+      </h3>
+
+      <form id="admin-edit-user-form">
+        <input type="hidden" id="edit-user-email">
+
+        <div class="form-group">
+          <label class="form-label" for="edit-user-name">Full Legal Name</label>
+          <input type="text" id="edit-user-name" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="edit-user-spiritual-name">Initiated / Spiritual Name</label>
+          <input type="text" id="edit-user-spiritual-name" class="form-input">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="edit-user-path">Spiritual Path</label>
+            <select id="edit-user-path" class="form-input" style="background: rgba(7, 8, 18, 0.9);">
+              <option value="Advaita Vedanta & Kundalini Vidya">Advaita Vedanta & Kundalini</option>
+              <option value="Advaita Vedanta (Non-Duality)">Advaita Vedanta</option>
+              <option value="Kundalini & Prana Vidya">Kundalini Vidya</option>
+              <option value="Kashmir Shaivism & Spanda">Kashmir Shaivism</option>
+              <option value="Nada Yoga & Sacred Sound">Nada & Sound Yoga</option>
+              <option value="Classical Raja Yoga & Meditation">Classical Raja Yoga</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="edit-user-level">Seeker Level</label>
+            <select id="edit-user-level" class="form-input" style="background: rgba(7, 8, 18, 0.9);">
+              <option value="Beginning Seeker (Aarambha)">Beginning Seeker (Aarambha)</option>
+              <option value="Dedicated Seeker (Madhyama Sadhaka)">Dedicated Seeker (Madhyama)</option>
+              <option value="Advanced Practitioner (Uttama Adhikari)">Advanced Practitioner (Uttama)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="edit-user-streak">Sadhana Streak (Days)</label>
+          <input type="number" id="edit-user-streak" class="form-input" min="0" max="9999" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="edit-user-intention">Sankalpa / Core Intention</label>
+          <textarea id="edit-user-intention" class="form-input" rows="2" style="resize: vertical;"></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-outline btn-sm" onclick="window.adminDashboard.closeModal('admin-edit-user-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= Initiate New Seeker Modal ================= -->
+  <div class="admin-modal" id="admin-add-user-modal" role="dialog" aria-modal="true">
+    <div class="admin-modal-backdrop"></div>
+    <div class="admin-modal-dialog">
+      <button class="admin-modal-close" onclick="window.adminDashboard.closeModal('admin-add-user-modal')" aria-label="Close modal">✕</button>
+      
+      <div class="sanskrit-subtitle">दीक्षा • Direct Initiation</div>
+      <h3 class="font-cinzel" style="font-size: 1.5rem; color: #fff; margin-bottom: 1.25rem;">
+        Add Seeker To <span class="gold-gradient-text">Sacred Vault</span>
+      </h3>
+
+      <form id="admin-add-user-form">
+        <div class="form-group">
+          <label class="form-label" for="new-user-name">Full Legal Name <span class="req">*</span></label>
+          <input type="text" id="new-user-name" class="form-input" placeholder="e.g. Anand Sharma" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="new-user-spiritual-name">Initiated / Spiritual Name (Optional)</label>
+          <input type="text" id="new-user-spiritual-name" class="form-input" placeholder="e.g. Swami Anandamayi">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="new-user-email">Sacred Seeker Email <span class="req">*</span></label>
+          <input type="email" id="new-user-email" class="form-input" placeholder="seeker@domain.com" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="new-user-path">Primary Spiritual Path</label>
+            <select id="new-user-path" class="form-input" style="background: rgba(7, 8, 18, 0.9);">
+              <option value="Advaita Vedanta & Kundalini Vidya">Advaita Vedanta & Kundalini</option>
+              <option value="Advaita Vedanta (Non-Duality)">Advaita Vedanta</option>
+              <option value="Kundalini & Prana Vidya">Kundalini Vidya</option>
+              <option value="Kashmir Shaivism & Spanda">Kashmir Shaivism</option>
+              <option value="Nada Yoga & Sacred Sound">Nada & Sound Yoga</option>
+              <option value="Classical Raja Yoga & Meditation">Classical Raja Yoga</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-user-level">Seeker Level</label>
+            <select id="new-user-level" class="form-input" style="background: rgba(7, 8, 18, 0.9);">
+              <option value="Beginning Seeker (Aarambha)">Beginning Seeker (Aarambha)</option>
+              <option value="Dedicated Seeker (Madhyama Sadhaka)">Dedicated Seeker (Madhyama)</option>
+              <option value="Advanced Practitioner (Uttama Adhikari)">Advanced Practitioner (Uttama)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="new-user-intention">Personal Sankalpa / Intention</label>
+          <textarea id="new-user-intention" class="form-input" rows="2" placeholder="e.g. Cultivating stillness and steady contemplation." style="resize: vertical;"></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-outline btn-sm" onclick="window.adminDashboard.closeModal('admin-add-user-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Initiate Seeker</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-link" style="margin-bottom: 1.25rem;">
+            <img src="assets/images/logo.png" alt="Guhya Gyan Foundation" class="brand-logo-img">
+            <div class="brand-title-wrap">
+              <span class="brand-name">Guhya Gyan Foundation</span>
+              <span class="brand-sub">गुह्य ज्ञान • Sacred Wisdom</span>
+            </div>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; max-width: 340px;">
+            A sanctuary dedicated to preserving, illuminating, and practicing timeless esoteric wisdom, Vedantic non-duality, and inner transformation.
+          </p>
+          <div style="margin-top: 1.25rem; font-family: var(--font-editorial); font-size: 1.25rem; color: var(--gold-light); font-style: italic; letter-spacing: 0.05em;">
+            जय श्री राम ॥
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Sanctuary</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Sacred Home</a></li>
+            <li><a href="about-the-speaker.html">About the Speaker</a></li>
+            <li><a href="index.html#realms">Six Wisdom Realms</a></li>
+            <li><a href="index.html#sutra-oracle">Daily Sutra Oracle</a></li>
+            <li><a href="index.html#interactive-sadhana">Sadhana Studio</a></li>
+            <li><a href="sanctuary.html">Seeker Portal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Traditions</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#realms">Advaita Vedanta</a></li>
+            <li><a href="index.html#realms">Kundalini Vidya</a></li>
+            <li><a href="index.html#realms">Kashmir Shaivism</a></li>
+            <li><a href="index.html#realms">Nada & Sound Yoga</a></li>
+            <li><a href="index.html#realms">Raja Yoga & Prana</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Gateways & Admin</h4>
+          <ul class="footer-links">
+            <li><a href="login.html">Sanctum Login</a></li>
+            <li><a href="register.html">Initiation Registration</a></li>
+            <li><a href="sanctuary.html">Sadhana Tracker</a></li>
+            <li><a href="admin.html">Master Admin Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 GuhyaGyan Foundation. Master Admin Oversight Console.
+        </div>
+        <div style="color: var(--gold-light);">
+          सत्यमेव जयते नानृतम् • Truth alone triumphs
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= Add Spiritual Discourse Modal ================= -->
+  <div class="admin-modal" id="admin-add-discourse-modal" role="dialog" aria-modal="true">
+    <div class="admin-modal-backdrop" onclick="window.adminCloseAddDiscourseModal()"></div>
+    <div class="admin-modal-dialog">
+      <button class="admin-modal-close" onclick="window.adminCloseAddDiscourseModal()" aria-label="Close modal">✕</button>
+      
+      <div class="sanskrit-subtitle">दिव्य प्रवचन • New Discourse</div>
+      <h3 class="font-cinzel" style="font-size: 1.5rem; color: #fff; margin-bottom: 1.25rem;">
+        Add Spiritual Discourse by <span class="gold-gradient-text">Dhananjay Vashistha</span>
+      </h3>
+
+      <form id="admin-add-discourse-form" onsubmit="window.adminHandleAddDiscourse(event)">
+        <div class="form-group">
+          <label class="form-label" for="new-discourse-url">YouTube Video Link <span class="req">*</span></label>
+          <input type="text" id="new-discourse-url" class="form-input" placeholder="e.g. https://www.youtube.com/watch?v=... or https://youtu.be/..." required>
+          <small style="color: var(--text-muted); font-size: 0.78rem; display: block; margin-top: 0.35rem;">Paste any video link from @guhyagyan. Thumbnail will be fetched automatically.</small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="new-discourse-title">Discourse Title <span class="req">*</span></label>
+          <input type="text" id="new-discourse-title" class="form-input" placeholder="e.g. श्रीमद्भगवद्गीता यथार्थ रहस्य • Song of Consciousness" required>
+        </div>
+
+        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="new-discourse-category">Category / विषय <span class="req">*</span></label>
+            <input type="text" id="new-discourse-category" class="form-input" list="discourse-category-suggestions" placeholder="e.g. भगवद्गीता, उपनिषद्, ध्यान" required>
+            <datalist id="discourse-category-suggestions">
+              <option value="भगवद्गीता">
+              <option value="वाल्मीकि रामायण">
+              <option value="उपनिषद् एवं वेदान्त">
+              <option value="भक्ति एवं भागवतम्">
+              <option value="ध्यान एवं कुण्डलिनी">
+              <option value="सत्संग प्रश्नोत्तरी">
+            </datalist>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-discourse-duration">Duration (Optional)</label>
+            <input type="text" id="new-discourse-duration" class="form-input" placeholder="e.g. 48:20 or 1 hr 15 min">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="new-discourse-speaker">Speaker</label>
+          <input type="text" id="new-discourse-speaker" class="form-input" value="Dhananjay Vashistha" readonly style="opacity: 0.85; background: rgba(20, 8, 3, 0.6); color: var(--gold-light);">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="new-discourse-desc">Summary / Key Insights</label>
+          <textarea id="new-discourse-desc" class="form-input" rows="3" placeholder="Key spiritual insights and teachings covered in this discourse..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-outline btn-sm" onclick="window.adminCloseAddDiscourseModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Publish Discourse 🚀</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/discourses.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+
+</html>
