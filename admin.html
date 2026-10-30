@@ -19,8 +19,8 @@
     rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css?v=3.0">
-  <link rel="stylesheet" href="css/admin.css?v=3.0">
+  <link rel="stylesheet" href="css/style.css?v=4.6">
+  <link rel="stylesheet" href="css/admin.css?v=4.6">
 
   <!-- Supabase Client CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -130,6 +130,92 @@
           <div class="admin-stat-value" id="stat-avg-streak" style="color: var(--gold-light);">0</div>
           <div class="admin-stat-sub">Continuous daily meditation average</div>
         </div>
+      </div>
+
+      <!-- ================= Live Class Notice & Cancellation Manager ================= -->
+      <div class="admin-panel" id="admin-class-notice-panel" style="margin-bottom: 2.5rem; border: 1.5px solid var(--border-gold);">
+        <div class="admin-panel-header" style="flex-wrap: wrap; gap: 1rem; align-items: flex-start; justify-content: space-between;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span style="font-size: 1.5rem;">📢</span>
+              <h2 class="admin-panel-title font-cinzel" style="margin: 0;">Live Class Notice & Cancellation Manager</h2>
+            </div>
+            <p class="admin-panel-desc" style="margin-top: 0.35rem;">
+              Agar aaj class cancel ya reschedule karni ho, toh yahan se 1-click mein poori website par notice broadcast karein.
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 0.82rem; color: var(--text-secondary);">Current Status:</span>
+            <span class="class-pill pill-live-status" id="admin-notice-current-status-pill">
+              <span class="live-beacon-pulse"></span>
+              <span id="admin-notice-status-label">Class Active as Scheduled</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- 1-Click Quick Preset Buttons -->
+        <div style="background: rgba(20, 8, 3, 0.6); padding: 1rem; border-radius: 12px; border: 1px solid rgba(245, 158, 11, 0.2); margin-bottom: 1.5rem;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--gold-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.65rem;">
+            ⚡ Quick 1-Click Presets:
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.65rem;">
+            <button type="button" class="btn btn-sm btn-danger" onclick="window.setNoticePreset('cancelled')">
+              <span>⚠️ Cancel Today's Class (आज की क्लास कैंसिल करें)</span>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline" onclick="window.setNoticePreset('rescheduled')">
+              <span>⏰ Reschedule to 9:00 PM (समय बदलें)</span>
+            </button>
+            <button type="button" class="btn btn-sm btn-ghost" onclick="window.setNoticePreset('active')" style="color: #86efac; border: 1px solid rgba(34, 197, 94, 0.4);">
+              <span>✅ Reset to Normal (क्लास चालू रखें)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Notice Form -->
+        <form id="admin-class-notice-form" onsubmit="window.saveClassNotice(event)">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+            <div>
+              <label class="form-label" for="notice-status-select">Class Broadcast Status</label>
+              <select class="admin-select" id="notice-status-select" style="width: 100%;" onchange="window.updateNoticePreview()">
+                <option value="active">✅ Normal Schedule (Class Active)</option>
+                <option value="cancelled">⚠️ Cancelled Today (आज क्लास रद्द है)</option>
+                <option value="rescheduled">⏰ Rescheduled / Time Changed (समय बदला है)</option>
+                <option value="special">🪔 Special Satsang Announcement</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label" for="notice-title-input">Notice Heading / Banner Title</label>
+              <input type="text" class="form-input" id="notice-title-input" placeholder="e.g. Today's Live Class is Cancelled / Postponed" required oninput="window.updateNoticePreview()">
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1.25rem;">
+            <label class="form-label" for="notice-message-textarea">Detailed Explanation Message (Bhakton ke liye sandesh)</label>
+            <textarea class="form-input" id="notice-message-textarea" rows="3" placeholder="Priya Bhakton, kripya dhyan dein: Aaj shaam 8:30 PM ki 'Harinama Chintamani' live class anivarya kaaranon se cancel rahegi..." required oninput="window.updateNoticePreview()"></textarea>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.25rem; align-items: flex-end; margin-bottom: 1.5rem;">
+            <div>
+              <label class="form-label" for="notice-resumes-input">Next Session Resumes At (Agli class kab hogi)</label>
+              <input type="text" class="form-input" id="notice-resumes-input" placeholder="e.g. Tomorrow at 8:30 PM – 9:00 PM IST" oninput="window.updateNoticePreview()">
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="btn-save-notice">
+                <span>💾 Save & Broadcast Live</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Notice Preview Box in Admin -->
+          <div style="background: rgba(18, 6, 2, 0.7); border: 1px dashed rgba(245, 158, 11, 0.35); border-radius: 12px; padding: 1rem;">
+            <div style="font-size: 0.76rem; color: var(--gold-light); font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem;">
+              👁️ Website Live Preview (Visitors ko kaisa dikhega):
+            </div>
+            <div id="admin-notice-live-preview" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+              Currently, class is running normally as scheduled.
+            </div>
+          </div>
+        </form>
       </div>
 
       <!-- User Directory Panel -->

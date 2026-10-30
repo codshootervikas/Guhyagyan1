@@ -273,6 +273,123 @@ h1 {
   border-bottom-color: rgba(245, 158, 11, 0.45);
 }
 
+/* =======================================================
+   Urgent Class Notice & Cancellation Alert Banner (Top)
+   ======================================================= */
+.urgent-class-notice-banner {
+  background: linear-gradient(90deg, #3f0d04 0%, #681507 35%, #851c09 50%, #681507 65%, #3f0d04 100%);
+  border-bottom: 2px solid rgba(239, 68, 68, 0.8);
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.35);
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+  z-index: 1001;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.urgent-notice-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.urgent-notice-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.urgent-notice-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(220, 38, 38, 0.4);
+  border: 1px solid #ef4444;
+  color: #fee2e2;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.22rem 0.65rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  animation: urgentNoticePulse 2s infinite ease-in-out;
+}
+
+@keyframes urgentNoticePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+}
+
+.urgent-notice-msg {
+  color: #fef2f2;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.urgent-notice-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.urgent-notice-btn {
+  background: rgba(254, 240, 138, 0.15);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-light);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.urgent-notice-btn:hover {
+  background: var(--gold-primary);
+  color: #140502;
+}
+
+.urgent-notice-close {
+  background: transparent;
+  border: none;
+  color: #fca5a5;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+
+.urgent-notice-close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .urgent-notice-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+  .urgent-notice-msg {
+    white-space: normal;
+  }
+  .urgent-notice-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
 /* Header Top Announcement Strip */
 .header-top-banner {
   background: linear-gradient(90deg, #1c0803 0%, #351206 35%, #461707 50%, #351206 65%, #1c0803 100%);
@@ -4943,6 +5060,154 @@ h1 {
   right: 5%;
 }
 
+/* Prominent Live Class Notice / Cancellation Box in Section */
+.class-cancellation-banner-box {
+  position: relative;
+  background: linear-gradient(135deg, rgba(62, 16, 8, 0.96) 0%, rgba(30, 8, 3, 0.98) 100%);
+  border: 2px solid rgba(239, 68, 68, 0.7);
+  border-radius: 20px;
+  padding: 1.5rem 1.8rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(220, 38, 38, 0.25);
+  overflow: hidden;
+  animation: fadeInNotice 0.4s ease-out;
+}
+
+@keyframes fadeInNotice {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cancel-box-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.cancel-box-icon {
+  font-size: 2rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.6));
+}
+
+.cancel-box-title-group {
+  flex: 1;
+  min-width: 240px;
+}
+
+.cancel-box-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fca5a5;
+  background: rgba(220, 38, 38, 0.25);
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  margin-bottom: 0.25rem;
+}
+
+.cancel-box-heading {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: #fff;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.cancel-box-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.55);
+  color: #fca5a5;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.beacon-pulse-red {
+  width: 8px;
+  height: 8px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ef4444;
+  animation: beaconPulseAnim 1.5s infinite;
+}
+
+.beacon-pulse-amber {
+  width: 8px;
+  height: 8px;
+  background-color: #f59e0b;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #f59e0b;
+  animation: beaconPulseAnim 1.5s infinite;
+}
+
+@keyframes beaconPulseAnim {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.cancel-box-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cancel-box-message {
+  font-size: 0.96rem;
+  color: #fecaca;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cancel-box-resumption-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(20, 6, 2, 0.85);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 12px;
+  padding: 0.75rem 1.1rem;
+  width: fit-content;
+}
+
+.resump-icon {
+  font-size: 1.3rem;
+}
+
+.resump-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.resump-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.resump-time {
+  font-size: 0.95rem;
+  color: var(--gold-light);
+}
+
+.class-pill.status-pill-alert {
+  background: rgba(220, 38, 38, 0.25) !important;
+  border-color: rgba(239, 68, 68, 0.6) !important;
+  color: #fca5a5 !important;
+}
+
 /* 2-Column Grid Container */
 .live-class-card-wrap {
   display: grid;
@@ -5121,6 +5386,51 @@ h1 {
 .poster-actions-row .btn {
   flex: 1;
   justify-content: center;
+}
+
+/* Speaker Framed Showcase (Big Photo in Left Column below Bhaktivinoda Poster) */
+.speaker-framed-showcase {
+  margin-top: 0.75rem;
+}
+
+.speaker-poster-img-wrap {
+  aspect-ratio: 3 / 4;
+  background: #140502;
+}
+
+.speaker-bio-strip {
+  background: rgba(28, 10, 4, 0.7);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 14px;
+  padding: 0.9rem 1.1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.speaker-bio-strip .spk-bio-text {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0 0 0.5rem 0;
+}
+
+.speaker-bio-strip .spk-bio-text em {
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+.spk-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.spk-tag {
+  font-size: 0.72rem;
+  color: var(--gold-light);
+  background: rgba(245, 158, 11, 0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
 /* Info Column */
@@ -5377,6 +5687,101 @@ h1 {
 .meta-sub {
   font-size: 0.72rem;
   color: var(--text-secondary);
+}
+
+/* Harinama Chintamani Class Speaker Spotlight Card */
+.speaker-spotlight-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: linear-gradient(135deg, rgba(52, 19, 8, 0.9) 0%, rgba(28, 10, 4, 0.95) 100%);
+  border: 1.5px solid var(--border-gold);
+  border-radius: 18px;
+  padding: 1.15rem 1.4rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 0 25px rgba(234, 88, 12, 0.2);
+}
+
+.speaker-spotlight-img-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.speaker-spotlight-img {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid var(--gold-light);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+  display: block;
+  background: #190a04;
+}
+
+.speaker-online-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background-color: #22c55e;
+  border: 2px solid #140502;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+.speaker-role-pill {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold-light);
+  margin-bottom: 0.2rem;
+}
+
+.speaker-spotlight-name {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: #fff;
+  margin: 0 0 0.3rem 0;
+  line-height: 1.2;
+}
+
+.speaker-spotlight-desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.speaker-spotlight-desc em {
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+.speaker-meta-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.speaker-avatar-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold-primary);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+  flex-shrink: 0;
+  background: #140502;
+}
+
+@media (max-width: 640px) {
+  .speaker-spotlight-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.25rem 1rem;
+    gap: 0.85rem;
+  }
 }
 
 /* Dynamic Live Countdown Banner */

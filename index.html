@@ -7,7 +7,7 @@
   <title>Guhya Gyan Foundation — Indian Knowledge System (IKS) & Sacred Wisdom</title>
   <meta name="description"
     content="Guhya Gyan Foundation is a not-for-profit NGO involved in activities related to the Indian Knowledge System (IKS), including Ramayana awareness programs, book publications, Kirtan jamming, and online & offline educational & value-based programs.">
-  <link rel="stylesheet" href="css/style.css?v=4.2">
+  <link rel="stylesheet" href="css/style.css?v=4.6">
   <link rel="icon" type="image/png" href="assets/images/logo.png">
 </head>
 
@@ -18,13 +18,30 @@
 
   <!-- Global Header Navigation with Integrated Top Live Announcement -->
   <header class="main-header" id="main-header">
+    <!-- Dedicated Urgent Notice / Cancellation Alert Banner (Controlled via Admin) -->
+    <div class="urgent-class-notice-banner" id="urgent-class-notice-banner" style="display: none;">
+      <div class="container urgent-notice-inner">
+        <div class="urgent-notice-left">
+          <span class="urgent-notice-badge" id="urgent-badge-text">⚠️ CLASS CANCELLED TODAY</span>
+          <span class="urgent-notice-msg" id="urgent-msg-text">
+            <strong>Harinama Chintamani Satsang:</strong> Aaj ki live class sthagit (cancelled) hai. Agli class kal 8:30 PM par hogi.
+          </span>
+        </div>
+        <div class="urgent-notice-right">
+          <a href="#harinama-chintamani" class="urgent-notice-btn">View Notice Details ↓</a>
+          <button class="urgent-notice-close" onclick="window.dismissUrgentNotice()" title="Dismiss Notice" aria-label="Dismiss">&times;</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Top Announcement Strip for Live Ongoing Satsang -->
     <div class="header-top-banner" id="header-top-banner">
       <div class="container announcement-inner">
         <div class="announcement-left">
           <span class="announcement-live-tag"><span class="beacon-circle"></span> ONGOING DAILY SATSANG</span>
           <span class="announcement-text">
-            <strong>Brajdhan Bhakti Centre:</strong> <em>'Harinama Chintamani'</em> by Śrīla Bhaktivinoda Ṭhākura • Mon–Fri 8:30 PM IST (Zoom & YouTube Live) • Speaker: HG Vraj Kishor Das
+            <strong>Brajdhan Bhakti Centre:</strong> <em>'Harinama Chintamani'</em> by Śrīla Bhaktivinoda Ṭhākura •
+            Mon–Fri 8:30 PM IST (Zoom & YouTube Live) • Speaker: HG Vraj Kishor Das
           </span>
         </div>
         <a href="#harinama-chintamani" class="announcement-action-btn">
@@ -48,24 +65,28 @@
       <nav>
         <ul class="nav-links" id="nav-links">
           <li><a href="index.html" class="nav-link active" id="nav-home">Home</a></li>
-          
+
           <!-- About ▾ -->
           <li class="nav-item-dropdown">
-            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-about" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-about" role="button"
+              aria-haspopup="true" aria-expanded="false">
               <span>About</span>
               <span class="dropdown-chevron">▼</span>
             </a>
             <ul class="dropdown-menu" aria-label="About Submenu">
               <li><a href="about-the-speaker.html" class="dropdown-item">About the Speaker</a></li>
-              <li><a href="about-the-speaker.html#speaker-initiatives" class="dropdown-item">Brajdhan Bhakti Centre</a></li>
-              <li><a href="about-the-speaker.html#speaker-bio" class="dropdown-item">Guhya Gyan Foundation (NGO)</a></li>
+              <li><a href="about-the-speaker.html#speaker-initiatives" class="dropdown-item">Brajdhan Bhakti Centre</a>
+              </li>
+              <li><a href="about-the-speaker.html#speaker-bio" class="dropdown-item">Guhya Gyan Foundation (NGO)</a>
+              </li>
               <li><a href="#harinama-chintamani" class="dropdown-item">Śrīla Bhaktivinoda Ṭhākura</a></li>
             </ul>
           </li>
 
           <!-- Experience ▾ (Matches Reference Image) -->
           <li class="nav-item-dropdown">
-            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-experience" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-experience" role="button"
+              aria-haspopup="true" aria-expanded="false">
               <span>Experience</span>
               <span class="dropdown-chevron">▼</span>
             </a>
@@ -80,12 +101,14 @@
 
           <!-- Wisdom ▾ -->
           <li class="nav-item-dropdown">
-            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-wisdom" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-wisdom" role="button"
+              aria-haspopup="true" aria-expanded="false">
               <span>Wisdom</span>
               <span class="dropdown-chevron">▼</span>
             </a>
             <ul class="dropdown-menu" aria-label="Wisdom Submenu">
-              <li><a href="#harinama-chintamani" class="dropdown-item"><span class="nav-live-dot"></span> Harinama Live Class</a></li>
+              <li><a href="#harinama-chintamani" class="dropdown-item"><span class="nav-live-dot"></span> Harinama Live
+                  Class</a></li>
               <li><a href="#discourses" class="dropdown-item">Discourses & Katha Library</a></li>
               <li><a href="#sutra-oracle" class="dropdown-item">Daily Sutra Oracle (Maha-Mantra)</a></li>
               <li><a href="#interactive-sadhana" class="dropdown-item">Sadhana Studio (432Hz Sound)</a></li>
@@ -94,22 +117,26 @@
 
           <!-- Social Action ▾ -->
           <li class="nav-item-dropdown">
-            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-action" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-action" role="button"
+              aria-haspopup="true" aria-expanded="false">
               <span>Social Action</span>
               <span class="dropdown-chevron">▼</span>
             </a>
             <ul class="dropdown-menu" aria-label="Social Action Submenu">
               <li><a href="#arts-culture" class="dropdown-item">Ramayana Awareness Programs</a></li>
               <li><a href="#arts-culture" class="dropdown-item">Book Publications & Granthas</a></li>
-              <li><a href="about-the-speaker.html#speaker-initiatives" class="dropdown-item">Indian Knowledge System (IKS)</a></li>
+              <li><a href="about-the-speaker.html#speaker-initiatives" class="dropdown-item">Indian Knowledge System
+                  (IKS)</a></li>
               <li><a href="#eco-communities" class="dropdown-item">Cow Protection & Eco Ashrams</a></li>
             </ul>
           </li>
 
           <!-- Instant Search Button -->
           <li class="nav-search-item">
-            <button class="nav-search-btn" id="nav-search-trigger" aria-label="Search Sacred Wisdom" title="Search Teachings (Ctrl + K)">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <button class="nav-search-btn" id="nav-search-trigger" aria-label="Search Sacred Wisdom"
+              title="Search Teachings (Ctrl + K)">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
@@ -246,11 +273,43 @@
         </p>
       </div>
 
+      <!-- Prominent Live Class Notice / Cancellation Box (Visible when Class is Cancelled/Rescheduled) -->
+      <div class="class-cancellation-banner-box" id="class-cancellation-banner-box" style="display: none;">
+        <div class="cancel-box-glow"></div>
+        <div class="cancel-box-content">
+          <div class="cancel-box-header">
+            <span class="cancel-box-icon">⚠️</span>
+            <div class="cancel-box-title-group">
+              <span class="cancel-box-tag" id="cancel-box-tag">IMPORTANT SATSANG NOTICE</span>
+              <h3 class="cancel-box-heading" id="cancel-box-heading">Today's Live Class is Cancelled / Postponed</h3>
+            </div>
+            <div class="cancel-box-status-pill" id="cancel-box-status-pill">
+              <span class="beacon-pulse-red"></span>
+              <span>Cancelled Today</span>
+            </div>
+          </div>
+          <div class="cancel-box-body">
+            <p class="cancel-box-message" id="cancel-box-message">
+              Priya Bhakton, kripya dhyan dein: Aaj shaam 8:30 PM ki 'Harinama Chintamani' live satsang class HG Vraj Kishor Das ji ke saath sthagit (cancelled) rahegi.
+            </p>
+            <div class="cancel-box-resumption-card">
+              <span class="resump-icon">📅</span>
+              <div class="resump-details">
+                <span class="resump-label">Next Scheduled Session (Agli Class):</span>
+                <strong class="resump-time" id="cancel-box-resump-time">Tomorrow at 8:30 PM – 9:00 PM IST</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Main Live Class 2-Column Showcase -->
       <div class="live-class-card-wrap">
-        
-        <!-- Left: Sacred Class Poster Showcase -->
+
+        <!-- Left Column: Sacred Scripture Poster + Speaker Showcase (No Empty Space) -->
         <div class="live-poster-col">
+
+          <!-- Top: Sacred Scripture Poster (Śrīla Bhaktivinoda Ṭhākura) -->
           <div class="sacred-poster-frame" id="poster-frame-container">
             <!-- Ornate Corner Filigrees -->
             <div class="poster-corner top-left"></div>
@@ -259,21 +318,66 @@
             <div class="poster-corner bottom-right"></div>
 
             <!-- Top Banner Badge -->
-            <div class="poster-top-badge">
+            <div class="poster-top-badge" id="poster-top-badge">
               <span class="temple-icon">🛕</span>
               <span>Brajdhan Bhakti Centre</span>
             </div>
 
-            <!-- Poster Image with Interactive Zoom Preview -->
-            <div class="poster-img-wrap" onclick="window.openPosterModal()" title="Click to view full sacred photo">
-              <img 
-                src="assets/images/harinama-chintamani-poster.jpg" 
-                onerror="this.onerror=null; this.src='file:///C:/Users/lenovo/.gemini/antigravity/brain/a8b6de61-1b9c-4714-a7ee-502e9db1d300/.user_uploaded/media_1793265414159_86117020.jpg';" 
+            <!-- Sacred Scripture Poster Image -->
+            <div class="poster-img-wrap" onclick="window.openPosterModal('scripture')"
+              title="Click to view full photo of Śrīla Bhaktivinoda Ṭhākura">
+              <img src="assets/images/harinama-chintamani-poster.jpg"
                 alt="Śrīla Bhaktivinoda Ṭhākura - Harinama Chintamani Daily Class by Brajdhan Bhakti Centre"
-                class="poster-img"
-                id="main-class-poster-img"
-                loading="eager"
-              />
+                class="poster-img" id="main-class-poster-img" loading="eager" />
+              <div class="poster-hover-overlay">
+                <span class="hover-zoom-icon">🔍</span>
+                <span>Click to View Full Poster</span>
+              </div>
+            </div>
+
+            <!-- Bottom Floating Tag -->
+            <div class="poster-bottom-tag" id="poster-bottom-tag">
+              <div class="poster-tag-title">हरिनाम चिन्तामणि</div>
+              <div class="poster-tag-sub">Śrīla Bhaktivinoda Ṭhākura • Daily Series</div>
+            </div>
+          </div>
+
+          <!-- Poster Quick Action Buttons -->
+          <div class="poster-actions-row">
+            <button class="btn btn-outline btn-sm" onclick="window.openPosterModal('scripture')" id="btn-view-poster"
+              type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>View Full Poster</span>
+            </button>
+            <a href="assets/images/harinama-chintamani-poster.jpg"
+              download="Srila-Bhaktivinoda-Thakura-Harinama-Chintamani.jpg" class="btn btn-ghost btn-sm"
+              id="btn-download-poster" target="_blank">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download Poster</span>
+            </a>
+          </div>
+
+          <!-- Bottom: Dedicated Class Speaker Showcase (Big Framed Photo) -->
+          <div class="sacred-poster-frame speaker-framed-showcase" id="speaker-frame-container">
+            <!-- Ornate Corner Filigrees -->
+            <div class="poster-corner top-left"></div>
+            <div class="poster-corner top-right"></div>
+            <div class="poster-corner bottom-left"></div>
+            <div class="poster-corner bottom-right"></div>
+
+            <!-- Speaker Large Photo with Zoom Preview -->
+            <div class="poster-img-wrap speaker-poster-img-wrap" onclick="window.openSpeakerPhotoModal()"
+              title="Click to view full photo of HG Vraj Kishor Das">
+              <img src="assets/images/vraj-kishor-das.jpg"
+                alt="HG Vraj Kishor Das - Harinama Chintamani Daily Class Speaker" class="poster-img"
+                id="speaker-large-poster-img" loading="eager" />
               <div class="poster-hover-overlay">
                 <span class="hover-zoom-icon">🔍</span>
                 <span>Click to View Full Photo</span>
@@ -282,40 +386,49 @@
 
             <!-- Bottom Floating Tag -->
             <div class="poster-bottom-tag">
-              <div class="poster-tag-title">ग्रन्थराज श्रीहरिनाम चिन्तामणि</div>
-              <div class="poster-tag-sub">Śrīla Bhaktivinoda Ṭhākura • Daily Series</div>
+              <div class="poster-tag-title">HG Vraj Kishor Das</div>
+              <div class="poster-tag-sub">Brajdhan Bhakti Centre</div>
             </div>
           </div>
 
-          <!-- Poster Quick Action Buttons -->
+          <!-- Speaker Action Buttons -->
           <div class="poster-actions-row">
-            <button class="btn btn-outline btn-sm" onclick="window.openPosterModal()" id="btn-view-poster">
+            <button class="btn btn-outline btn-sm" onclick="window.openSpeakerPhotoModal()" id="btn-view-speaker-photo"
+              type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
-              <span>View Full Photo</span>
+              <span>View Speaker Photo</span>
             </button>
-            <a 
-              href="assets/images/harinama-chintamani-poster.jpg" 
-              download="Srila-Bhaktivinoda-Thakura-Harinama-Chintamani.jpg" 
-              class="btn btn-ghost btn-sm"
-              id="btn-download-poster"
-              target="_blank"
-            >
+            <a href="assets/images/vraj-kishor-das.jpg" download="HG-Vraj-Kishor-Das-Harinama-Chintamani.jpg"
+              class="btn btn-ghost btn-sm" id="btn-download-speaker-photo" target="_blank">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              <span>Download Image</span>
+              <span>Download Photo</span>
             </a>
           </div>
+
+          <!-- Speaker Discourse Bio & Tags Strip -->
+          <div class="speaker-bio-strip">
+            <p class="spk-bio-text">
+              Conducting the daily live discourse on <em>'Harinama Chintamani'</em> by Śrīla Bhaktivinoda Ṭhākura,
+              guiding seekers to experience the transcendental nectar, philosophy, and practical power of the Holy Name.
+            </p>
+            <div class="spk-tags-row">
+              <span class="spk-tag">📿 Harinama Japa</span>
+              <span class="spk-tag">📖 Bhakti Siddhanta</span>
+            </div>
+          </div>
+
         </div>
 
         <!-- Right: Comprehensive Details & Live Access -->
         <div class="live-info-col">
-          
+
           <!-- Badges & Status Strip -->
           <div class="info-badges-strip">
             <div class="class-pill pill-organizer" title="Event Organizer">
@@ -367,21 +480,24 @@
                 <div class="topic-index-badge">01</div>
                 <div class="topic-content">
                   <div class="topic-title">Philosophy & Nature of Harinama</div>
-                  <p class="topic-desc">Understanding the philosophy, power, and nature of the Holy Name (<em>Harinama</em>).</p>
+                  <p class="topic-desc">Understanding the philosophy, power, and nature of the Holy Name
+                    (<em>Harinama</em>).</p>
                 </div>
               </div>
               <div class="topic-item-card">
                 <div class="topic-index-badge">02</div>
                 <div class="topic-content">
                   <div class="topic-title">Cleansing the Heart Through Sankirtana</div>
-                  <p class="topic-desc">Removing impurities from the heart through sincere <em>Harinama-sankirtana</em> (congregational chanting).</p>
+                  <p class="topic-desc">Removing impurities from the heart through sincere <em>Harinama-sankirtana</em>
+                    (congregational chanting).</p>
                 </div>
               </div>
               <div class="topic-item-card">
                 <div class="topic-index-badge">03</div>
                 <div class="topic-content">
                   <div class="topic-title">Deep Connection in Humility</div>
-                  <p class="topic-desc">Establishing a deep and lasting connection through constant chanting and practice, performed with humility.</p>
+                  <p class="topic-desc">Establishing a deep and lasting connection through constant chanting and
+                    practice, performed with humility.</p>
                 </div>
               </div>
             </div>
@@ -390,9 +506,14 @@
           <!-- Schedule & Speaker Meta Grid -->
           <div class="class-meta-grid">
             <div class="meta-card">
-              <span class="meta-label">🎙️ Speaker</span>
-              <span class="meta-val speaker-val">HG Vraj Kishor Das</span>
-              <span class="meta-sub">Vedic Scholar & Devotional Guide</span>
+              <div class="speaker-meta-inner">
+                <img src="assets/images/vraj-kishor-das.jpg" alt="HG Vraj Kishor Das" class="speaker-avatar-circle" />
+                <div>
+                  <span class="meta-label">🎙️ Speaker</span>
+                  <span class="meta-val speaker-val">HG Vraj Kishor Das</span>
+                  <span class="meta-sub">Vedic Scholar & Guide</span>
+                </div>
+              </div>
             </div>
             <div class="meta-card">
               <span class="meta-label">📅 Schedule</span>
@@ -418,29 +539,36 @@
               <span class="countdown-heading" id="countdown-status-text">Next Live Session in:</span>
             </div>
             <div class="countdown-digits" id="class-countdown-digits">
-              <div class="time-unit"><span class="unit-num" id="cd-hours">00</span><span class="unit-lbl">Hours</span></div>
+              <div class="time-unit"><span class="unit-num" id="cd-hours">00</span><span class="unit-lbl">Hours</span>
+              </div>
               <span class="digit-sep">:</span>
-              <div class="time-unit"><span class="unit-num" id="cd-minutes">00</span><span class="unit-lbl">Mins</span></div>
+              <div class="time-unit"><span class="unit-num" id="cd-minutes">00</span><span class="unit-lbl">Mins</span>
+              </div>
               <span class="digit-sep">:</span>
-              <div class="time-unit"><span class="unit-num" id="cd-seconds">00</span><span class="unit-lbl">Secs</span></div>
+              <div class="time-unit"><span class="unit-num" id="cd-seconds">00</span><span class="unit-lbl">Secs</span>
+              </div>
             </div>
           </div>
 
           <!-- Call to Action Buttons -->
           <div class="live-action-buttons">
-            <a href="https://us06web.zoom.us/j/83810145066?pwd=bbbFLOAxyBxK4DSGJtNmhiHCadCBB6q7.1" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" id="btn-join-zoom-main">
+            <a href="https://us06web.zoom.us/j/83810145066?pwd=bbbFLOAxyBxK4DSGJtNmhiHCadCBB6q7.1" target="_blank"
+              rel="noopener noreferrer" class="btn btn-primary btn-lg" id="btn-join-zoom-main">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
               </svg>
               <span>🔗 Join Live Zoom Class</span>
             </a>
-            <a href="https://www.youtube.com/channel/UCFBbjmun7ECGHfGcsYEkLOg/live" target="_blank" rel="noopener noreferrer" class="btn btn-youtube-live btn-lg" id="btn-watch-youtube-live">
+            <a href="https://www.youtube.com/channel/UCFBbjmun7ECGHfGcsYEkLOg/live" target="_blank"
+              rel="noopener noreferrer" class="btn btn-youtube-live btn-lg" id="btn-watch-youtube-live">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
               </svg>
               <span>🔴 Watch on YouTube Live</span>
             </a>
-            <button class="btn btn-outline btn-lg" onclick="window.openZoomModal()" id="btn-zoom-details" title="View Meeting ID & Passcode">
+            <button class="btn btn-outline btn-lg" onclick="window.openZoomModal()" id="btn-zoom-details"
+              title="View Meeting ID & Passcode">
               <span>Zoom Details & ID 📋</span>
             </button>
             <button class="btn btn-outline btn-lg" onclick="window.downloadClassCalendar()" id="btn-add-calendar">
@@ -452,7 +580,8 @@
               </svg>
               <span>Add to Calendar (.ics)</span>
             </button>
-            <button class="btn btn-ghost btn-sm" onclick="window.shareClassDetails()" id="btn-share-class" title="Share via WhatsApp or copy message">
+            <button class="btn btn-ghost btn-sm" onclick="window.shareClassDetails()" id="btn-share-class"
+              title="Share via WhatsApp or copy message">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="18" cy="5" r="3"></circle>
                 <circle cx="6" cy="12" r="3"></circle>
@@ -474,10 +603,12 @@
           <div class="youtube-header-title-wrap">
             <span class="youtube-live-tag"><span class="beacon-circle"></span> YOUTUBE LIVE BROADCAST</span>
             <h4 class="youtube-main-title">Watch 'Harinama Chintamani' Live Stream</h4>
-            <span class="youtube-sub-title">Speaker: <strong>HG Vraj Kishor Das</strong> • Organizer: <strong>Brajdhan Bhakti Centre</strong> • Mon–Fri (8:30 PM – 9:00 PM IST)</span>
+            <span class="youtube-sub-title">Speaker: <strong>HG Vraj Kishor Das</strong> • Organizer: <strong>Brajdhan
+                Bhakti Centre</strong> • Mon–Fri (8:30 PM – 9:00 PM IST)</span>
           </div>
           <div class="youtube-header-actions">
-            <a href="https://www.youtube.com/channel/UCFBbjmun7ECGHfGcsYEkLOg/live" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+            <a href="https://www.youtube.com/channel/UCFBbjmun7ECGHfGcsYEkLOg/live" target="_blank"
+              rel="noopener noreferrer" class="btn btn-outline btn-sm">
               <span>Open on YouTube ↗</span>
             </a>
           </div>
@@ -485,20 +616,21 @@
 
         <!-- 16:9 Responsive Embedded YouTube Live Stream Player -->
         <div class="youtube-player-frame">
-          <iframe 
-            src="https://www.youtube.com/embed/live_stream?channel=UCFBbjmun7ECGHfGcsYEkLOg" 
-            title="Harinama Chintamani Daily Live Stream - Brajdhan Bhakti Centre" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          <iframe src="https://www.youtube.com/embed/live_stream?channel=UCFBbjmun7ECGHfGcsYEkLOg"
+            title="Harinama Chintamani Daily Live Stream - Brajdhan Bhakti Centre"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
         </div>
 
         <div class="youtube-showcase-footer">
           <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-            <span>🔴 <strong>Auto-Stream Active:</strong> Jab bhi channel par live streaming shuru hogi, stream yahan automatically play hogi.</span>
+            <span>🔴 <strong>Auto-Stream Active:</strong> Jab bhi channel par live streaming shuru hogi, stream yahan
+              automatically play hogi.</span>
           </div>
           <div class="youtube-footer-actions">
-            <a href="https://www.youtube.com/channel/UCFBbjmun7ECGHfGcsYEkLOg?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm" style="color: #fca5a5;">
+            <a href="https://www.youtube.com/channel/UCFBbjmun7ECGHfGcsYEkLOg?sub_confirmation=1" target="_blank"
+              rel="noopener noreferrer" class="btn btn-ghost btn-sm" style="color: #fca5a5;">
               <span>🔔 Subscribe to Channel</span>
             </a>
           </div>
@@ -513,7 +645,8 @@
       <div class="section-header text-center">
         <div class="sanskrit-subtitle">साधना एवं दिव्य अनुभव • Sacred Experiences & Community</div>
         <h2 class="section-title">Experience the Joy of <span class="gold-gradient-text">Bhakti & Culture</span></h2>
-        <p class="section-desc">Immerse yourself in soul-stirring congregational kirtan, vibrant spiritual festivals, weekly Sunday fellowship feasts, eco-conscious living, and sacred Indian arts.</p>
+        <p class="section-desc">Immerse yourself in soul-stirring congregational kirtan, vibrant spiritual festivals,
+          weekly Sunday fellowship feasts, eco-conscious living, and sacred Indian arts.</p>
       </div>
 
       <div class="experience-grid">
@@ -526,7 +659,8 @@
           <div class="experience-sanskrit-tag">हरिनाम संकीर्तन • Celestial Resonance</div>
           <h3 class="experience-title">Kirtan & Sankirtana</h3>
           <p class="experience-desc">
-            The transcendental congregational singing of the Lord's Holy Names with traditional mridanga and kartals. Cleanses the heart, dissolves anxiety, and awakens spontaneous love for Sri Sri Radha Krishna.
+            The transcendental congregational singing of the Lord's Holy Names with traditional mridanga and kartals.
+            Cleanses the heart, dissolves anxiety, and awakens spontaneous love for Sri Sri Radha Krishna.
           </p>
           <a href="#harinama-chintamani" class="experience-action-link">
             <span>Join Live Kirtan & Class</span>
@@ -543,7 +677,8 @@
           <div class="experience-sanskrit-tag">दिव्य उत्सव • Sacred Gatherings</div>
           <h3 class="experience-title">Festivals & Celebrations</h3>
           <p class="experience-desc">
-            Vibrant celebrations marking divine appearances throughout the sacred calendar — Janmashtami, Gaura Purnima, Radhashtami, and Ram Navami with grand maha-arati, Vedic katha, and joyous devotion.
+            Vibrant celebrations marking divine appearances throughout the sacred calendar — Janmashtami, Gaura Purnima,
+            Radhashtami, and Ram Navami with grand maha-arati, Vedic katha, and joyous devotion.
           </p>
           <a href="contact.html" class="experience-action-link">
             <span>View Upcoming Festivals</span>
@@ -560,7 +695,9 @@
           <div class="experience-sanskrit-tag">रविवार सत्संग एवं महाप्रसाद</div>
           <h3 class="experience-title">Sunday Feast / Open House</h3>
           <p class="experience-desc">
-            Our weekly community open house welcoming everyone. Enjoy transformative discourses on Bhagavad Gita and Harinama Chintamani, devotional kirtan meditation, uplifting satsanga, and a sumptuous sanctified vegetarian feast (Prasadam).
+            Our weekly community open house welcoming everyone. Enjoy transformative discourses on Bhagavad Gita and
+            Harinama Chintamani, devotional kirtan meditation, uplifting satsanga, and a sumptuous sanctified vegetarian
+            feast (Prasadam).
           </p>
           <a href="#harinama-chintamani" class="experience-action-link">
             <span>Sunday Program Details</span>
@@ -577,7 +714,8 @@
           <div class="experience-sanskrit-tag">सरल जीवन, उच्च विचार • Vedic Ecology</div>
           <h3 class="experience-title">Eco-communities & Ashrams</h3>
           <p class="experience-desc">
-            Harmonious living in balance with nature: loving cow protection (Go-seva), regenerative organic farming, and peaceful rural retreats providing an oasis for focused contemplation and holistic wellbeing.
+            Harmonious living in balance with nature: loving cow protection (Go-seva), regenerative organic farming, and
+            peaceful rural retreats providing an oasis for focused contemplation and holistic wellbeing.
           </p>
           <a href="about-the-speaker.html" class="experience-action-link">
             <span>Explore Ashram Living</span>
@@ -594,7 +732,9 @@
           <div class="experience-sanskrit-tag">भारतीय ज्ञान परंपरा • Heritage & Arts</div>
           <h3 class="experience-title">Arts & Culture</h3>
           <p class="experience-desc">
-            Spearheaded by Guhya Gyan Foundation: preserving and sharing the Indian Knowledge System (IKS) through classical temple music, sacred dance, Ramayana awareness festivals, and authentic spiritual book publications.
+            Spearheaded by Guhya Gyan Foundation: preserving and sharing the Indian Knowledge System (IKS) through
+            classical temple music, sacred dance, Ramayana awareness festivals, and authentic spiritual book
+            publications.
           </p>
           <a href="contact.html" class="experience-action-link">
             <span>Connect with Culture</span>
@@ -725,7 +865,8 @@
       <div class="section-header text-center">
         <div class="sanskrit-subtitle">परम ज्ञान अमृत • Sacred Discourses & Video Library</div>
         <h2 class="section-title">Spiritual Discourses & <span class="gold-gradient-text">Sacred Recordings</span></h2>
-        <p class="section-desc">Explore sacred wisdom discourses, verse-by-verse scriptural reading, and philosophical lectures delivered with profound devotion and clarity.</p>
+        <p class="section-desc">Explore sacred wisdom discourses, verse-by-verse scriptural reading, and philosophical
+          lectures delivered with profound devotion and clarity.</p>
       </div>
 
       <!-- Section 1: Explore Categories (Image 2 style) -->
@@ -755,12 +896,15 @@
 
           <div class="recordings-controls-group">
             <div class="recordings-search-wrap">
-              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
-              <input type="text" id="recordings-search-input" placeholder="Search recordings, topics, tags..." class="recordings-search-input" autocomplete="off">
-              <button id="clear-search-btn" class="clear-search-btn" style="display: none;" title="Clear search">&times;</button>
+              <input type="text" id="recordings-search-input" placeholder="Search recordings, topics, tags..."
+                class="recordings-search-input" autocomplete="off">
+              <button id="clear-search-btn" class="clear-search-btn" style="display: none;"
+                title="Clear search">&times;</button>
             </div>
 
             <div class="recordings-sort-wrap">
@@ -934,26 +1078,30 @@
         </div>
         <div class="cred-row">
           <span class="cred-label">Meeting ID:</span>
-          <span class="cred-value copyable" id="zoom-meeting-id-val" onclick="window.copyToClipboard('838 1014 5066', 'Meeting ID copied!')" title="Click to copy Meeting ID">
+          <span class="cred-value copyable" id="zoom-meeting-id-val"
+            onclick="window.copyToClipboard('838 1014 5066', 'Meeting ID copied!')" title="Click to copy Meeting ID">
             838 1014 5066 📋
           </span>
         </div>
         <div class="cred-row">
           <span class="cred-label">Passcode:</span>
-          <span class="cred-value copyable" id="zoom-passcode-val" onclick="window.copyToClipboard('399432', 'Passcode copied!')" title="Click to copy Passcode">
+          <span class="cred-value copyable" id="zoom-passcode-val"
+            onclick="window.copyToClipboard('399432', 'Passcode copied!')" title="Click to copy Passcode">
             399432 📋
           </span>
         </div>
       </div>
 
       <div class="zoom-cta-actions">
-        <a href="https://us06web.zoom.us/j/83810145066?pwd=bbbFLOAxyBxK4DSGJtNmhiHCadCBB6q7.1" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">
+        <a href="https://us06web.zoom.us/j/83810145066?pwd=bbbFLOAxyBxK4DSGJtNmhiHCadCBB6q7.1" target="_blank"
+          rel="noopener noreferrer" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <polygon points="5 3 19 12 5 21 5 3"></polygon>
           </svg>
           <span>🔗 Launch Zoom Live Meeting</span>
         </a>
-        <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="window.copyFullMeetingInvite()">
+        <button class="btn btn-outline" style="width: 100%; justify-content: center;"
+          onclick="window.copyFullMeetingInvite()">
           <span>Copy Complete Class Invitation 📋</span>
         </button>
       </div>
@@ -963,32 +1111,27 @@
   <!-- Poster Lightbox Modal -->
   <div class="modal-overlay" id="poster-lightbox-modal">
     <div class="modal-dialog poster-lightbox-box">
-      <button class="modal-close-corner" onclick="window.closePosterModal()" aria-label="Close poster preview">&times;</button>
+      <button class="modal-close-corner" onclick="window.closePosterModal()"
+        aria-label="Close photo preview">&times;</button>
       <div class="lightbox-header">
         <span class="sacred-flame">🪔</span>
-        <h4 style="margin: 0; color: var(--gold-light); font-family: var(--font-serif); font-size: 1.15rem;">
-          Śrīla Bhaktivinoda Ṭhākura • Harinama Chintamani
+        <h4 style="margin: 0; color: var(--gold-light); font-family: var(--font-serif); font-size: 1.15rem;"
+          id="lightbox-modal-title">
+          HG Vraj Kishor Das • Daily Class Speaker
         </h4>
         <span class="sacred-flame">🪔</span>
       </div>
       <div class="lightbox-image-container">
-        <img 
-          src="assets/images/harinama-chintamani-poster.jpg" 
-          onerror="this.onerror=null; this.src='file:///C:/Users/lenovo/.gemini/antigravity/brain/a8b6de61-1b9c-4714-a7ee-502e9db1d300/.user_uploaded/media_1793265414159_86117020.jpg';" 
-          alt="Harinama Chintamani Daily Class Photo - Brajdhan Bhakti Centre"
-          class="lightbox-full-img"
-        />
+        <img src="assets/images/vraj-kishor-das.jpg"
+          alt="Harinama Chintamani Daily Class Speaker - Brajdhan Bhakti Centre" class="lightbox-full-img"
+          id="lightbox-active-img" />
       </div>
       <div class="lightbox-footer">
-        <div style="font-size: 0.85rem; color: var(--text-secondary); text-align: left;">
+        <div style="font-size: 0.85rem; color: var(--text-secondary); text-align: left;" id="lightbox-modal-caption">
           <strong>Brajdhan Bhakti Centre</strong> • Speaker: HG Vraj Kishor Das • Mon–Fri 8:30 PM IST
         </div>
-        <a 
-          href="assets/images/harinama-chintamani-poster.jpg" 
-          download="Srila-Bhaktivinoda-Thakura-Harinama-Chintamani.jpg" 
-          class="btn btn-primary btn-sm"
-          target="_blank"
-        >
+        <a href="assets/images/vraj-kishor-das.jpg" download="HG-Vraj-Kishor-Das-Harinama-Chintamani.jpg"
+          class="btn btn-primary btn-sm" id="lightbox-download-link" target="_blank">
           <span>Download High-Res Photo 📥</span>
         </a>
       </div>
@@ -1010,15 +1153,20 @@
               <span class="brand-sub">गुह्य ज्ञान • Sacred Wisdom</span>
             </div>
           </div>
-          <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; max-width: 340px; margin-bottom: 0.75rem;">
-            A not-for-profit NGO (CIN: <strong>U58111UP2026NPL242197</strong>) dedicated to the Indian Knowledge System (IKS), Ramayana awareness programs, book publications, and educational & spiritual activities.
+          <p
+            style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; max-width: 340px; margin-bottom: 0.75rem;">
+            A not-for-profit NGO (CIN: <strong>U58111UP2026NPL242197</strong>) dedicated to the Indian Knowledge System
+            (IKS), Ramayana awareness programs, book publications, and educational & spiritual activities.
           </p>
           <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.85rem;">
             <strong>Registered Office:</strong><br>
             House No. 2/420 - B, Begum Bagh,<br>
             Aligarh, Uttar Pradesh - 202001<br>
-            📞 <a href="tel:+919258139922" style="color: var(--gold-light); text-decoration: none;">+91 9258139922</a> • ✉️ <a href="mailto:connect@guhyagyan.com" style="color: var(--gold-light); text-decoration: none;">connect@guhyagyan.com</a><br>
-            🌐 <a href="https://www.guhyagyan.com" target="_blank" style="color: var(--gold-light); text-decoration: none;">www.GuhyaGyan.com</a>
+            📞 <a href="tel:+919258139922" style="color: var(--gold-light); text-decoration: none;">+91 9258139922</a> •
+            ✉️ <a href="mailto:connect@guhyagyan.com"
+              style="color: var(--gold-light); text-decoration: none;">connect@guhyagyan.com</a><br>
+            🌐 <a href="https://www.guhyagyan.com" target="_blank"
+              style="color: var(--gold-light); text-decoration: none;">www.GuhyaGyan.com</a>
           </div>
           <div
             style="margin-top: 0.5rem; font-family: var(--font-editorial); font-size: 1.25rem; color: var(--gold-light); font-style: italic; letter-spacing: 0.05em;">

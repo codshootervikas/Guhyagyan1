@@ -690,8 +690,157 @@ window.quickAdminAccess = function() {
     window.adminDashboard.checkAdminAuth();
     window.adminDashboard.loadAllUsers();
   }
+  if (typeof window.loadAdminNoticeForm === 'function') {
+    window.loadAdminNoticeForm();
+  }
   if (typeof window.showToast === 'function') {
     window.showToast('Welcome to Guhya Gyan Master Admin Sanctum!', 'success');
+  }
+};
+
+// ==========================================
+// Live Class Notice & Cancellation Controls
+// ==========================================
+const NOTICE_STORAGE_KEY = 'gg_live_class_notice';
+
+window.loadAdminNoticeForm = function() {
+  let notice = null;
+  try {
+    const raw = localStorage.getItem(NOTICE_STORAGE_KEY);
+    if (raw) notice = JSON.parse(raw);
+  } catch (e) {}
+
+  if (!notice) {
+    notice = {
+      status: 'active',
+      title: "Today's Live Class is Cancelled / Postponed",
+      message: "Priya Bhakton, kripya dhyan dein: Aaj shaam 8:30 PM ki 'Harinama Chintamani' live class anivarya kaaranon se sthagit (cancelled) rahegi. Agli class kal nirdharit samay par hogi. Hare Krishna!",
+      resumesAt: 'Tomorrow at 8:30 PM – 9:00 PM IST'
+    };
+  }
+
+  const statusSel = document.getElementById('notice-status-select');
+  const titleInp = document.getElementById('notice-title-input');
+  const msgInp = document.getElementById('notice-message-textarea');
+  const resInp = document.getElementById('notice-resumes-input');
+  const pill = document.getElementById('admin-notice-current-status-pill');
+  const label = document.getElementById('admin-notice-status-label');
+
+  if (statusSel) statusSel.value = notice.status || 'active';
+  if (titleInp) titleInp.value = notice.title || '';
+  if (msgInp) msgInp.value = notice.message || '';
+  if (resInp) resInp.value = notice.resumesAt || '';
+
+  if (label && pill) {
+    if (notice.status === 'cancelled') {
+      label.textContent = '⚠️ Class Cancelled Today';
+      pill.style.background = 'rgba(239, 68, 68, 0.2)';
+      pill.style.borderColor = 'rgba(239, 68, 68, 0.5)';
+      pill.style.color = '#fca5a5';
+    } else if (notice.status === 'rescheduled') {
+      label.textContent = '⏰ Rescheduled / Time Changed';
+      pill.style.background = 'rgba(245, 158, 11, 0.2)';
+      pill.style.borderColor = 'rgba(245, 158, 11, 0.5)';
+      pill.style.color = '#fde68a';
+    } else {
+      label.textContent = '✅ Class Active as Scheduled';
+      pill.style.background = 'rgba(34, 197, 94, 0.16)';
+      pill.style.borderColor = 'rgba(34, 197, 94, 0.45)';
+      pill.style.color = '#86efac';
+    }
+  }
+
+  window.updateNoticePreview();
+};
+
+window.setNoticePreset = function(preset) {
+  const statusSel = document.getElementById('notice-status-select');
+  const titleInp = document.getElementById('notice-title-input');
+  const msgInp = document.getElementById('notice-message-textarea');
+  const resInp = document.getElementById('notice-resumes-input');
+
+  if (preset === 'cancelled') {
+    if (statusSel) statusSel.value = 'cancelled';
+    if (titleInp) titleInp.value = "⚠️ Important Notice: Today's Live Class is Cancelled";
+    if (msgInp) msgInp.value = "Priya Bhakton, kripya dhyan dein: Aaj shaam 8:30 PM ki 'Harinama Chintamani' live satsang class HG Vraj Kishor Das ji ke saath anivarya kaaranon se sthagit (cancelled) rahegi. Agli class kal apne nirdharit samay par hogi. Hare Krishna!";
+    if (resInp) resInp.value = "Tomorrow at 8:30 PM – 9:00 PM IST (Zoom & YouTube Live)";
+    if (window.showToast) window.showToast("Cancellation preset loaded! Click 'Save & Broadcast Live' to publish.", 'info');
+  } else if (preset === 'rescheduled') {
+    if (statusSel) statusSel.value = 'rescheduled';
+    if (titleInp) titleInp.value = "⏰ Today's Class Rescheduled to 9:00 PM IST";
+    if (msgInp) msgInp.value = "Priya Bhakton, kripya dhyan dein: Aaj ki 'Harinama Chintamani' live class ka samay thoda badalkar shaam 9:00 PM kar diya gaya hai. Kripya naye samay par judein.";
+    if (resInp) resInp.value = "Today at 9:00 PM IST (Special Adjusted Timing)";
+    if (window.showToast) window.showToast("Rescheduled preset loaded! Click 'Save & Broadcast Live' to publish.", 'info');
+  } else {
+    if (statusSel) statusSel.value = 'active';
+    if (titleInp) titleInp.value = "Class Running Normally as Scheduled";
+    if (msgInp) msgInp.value = "Daily live satsang on 'Harinama Chintamani' with HG Vraj Kishor Das takes place Monday to Friday from 8:30 PM to 9:00 PM IST.";
+    if (resInp) resInp.value = "Monday to Friday at 8:30 PM IST";
+    if (window.showToast) window.showToast("Normal schedule preset loaded! Click 'Save & Broadcast Live' to restore.", 'info');
+  }
+
+  window.updateNoticePreview();
+};
+
+window.updateNoticePreview = function() {
+  const statusSel = document.getElementById('notice-status-select');
+  const titleInp = document.getElementById('notice-title-input');
+  const msgInp = document.getElementById('notice-message-textarea');
+  const resInp = document.getElementById('notice-resumes-input');
+  const preview = document.getElementById('admin-notice-live-preview');
+
+  if (!preview) return;
+
+  const status = statusSel ? statusSel.value : 'active';
+  const title = titleInp ? titleInp.value : '';
+  const msg = msgInp ? msgInp.value : '';
+  const res = resInp ? resInp.value : '';
+
+  if (status === 'active') {
+    preview.innerHTML = '<span style="color: #86efac;">✅ Class is running normally. No cancellation alerts will be displayed to visitors.</span>';
+  } else {
+    preview.innerHTML = `
+      <div style="border-left: 3px solid #f59e0b; padding-left: 0.75rem; margin-top: 0.25rem;">
+        <div style="font-weight: 700; color: ${status === 'cancelled' ? '#f87171' : '#fbbf24'};">${title || 'Notice'}</div>
+        <div style="margin: 0.25rem 0; color: #e5e7eb;">${msg || ''}</div>
+        <div style="font-size: 0.8rem; color: #fbbf24;">📅 Resumes: <strong>${res || 'TBD'}</strong></div>
+      </div>
+    `;
+  }
+};
+
+window.saveClassNotice = function(e) {
+  if (e && e.preventDefault) e.preventDefault();
+
+  const statusSel = document.getElementById('notice-status-select');
+  const titleInp = document.getElementById('notice-title-input');
+  const msgInp = document.getElementById('notice-message-textarea');
+  const resInp = document.getElementById('notice-resumes-input');
+
+  const noticeData = {
+    status: statusSel ? statusSel.value : 'active',
+    title: titleInp ? titleInp.value.trim() : '',
+    message: msgInp ? msgInp.value.trim() : '',
+    resumesAt: resInp ? resInp.value.trim() : '',
+    updatedAt: new Date().toISOString()
+  };
+
+  try {
+    localStorage.setItem(NOTICE_STORAGE_KEY, JSON.stringify(noticeData));
+  } catch (err) {}
+
+  window.loadAdminNoticeForm();
+
+  if (window.showToast) {
+    if (noticeData.status === 'cancelled') {
+      window.showToast('⚠️ Class Cancellation Notice broadcasted live across the website!', 'warning');
+    } else if (noticeData.status === 'rescheduled') {
+      window.showToast('⏰ Reschedule Notice broadcasted live across the website!', 'info');
+    } else {
+      window.showToast('✅ Live class status reset to normal schedule!', 'success');
+    }
+  } else {
+    alert('Notice saved and broadcasted successfully!');
   }
 };
 
@@ -699,6 +848,9 @@ window.quickAdminAccess = function() {
 function initAdminInstance() {
   if (!window.adminDashboard) {
     window.adminDashboard = new AdminDashboard();
+  }
+  if (typeof window.loadAdminNoticeForm === 'function') {
+    window.loadAdminNoticeForm();
   }
 }
 

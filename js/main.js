@@ -528,9 +528,43 @@ window.closeZoomModal = function() {
   if (modal) modal.classList.remove('active');
 };
 
-window.openPosterModal = function() {
+// Harinama Chintamani Poster / Speaker Lightbox Modal
+window.openPosterModal = function(type = 'scripture') {
   const modal = document.getElementById('poster-lightbox-modal');
+  const modalImg = document.getElementById('lightbox-active-img');
+  const modalTitle = document.getElementById('lightbox-modal-title');
+  const modalCaption = document.getElementById('lightbox-modal-caption');
+  const modalDownload = document.getElementById('lightbox-download-link');
+
+  if (type === 'speaker') {
+    if (modalImg) {
+      modalImg.src = 'assets/images/vraj-kishor-das.jpg';
+      modalImg.alt = 'HG Vraj Kishor Das - Daily Class Speaker';
+    }
+    if (modalTitle) modalTitle.textContent = 'HG Vraj Kishor Das • Daily Class Speaker';
+    if (modalCaption) modalCaption.innerHTML = '<strong>Brajdhan Bhakti Centre</strong> • Speaker: HG Vraj Kishor Das • Mon–Fri 8:30 PM IST';
+    if (modalDownload) {
+      modalDownload.href = 'assets/images/vraj-kishor-das.jpg';
+      modalDownload.download = 'HG-Vraj-Kishor-Das-Harinama-Chintamani.jpg';
+    }
+  } else {
+    if (modalImg) {
+      modalImg.src = 'assets/images/harinama-chintamani-poster.jpg';
+      modalImg.alt = 'Śrīla Bhaktivinoda Ṭhākura - Harinama Chintamani Daily Class';
+    }
+    if (modalTitle) modalTitle.textContent = 'Śrīla Bhaktivinoda Ṭhākura • Harinama Chintamani';
+    if (modalCaption) modalCaption.innerHTML = '<strong>Brajdhan Bhakti Centre</strong> • Sacred Scripture Study • Mon–Fri 8:30 PM IST';
+    if (modalDownload) {
+      modalDownload.href = 'assets/images/harinama-chintamani-poster.jpg';
+      modalDownload.download = 'Srila-Bhaktivinoda-Thakura-Harinama-Chintamani.jpg';
+    }
+  }
+
   if (modal) modal.classList.add('active');
+};
+
+window.openSpeakerPhotoModal = function() {
+  window.openPosterModal('speaker');
 };
 
 window.closePosterModal = function() {
@@ -649,4 +683,101 @@ document.addEventListener('DOMContentLoaded', () => {
   initPranayama();
   initScrollAnimations();
   initLiveClassTimer();
+  if (typeof window.loadLiveClassNotice === 'function') {
+    window.loadLiveClassNotice();
+  }
 });
+
+// ========================================================
+// Live Class Broadcast Notice System (Cancellation Alert)
+// ========================================================
+window.loadLiveClassNotice = async function() {
+  let notice = null;
+
+  // 1. Try LocalStorage first (Admin updates take immediate local effect)
+  try {
+    const localRaw = localStorage.getItem('gg_live_class_notice');
+    if (localRaw) notice = JSON.parse(localRaw);
+  } catch (e) {}
+
+  // 2. If no local notice or active, try fetching from data/class-notice.json (for live site visitors)
+  if (!notice || notice.status === 'active') {
+    try {
+      const res = await fetch('data/class-notice.json?t=' + Date.now());
+      if (res.ok) {
+        const fileNotice = await res.json();
+        if (fileNotice && fileNotice.status && fileNotice.status !== 'active') {
+          notice = fileNotice;
+        }
+      }
+    } catch (e) {}
+  }
+
+  const topBanner = document.getElementById('urgent-class-notice-banner');
+  const normalHeaderBanner = document.getElementById('header-top-banner');
+  const secNoticeBox = document.getElementById('class-cancellation-banner-box');
+  const statusBadge = document.getElementById('live-session-status-badge');
+  const statusBadgeText = document.getElementById('live-status-badge-text');
+  const isDismissed = sessionStorage.getItem('gg_notice_dismissed') === 'true';
+
+  if (notice && notice.status && notice.status !== 'active') {
+    // Show Top Urgent Alert Banner
+    if (topBanner && !isDismissed) {
+      topBanner.style.display = 'block';
+      const badge = document.getElementById('urgent-badge-text');
+      const msg = document.getElementById('urgent-msg-text');
+      if (badge) {
+        badge.textContent = notice.status === 'cancelled' ? '⚠️ CLASS CANCELLED TODAY' : '📢 SCHEDULE UPDATE';
+      }
+      if (msg) {
+        msg.innerHTML = `<strong>${notice.title || 'Notice'}:</strong> ${notice.message || ''} <span style="color: #fef08a; font-weight: 600;">(Resumes: ${notice.resumesAt || 'Next Session'})</span>`;
+      }
+    }
+    if (normalHeaderBanner && !isDismissed) {
+      normalHeaderBanner.style.display = 'none';
+    }
+
+    // Show Section Notice Box
+    if (secNoticeBox) {
+      secNoticeBox.style.display = 'block';
+      const title = document.getElementById('cancel-box-heading');
+      const msg = document.getElementById('cancel-box-message');
+      const resump = document.getElementById('cancel-box-resump-time');
+      const tag = document.getElementById('cancel-box-tag');
+      const pill = document.getElementById('cancel-box-status-pill');
+
+      if (title && notice.title) title.textContent = notice.title;
+      if (msg && notice.message) msg.textContent = notice.message;
+      if (resump && notice.resumesAt) resump.textContent = notice.resumesAt;
+      if (tag) tag.textContent = notice.status === 'cancelled' ? 'IMPORTANT SATSANG NOTICE' : 'SCHEDULE UPDATE';
+      if (pill) {
+        pill.innerHTML = notice.status === 'cancelled'
+          ? '<span class="beacon-pulse-red"></span><span>Cancelled Today</span>'
+          : '<span class="beacon-pulse-amber"></span><span>Time Changed</span>';
+      }
+    }
+
+    // Update Live Session Status Badge
+    if (statusBadgeText) {
+      statusBadgeText.textContent = notice.status === 'cancelled' ? '⚠️ Cancelled Today' : '⏰ Schedule Updated';
+    }
+    if (statusBadge) {
+      statusBadge.classList.add('status-pill-alert');
+    }
+  } else {
+    // Normal schedule
+    if (topBanner) topBanner.style.display = 'none';
+    if (normalHeaderBanner) normalHeaderBanner.style.display = 'block';
+    if (secNoticeBox) secNoticeBox.style.display = 'none';
+    if (statusBadgeText) statusBadgeText.textContent = 'Ongoing Class • Mon to Fri';
+    if (statusBadge) statusBadge.classList.remove('status-pill-alert');
+  }
+};
+
+window.dismissUrgentNotice = function() {
+  const topBanner = document.getElementById('urgent-class-notice-banner');
+  const normalHeaderBanner = document.getElementById('header-top-banner');
+  if (topBanner) topBanner.style.display = 'none';
+  if (normalHeaderBanner) normalHeaderBanner.style.display = 'block';
+  sessionStorage.setItem('gg_notice_dismissed', 'true');
+};

@@ -37,6 +37,17 @@ if (Test-Path $posterSource) {
     } catch {}
 }
 
+# Copy speaker photo if in artifact directory
+$speakerSource = "C:\Users\lenovo\.gemini\antigravity\brain\a8b6de61-1b9c-4714-a7ee-502e9db1d300\.user_uploaded\media_1793354102045_6f0f6322.jpg"
+$speakerDest = Join-Path $baseDir "assets\images\vraj-kishor-das.jpg"
+if (Test-Path $speakerSource) {
+    try {
+        $parent = Split-Path $speakerDest
+        if (-not (Test-Path $parent)) { New-Item -ItemType Directory -Path $parent -Force | Out-Null }
+        Copy-Item -Path $speakerSource -Destination $speakerDest -Force
+    } catch {}
+}
+
 try {
     $listener.Start()
     Write-Host "=========================================================="
