@@ -2778,6 +2778,16 @@ h1 {
   max-width: 680px;
 }
 
+@media (max-width: 600px) {
+  .auth-page-wrapper {
+    padding: 7.5rem 1rem 3rem;
+  }
+  .auth-card {
+    padding: 2rem 1.25rem;
+    border-radius: 20px;
+  }
+}
+
 .auth-header {
   text-align: center;
   margin-bottom: 2.25rem;
@@ -3753,9 +3763,16 @@ h1 {
 /* Tablet & Medium Screens (max-width: 992px) */
 @media (max-width: 992px) {
   /* Navigation & Header */
+  .main-header {
+    background: rgba(12, 4, 1, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
   .nav-container {
-    height: 68px;
-    padding: 0 1.25rem;
+    height: 64px;
+    padding: 0 1rem;
+    gap: 0.5rem;
   }
 
   .nav-links {
@@ -3764,18 +3781,18 @@ h1 {
     left: 0;
     right: 0;
     width: 100%;
-    max-height: 82vh;
+    max-height: calc(100vh - 80px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    background: rgba(14, 6, 2, 0.98);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(14, 5, 2, 0.98);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
     flex-direction: column;
     align-items: stretch;
-    padding: 1.5rem 1.25rem 2.25rem;
-    gap: 0.5rem;
+    padding: 1.25rem 1rem 3rem;
+    gap: 0.4rem;
     border-bottom: 2px solid var(--border-gold);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.92);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.95);
     transform: translateY(-130%);
     opacity: 0;
     pointer-events: none;
@@ -3792,20 +3809,20 @@ h1 {
   .nav-link {
     display: flex;
     align-items: center;
-    padding: 0.85rem 1.25rem;
-    font-size: 1.05rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #fffbeb;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid transparent;
-    min-height: 48px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    min-height: 44px;
     width: 100%;
   }
 
   .nav-link:hover,
   .nav-link.active {
-    background: rgba(234, 88, 12, 0.18);
+    background: rgba(234, 88, 12, 0.2);
     border-color: rgba(245, 158, 11, 0.45);
     color: var(--gold-light);
   }
@@ -3814,24 +3831,55 @@ h1 {
     display: none;
   }
 
+  /* Search button inside mobile drawer */
+  .nav-links li:has(.nav-search-btn),
+  .nav-links .nav-search-btn {
+    width: 100%;
+  }
+
+  .nav-search-btn {
+    width: 100%;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 1rem;
+    gap: 0.6rem;
+    color: var(--gold-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-left: 0;
+  }
+
+  .nav-search-btn::after {
+    content: "Search Sacred Wisdom (Ctrl + K)";
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: #fed7aa;
+  }
+
   .mobile-menu-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
-    background: rgba(234, 88, 12, 0.12);
-    border: 1px solid rgba(245, 158, 11, 0.4);
+    background: rgba(234, 88, 12, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.45);
     color: var(--gold-light);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     line-height: 1;
     cursor: pointer;
     transition: all 0.25s ease;
+    flex-shrink: 0;
   }
 
   .mobile-menu-btn:hover {
-    background: rgba(234, 88, 12, 0.25);
+    background: rgba(234, 88, 12, 0.3);
     border-color: var(--gold-primary);
   }
 
@@ -3903,22 +3951,48 @@ h1 {
   }
 
   .nav-actions {
-    gap: 0.5rem;
+    gap: 0.45rem;
   }
 
   .nav-actions .btn {
-    padding: 0.45rem 0.95rem;
-    font-size: 0.84rem;
+    padding: 0.38rem 0.8rem;
+    font-size: 0.72rem;
+  }
+
+  .btn-pill-live {
+    padding: 0.38rem 0.8rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+  }
+
+  .btn-pill-contact {
+    padding: 0.38rem 0.8rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
   }
 
   .nav-actions #nav-login-btn {
     display: none; /* Accessible in mobile menu drawer */
   }
 
+  @media (max-width: 620px) {
+    .nav-actions .btn-pill-contact {
+      display: none; /* Saved space for clean mobile topbar */
+    }
+
+    .brand-sub {
+      display: none;
+    }
+
+    .brand-name {
+      font-size: 1.08rem;
+    }
+  }
+
   /* Hero Section */
   .hero-section {
     min-height: auto;
-    padding-top: 105px;
+    padding-top: 125px;
     padding-bottom: 3.5rem;
   }
 
@@ -5493,8 +5567,24 @@ h1 {
   }
 
   .announcement-inner {
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .announcement-left {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .announcement-text {
+    font-size: 0.73rem;
+  }
+
+  .announcement-action-btn span:last-child {
+    display: inline;
   }
 
   .class-title {
@@ -6000,6 +6090,29 @@ h1 {
   gap: 0.75rem;
   align-items: center;
   flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .youtube-live-showcase-box {
+    padding: 1.25rem 1rem;
+    margin-top: 1.8rem;
+    border-radius: 18px;
+  }
+  .youtube-main-title {
+    font-size: 1.15rem;
+  }
+  .youtube-showcase-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .youtube-footer-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .youtube-footer-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ==========================================================================
