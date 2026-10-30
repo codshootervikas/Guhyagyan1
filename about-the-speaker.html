@@ -16,8 +16,25 @@
   <!-- Floating Starfield Canvas -->
   <canvas id="celestial-canvas"></canvas>
 
-  <!-- Global Header Navigation -->
+  <!-- Global Header Navigation with Integrated Top Live Announcement -->
   <header class="main-header" id="main-header">
+    <!-- Top Announcement Strip for Live Ongoing Satsang -->
+    <div class="header-top-banner" id="header-top-banner">
+      <div class="container announcement-inner">
+        <div class="announcement-left">
+          <span class="announcement-live-tag"><span class="beacon-circle"></span> ONGOING DAILY SATSANG</span>
+          <span class="announcement-text">
+            <strong>Brajdhan Bhakti Centre:</strong> <em>'Harinama Chintamani'</em> by Śrīla Bhaktivinoda Ṭhākura • Mon–Fri 8:30 PM IST (Zoom & YouTube Live) • Speaker: HG Vraj Kishor Das
+          </span>
+        </div>
+        <a href="index.html#harinama-chintamani" class="announcement-action-btn">
+          <span>Join Live Class</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
     <div class="container nav-container">
       <a href="index.html" class="brand-logo" id="brand-logo">
         <img src="assets/images/logo.png" alt="Guhya Gyan Foundation Logo" class="brand-logo-img" id="brand-logo-img">
@@ -27,33 +44,108 @@
         </div>
       </a>
 
-      <!-- Navigation Links -->
+      <!-- Navigation Links with Intuitive Dropdowns -->
       <nav>
         <ul class="nav-links" id="nav-links">
           <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
-          <li><a href="about-the-speaker.html" class="nav-link active" id="nav-speaker">About the Speaker</a></li>
-          <li><a href="index.html#discourses" class="nav-link" id="nav-discourses">Discourses</a></li>
-          <li><a href="index.html#realms" class="nav-link" id="nav-realms">Sacred Realms</a></li>
-          <li><a href="index.html#sutra-oracle" class="nav-link" id="nav-oracle">Daily Sutra</a></li>
-          <li><a href="index.html#interactive-sadhana" class="nav-link" id="nav-sadhana">Sadhana Studio</a></li>
-          <li><a href="sanctuary.html" class="nav-link" id="nav-sanctuary-link" style="display: none;">Seeker Portal</a></li>
+          
+          <!-- About ▾ -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link active dropdown-toggle" id="nav-about" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>About</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="About Submenu">
+              <li><a href="about-the-speaker.html" class="dropdown-item">About the Speaker</a></li>
+              <li><a href="about-the-speaker.html#speaker-initiatives" class="dropdown-item">Brajdhan Bhakti Centre</a></li>
+              <li><a href="about-the-speaker.html#speaker-bio" class="dropdown-item">Guhya Gyan Foundation (NGO)</a></li>
+              <li><a href="index.html#harinama-chintamani" class="dropdown-item">Śrīla Bhaktivinoda Ṭhākura</a></li>
+            </ul>
+          </li>
+
+          <!-- Experience ▾ (Matches Reference Image) -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-experience" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>Experience</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="Experience Submenu">
+              <li><a href="index.html#kirtan" class="dropdown-item">Kirtan</a></li>
+              <li><a href="index.html#festivals" class="dropdown-item">Festivals</a></li>
+              <li><a href="index.html#sunday-program" class="dropdown-item">Sunday Feast/Open House</a></li>
+              <li><a href="index.html#eco-communities" class="dropdown-item">Eco-communities</a></li>
+              <li><a href="index.html#arts-culture" class="dropdown-item">Arts & Culture</a></li>
+            </ul>
+          </li>
+
+          <!-- Wisdom ▾ -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-wisdom" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>Wisdom</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="Wisdom Submenu">
+              <li><a href="index.html#harinama-chintamani" class="dropdown-item"><span class="nav-live-dot"></span> Harinama Live Class</a></li>
+              <li><a href="index.html#discourses" class="dropdown-item">Discourses & Katha Library</a></li>
+              <li><a href="index.html#sutra-oracle" class="dropdown-item">Daily Sutra Oracle (Maha-Mantra)</a></li>
+              <li><a href="index.html#interactive-sadhana" class="dropdown-item">Sadhana Studio (432Hz Sound)</a></li>
+            </ul>
+          </li>
+
+          <!-- Social Action ▾ -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-action" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>Social Action</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="Social Action Submenu">
+              <li><a href="index.html#arts-culture" class="dropdown-item">Ramayana Awareness Programs</a></li>
+              <li><a href="index.html#arts-culture" class="dropdown-item">Book Publications & Granthas</a></li>
+              <li><a href="about-the-speaker.html#speaker-initiatives" class="dropdown-item">Indian Knowledge System (IKS)</a></li>
+              <li><a href="index.html#eco-communities" class="dropdown-item">Cow Protection & Eco Ashrams</a></li>
+            </ul>
+          </li>
+
+          <!-- Instant Search Button -->
+          <li>
+            <button class="nav-search-btn" id="nav-search-trigger" aria-label="Search Sacred Wisdom" title="Search Teachings (Ctrl + K)">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </li>
         </ul>
       </nav>
 
-      <!-- Auth Actions Dynamic Container -->
-      <div class="nav-actions" id="nav-auth-actions">
-        <a href="login.html" class="btn btn-ghost btn-sm" id="nav-login-btn">Log In</a>
-        <a href="register.html" class="btn btn-primary btn-sm" id="nav-register-btn">
-          <span>Initiate</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
+      <!-- Prominent Dual Action Pill Buttons (Matching Reference ISKCON Header) -->
+      <div class="nav-actions">
+        <a href="index.html#harinama-chintamani" class="btn btn-pill-live" id="nav-live-btn">
+          <span class="live-beacon-pulse"></span>
+          <span>LIVE CLASS</span>
         </a>
+        <a href="contact.html" class="btn btn-pill-contact" id="nav-contact-btn">
+          <span>CONTACT US</span>
+        </a>
+        <div id="nav-auth-actions" class="nav-auth-slot">
+          <a href="login.html" class="btn-ghost-icon" id="nav-login-icon" title="Seeker Portal Login">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+        </div>
       </div>
 
       <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
     </div>
   </header>
+
+  <!-- Top Right Floating Contact Us Button ("button top right little bit down") -->
+  <a href="contact.html" class="floating-contact-btn" id="floating-contact-btn" title="Contact Guhya Gyan Foundation">
+    <span class="floating-contact-icon">✉️</span>
+    <span>Contact Us</span>
+  </a>
 
   <!-- Page Header Banner -->
   <section style="padding-top: 140px; padding-bottom: 3rem; text-align: center; position: relative;">
@@ -70,6 +162,22 @@
       <p style="font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-secondary); max-width: 780px; margin: 0 auto; line-height: 1.7; font-weight: 300;">
         Bridging the analytical rigor of high-technology systems with the transcendental depth of the Indian Knowledge System (IKS), Vedic Hermeneutics, and dharmic leadership.
       </p>
+
+      <!-- Trust & Scholar Key Credentials Bar -->
+      <div class="hero-stats-bar" style="margin: 2.5rem auto 0 auto; max-width: 900px;">
+        <div class="stat-item">
+          <span class="stat-number">AIR 24</span>
+          <span class="stat-label">GATE Philosophy 2023</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">BITS Pilani</span>
+          <span class="stat-label">Computer Science & Ex-Cisco</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">RYT® 500</span>
+          <span class="stat-label">Yoga Alliance & Vedic Scholar</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -449,12 +557,18 @@
               <span class="brand-sub">गुह्य ज्ञान • Sacred Wisdom</span>
             </div>
           </div>
-          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; max-width: 340px;">
-            A sanctuary dedicated to preserving, illuminating, and practicing timeless esoteric wisdom, Vedantic
-            non-duality, and inner transformation.
+          <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; max-width: 340px; margin-bottom: 0.75rem;">
+            A not-for-profit NGO (CIN: <strong>U58111UP2026NPL242197</strong>) dedicated to the Indian Knowledge System (IKS), Ramayana awareness programs, book publications, and educational & spiritual activities.
           </p>
+          <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.85rem;">
+            <strong>Registered Office:</strong><br>
+            House No. 2/420 - B, Begum Bagh,<br>
+            Aligarh, Uttar Pradesh - 202001<br>
+            📞 <a href="tel:+919258139922" style="color: var(--gold-light); text-decoration: none;">+91 9258139922</a> • ✉️ <a href="mailto:connect@guhyagyan.com" style="color: var(--gold-light); text-decoration: none;">connect@guhyagyan.com</a><br>
+            🌐 <a href="https://www.guhyagyan.com" target="_blank" style="color: var(--gold-light); text-decoration: none;">www.GuhyaGyan.com</a>
+          </div>
           <div
-            style="margin-top: 1.25rem; font-family: var(--font-editorial); font-size: 1.25rem; color: var(--gold-light); font-style: italic; letter-spacing: 0.05em;">
+            style="margin-top: 0.5rem; font-family: var(--font-editorial); font-size: 1.25rem; color: var(--gold-light); font-style: italic; letter-spacing: 0.05em;">
             जय श्री राम ॥
           </div>
         </div>
@@ -463,22 +577,24 @@
           <h4 class="footer-col-title">Sanctuary</h4>
           <ul class="footer-links">
             <li><a href="index.html">Sacred Home</a></li>
+            <li><a href="index.html#harinama-chintamani">Daily Live Class (Harinama)</a></li>
             <li><a href="about-the-speaker.html">About the Speaker</a></li>
-            <li><a href="index.html#realms">Six Wisdom Realms</a></li>
+            <li><a href="index.html#experience">Experience & Community</a></li>
             <li><a href="index.html#sutra-oracle">Daily Sutra Oracle</a></li>
             <li><a href="index.html#interactive-sadhana">Sadhana Studio</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
             <li><a href="sanctuary.html">Seeker Portal</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="footer-col-title">Traditions</h4>
+          <h4 class="footer-col-title">Experience</h4>
           <ul class="footer-links">
-            <li><a href="index.html#realms">Advaita Vedanta</a></li>
-            <li><a href="index.html#realms">Kundalini Vidya</a></li>
-            <li><a href="index.html#realms">Kashmir Shaivism</a></li>
-            <li><a href="index.html#realms">Nada & Sound Yoga</a></li>
-            <li><a href="index.html#realms">Raja Yoga & Prana</a></li>
+            <li><a href="index.html#kirtan">Kirtan & Sankirtana</a></li>
+            <li><a href="index.html#festivals">Festivals & Celebrations</a></li>
+            <li><a href="index.html#sunday-program">Sunday Feast / Open House</a></li>
+            <li><a href="index.html#eco-communities">Eco-communities</a></li>
+            <li><a href="index.html#arts-culture">Arts & Culture (IKS)</a></li>
           </ul>
         </div>
 

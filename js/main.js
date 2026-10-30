@@ -226,17 +226,40 @@ function initNavigation() {
       mobileToggle.innerHTML = isOpen ? '✕' : '☰';
     });
 
-    // Auto-close menu when clicking any nav item on mobile
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-        mobileToggle.innerHTML = '☰';
+    // Dropdown header handling: clicking parent dropdown header never navigates away; toggles menu
+    navLinks.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const parent = toggle.closest('.nav-item-dropdown');
+        if (parent) {
+          const wasOpen = parent.classList.contains('open');
+          // Close all other dropdowns
+          document.querySelectorAll('.nav-item-dropdown.open').forEach(d => {
+            if (d !== parent) d.classList.remove('open');
+          });
+          parent.classList.toggle('open', !wasOpen);
+        }
       });
     });
 
-    // Close when clicking outside menu
+    // Auto-close dropdown & menu when clicking any actual option item
+    navLinks.querySelectorAll('a:not(.dropdown-toggle)').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item-dropdown.open').forEach(d => d.classList.remove('open'));
+        if (window.innerWidth <= 992) {
+          navLinks.classList.remove('open');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          mobileToggle.innerHTML = '☰';
+        }
+      });
+    });
+
+    // Close when clicking outside dropdowns or mobile menu
     document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item-dropdown')) {
+        document.querySelectorAll('.nav-item-dropdown.open').forEach(d => d.classList.remove('open'));
+      }
       if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
         navLinks.classList.remove('open');
         mobileToggle.setAttribute('aria-expanded', 'false');
@@ -253,12 +276,106 @@ function initNavigation() {
       }
     });
   }
+
+  // Instant Spotlight Search (Ctrl/Cmd + K or Click on Search Button)
+  const searchTrigger = document.getElementById('nav-search-trigger');
+  
+  function openSearchModal() {
+    let modal = document.getElementById('spotlight-search-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'spotlight-search-modal';
+      modal.className = 'modal-overlay';
+      modal.innerHTML = `
+        <div class="modal-dialog" style="max-width: 580px; padding: 1.5rem; background: rgba(18, 8, 4, 0.95); border: 1px solid var(--border-gold); box-shadow: 0 25px 60px rgba(0,0,0,0.9);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 1.3rem;">🔍</span>
+              <h3 style="font-size: 1.15rem; color: #fff; margin: 0; font-family: var(--font-serif);">Search Sacred Wisdom</h3>
+            </div>
+            <button class="btn btn-ghost" style="padding: 0.2rem 0.6rem; font-size: 1.1rem; border-radius: 8px;" onclick="document.getElementById('spotlight-search-modal').classList.remove('active')">✕</button>
+          </div>
+          <div class="input-with-icon" style="margin-bottom: 1.25rem;">
+            <span class="input-icon">✨</span>
+            <input type="text" id="spotlight-search-input" class="form-input" placeholder="Type scriptures, live class, katha, speaker..." autofocus>
+          </div>
+          <div id="spotlight-search-results" style="max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem;">
+            <a href="index.html#harinama-chintamani" class="search-result-item" style="padding: 0.75rem 1rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); text-decoration: none; color: #fff; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="color: var(--gold-light);">🔴 Harinama Chintamani Live Class</strong>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0.2rem 0 0;">Mon–Fri 8:30 PM IST with HG Vraj Kishor Das</p>
+              </div>
+              <span style="color: var(--gold-primary); font-size: 0.85rem;">Jump →</span>
+            </a>
+            <a href="about-the-speaker.html" class="search-result-item" style="padding: 0.75rem 1rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); text-decoration: none; color: #fff; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="color: var(--gold-light);">About the Speaker — HG Vraj Kishor Das</strong>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0.2rem 0 0;">AIR 24 GATE Philosophy • BITS Pilani • Ex-Cisco</p>
+              </div>
+              <span style="color: var(--gold-primary); font-size: 0.85rem;">Read →</span>
+            </a>
+            <a href="index.html#sutra-oracle" class="search-result-item" style="padding: 0.75rem 1rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); text-decoration: none; color: #fff; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="color: var(--gold-light);">Daily Maha-Mantra Sutra Oracle</strong>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0.2rem 0 0;">Sacred contemplation from Kali-Santarana Upanishad</p>
+              </div>
+              <span style="color: var(--gold-primary); font-size: 0.85rem;">Chant →</span>
+            </a>
+            <a href="contact.html" class="search-result-item" style="padding: 0.75rem 1rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); text-decoration: none; color: #fff; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="color: var(--gold-light);">Contact Guhya Gyan Foundation</strong>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0.2rem 0 0;">Aligarh, UP • connect@guhyagyan.com • +91 9258139922</p>
+              </div>
+              <span style="color: var(--gold-primary); font-size: 0.85rem;">Connect →</span>
+            </a>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
+      });
+
+      const input = modal.querySelector('#spotlight-search-input');
+      input?.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        modal.querySelectorAll('.search-result-item').forEach(res => {
+          const text = res.textContent.toLowerCase();
+          res.style.display = text.includes(query) ? 'flex' : 'none';
+        });
+      });
+    }
+
+    modal.classList.add('active');
+    setTimeout(() => {
+      document.getElementById('spotlight-search-input')?.focus();
+    }, 100);
+  }
+
+  if (searchTrigger) {
+    searchTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openSearchModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      openSearchModal();
+    }
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('spotlight-search-modal');
+      if (modal && modal.classList.contains('active')) modal.classList.remove('active');
+    }
+  });
 }
 
 // Dynamic Scroll Intersection Observer for Reveal Animations
 function initScrollAnimations() {
   const targets = document.querySelectorAll(
-    '.reveal-fade-up, .reveal-scale-in, .sacred-card, .speaker-profile-card, .speaker-bio-container, .speaker-domain-card, .studio-card, .sutra-oracle-box, .section-header, .feature-split, .stat-item'
+    '.reveal-fade-up, .reveal-scale-in, .sacred-card, .experience-card, .speaker-profile-card, .speaker-bio-container, .speaker-domain-card, .studio-card, .sutra-oracle-box, .section-header, .feature-split, .stat-item'
   );
 
   if ('IntersectionObserver' in window) {
@@ -283,6 +400,7 @@ function initScrollAnimations() {
       // Automatically compute cascading stagger delay for items inside a grid or bar
       if (el.parentElement && (
         el.parentElement.classList.contains('cards-grid') ||
+        el.parentElement.classList.contains('experience-grid') ||
         el.parentElement.classList.contains('speaker-domains-grid') ||
         el.parentElement.classList.contains('interactive-studio-grid') ||
         el.parentElement.classList.contains('hero-stats-bar')
@@ -299,6 +417,230 @@ function initScrollAnimations() {
   }
 }
 
+// ==========================================================================
+// Harinama Chintamani Ongoing Live Class Features
+// Organizer: Brajdhama Bhakti Kendra | Speaker: HG Vraj Kishor Das
+// Schedule: Monday to Friday • 8:30 PM - 9:00 PM IST • Online via Zoom
+// ==========================================================================
+
+function initLiveClassTimer() {
+  const hoursEl = document.getElementById('cd-hours');
+  const minutesEl = document.getElementById('cd-minutes');
+  const secondsEl = document.getElementById('cd-seconds');
+  const statusBadge = document.getElementById('live-session-status-badge');
+  const statusText = document.getElementById('live-status-badge-text');
+  const headingText = document.getElementById('countdown-status-text');
+
+  if (!hoursEl || !minutesEl || !secondsEl) return;
+
+  function updateTimer() {
+    // Current UTC time converted to IST (UTC + 5:30)
+    const nowUtc = new Date().getTime();
+    const istOffsetMs = (5 * 60 + 30) * 60 * 1000;
+    const nowIst = new Date(nowUtc + istOffsetMs);
+
+    const istDay = nowIst.getUTCDay(); // 0 = Sun, 1 = Mon, ..., 5 = Fri, 6 = Sat
+    const istHours = nowIst.getUTCHours();
+    const istMinutes = nowIst.getUTCMinutes();
+    const istSeconds = nowIst.getUTCSeconds();
+
+    const isWeekday = istDay >= 1 && istDay <= 5;
+    const currentMinutesFromMidnight = istHours * 60 + istMinutes;
+    const startMinutes = 20 * 60 + 30; // 8:30 PM IST (1230 mins)
+    const endMinutes = 21 * 60;        // 9:00 PM IST (1260 mins)
+
+    // Check if class is currently live
+    if (isWeekday && currentMinutesFromMidnight >= startMinutes && currentMinutesFromMidnight < endMinutes) {
+      if (statusBadge) {
+        statusBadge.style.background = 'rgba(239, 68, 68, 0.22)';
+        statusBadge.style.borderColor = 'rgba(239, 68, 68, 0.6)';
+        statusBadge.style.color = '#fca5a5';
+      }
+      if (statusText) statusText.innerHTML = '🔴 LIVE RIGHT NOW • Class in Session!';
+      if (headingText) headingText.innerHTML = 'Session in progress! Concludes in:';
+
+      const remainingSeconds = (endMinutes * 60) - (currentMinutesFromMidnight * 60 + istSeconds);
+      const remMins = Math.floor(remainingSeconds / 60);
+      const remSecs = remainingSeconds % 60;
+
+      hoursEl.textContent = '00';
+      minutesEl.textContent = String(remMins).padStart(2, '0');
+      secondsEl.textContent = String(remSecs).padStart(2, '0');
+      return;
+    }
+
+    // Otherwise calculate next session
+    let targetDay = istDay;
+    let daysToAdd = 0;
+
+    if (isWeekday) {
+      if (currentMinutesFromMidnight < startMinutes) {
+        daysToAdd = 0; // Today
+      } else {
+        // Today's class finished
+        daysToAdd = (istDay === 5) ? 3 : 1; // If Friday, next is Monday (+3)
+      }
+    } else if (istDay === 6) {
+      daysToAdd = 2; // Saturday -> Monday
+    } else if (istDay === 0) {
+      daysToAdd = 1; // Sunday -> Monday
+    }
+
+    const nextTargetIst = new Date(nowIst);
+    nextTargetIst.setUTCDate(nextTargetIst.getUTCDate() + daysToAdd);
+    nextTargetIst.setUTCHours(20, 30, 0, 0); // 8:30 PM
+
+    const diffMs = nextTargetIst.getTime() - nowIst.getTime();
+    if (diffMs > 0) {
+      const totalSeconds = Math.floor(diffMs / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
+
+      if (statusBadge) {
+        statusBadge.style.background = 'rgba(34, 197, 94, 0.16)';
+        statusBadge.style.borderColor = 'rgba(34, 197, 94, 0.45)';
+        statusBadge.style.color = '#86efac';
+      }
+      if (statusText) statusText.innerHTML = 'Ongoing Class • Mon to Fri';
+      if (headingText) {
+        headingText.innerHTML = (daysToAdd === 0) ? 'Next Live Session Today in:' : 'Next Live Session in:';
+      }
+    }
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+}
+
+// Modal Handlers
+window.openZoomModal = function() {
+  const modal = document.getElementById('zoom-class-modal');
+  if (modal) modal.classList.add('active');
+};
+
+window.closeZoomModal = function() {
+  const modal = document.getElementById('zoom-class-modal');
+  if (modal) modal.classList.remove('active');
+};
+
+window.openPosterModal = function() {
+  const modal = document.getElementById('poster-lightbox-modal');
+  if (modal) modal.classList.add('active');
+};
+
+window.closePosterModal = function() {
+  const modal = document.getElementById('poster-lightbox-modal');
+  if (modal) modal.classList.remove('active');
+};
+
+// Clipboard Helper
+window.copyToClipboard = function(text, successMsg = 'Copied to clipboard!') {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      window.showToast(successMsg, 'success');
+    }).catch(() => {
+      window.showToast('Copied: ' + text, 'info');
+    });
+  } else {
+    window.showToast(successMsg + ': ' + text, 'info');
+  }
+};
+
+// Copy Full Class Invitation
+window.copyFullMeetingInvite = function() {
+  const message = `🌸 *Brajdhan Bhakti Centre Presents* 🌸\n` +
+    `📖 *Harinama Chintamani Daily Class*\n` +
+    `✍️ By *Śrīla Bhaktivinoda Ṭhākura*\n` +
+    `🎙️ *Speaker:* HG Vraj Kishor Das\n\n` +
+    `✨ *Discussion:* Experience the power, practice, and ultimate perfection of the Lord’s Holy Name.\n\n` +
+    `🔑 *Key Topics:*\n` +
+    `1. Philosophy, power, and nature of Harinama\n` +
+    `2. Removing impurities from the heart through Harinama-sankirtana\n` +
+    `3. Establishing a deep, lasting connection in humility\n\n` +
+    `📅 *Days:* Monday to Friday (Ongoing)\n` +
+    `⏰ *Time:* 8:30 PM – 9:00 PM (IST)\n` +
+    `🌐 *Platform:* Online via Zoom & YouTube Live\n` +
+    `🔴 *YouTube Live:* https://www.youtube.com/channel/UCFBbjmun7ECGHfGcsYEkLOg/live\n` +
+    `🔗 *ज़ूम लिंक (Zoom Link):* https://us06web.zoom.us/j/83810145066?pwd=bbbFLOAxyBxK4DSGJtNmhiHCadCBB6q7.1\n` +
+    `🆔 *Meeting ID:* 838 1014 5066\n` +
+    `🔑 *Passcode:* 399432\n\n` +
+    `All spiritual seekers are cordially invited to participate! 🙏`;
+
+  window.copyToClipboard(message, 'Complete class invitation copied to clipboard!');
+};
+
+// Share Satsang Handler
+window.shareClassDetails = function() {
+  const shareData = {
+    title: 'Harinama Chintamani Daily Class',
+    text: `Join the daily sacred class on 'Harinama Chintamani' by Śrīla Bhaktivinoda Ṭhākura, organized by Brajdhan Bhakti Centre with speaker HG Vraj Kishor Das. Mon to Fri, 8:30 PM - 9:00 PM IST on Zoom & YouTube Live! Watch: https://www.youtube.com/channel/UCFBbjmun7ECGHfGcsYEkLOg/live`,
+    url: 'https://www.youtube.com/channel/UCFBbjmun7ECGHfGcsYEkLOg/live'
+  };
+
+  if (navigator.share) {
+    navigator.share(shareData).catch(() => {});
+  } else {
+    window.copyFullMeetingInvite();
+  }
+};
+
+// Download .ics Calendar File for recurring Mon-Fri 8:30-9:00 PM IST class
+window.downloadClassCalendar = function() {
+  const icsContent = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Brajdhan Bhakti Centre//Harinama Chintamani Class//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:harinama-chintamani-daily-class@brajdhan
+DTSTAMP:20261029T000000Z
+DTSTART;TZID=Asia/Kolkata:20261102T203000
+DTEND;TZID=Asia/Kolkata:20261102T210000
+RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR
+SUMMARY:Harinama Chintamani Daily Class - HG Vraj Kishor Das
+DESCRIPTION:Organizer: Brajdhan Bhakti Centre\\nBook: Harinama Chintamani by Śrīla Bhaktivinoda Ṭhākura\\nSpeaker: HG Vraj Kishor Das\\nDiscussion: Experience the power\\, practice\\, and ultimate perfection of the Lord's Holy Name.\\nYouTube Live: https://www.youtube.com/channel/UCFBbjmun7ECGHfGcsYEkLOg/live\\nZoom Link: https://us06web.zoom.us/j/83810145066?pwd=bbbFLOAxyBxK4DSGJtNmhiHCadCBB6q7.1\\nMeeting ID: 838 1014 5066\\nPasscode: 399432
+LOCATION:https://www.youtube.com/channel/UCFBbjmun7ECGHfGcsYEkLOg/live
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Harinama Chintamani Class starts in 15 minutes!
+END:VALARM
+END:VEVENT
+END:VCALENDAR`;
+
+  const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'Harinama-Chintamani-Daily-Class.ics';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(link.href);
+  window.showToast('Calendar invite (.ics) downloaded!', 'success');
+};
+
+// Close modal when clicking backdrop or escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    window.closeZoomModal();
+    window.closePosterModal();
+  }
+});
+
+document.addEventListener('click', (e) => {
+  const zoomModal = document.getElementById('zoom-class-modal');
+  const posterModal = document.getElementById('poster-lightbox-modal');
+  if (zoomModal && e.target === zoomModal) window.closeZoomModal();
+  if (posterModal && e.target === posterModal) window.closePosterModal();
+});
+
 // Global initialization
 document.addEventListener('DOMContentLoaded', () => {
   initCelestialCanvas();
@@ -306,4 +648,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initSutraOracle();
   initPranayama();
   initScrollAnimations();
+  initLiveClassTimer();
 });

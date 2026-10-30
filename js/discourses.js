@@ -62,6 +62,18 @@
   // Default starter recordings
   const DEFAULT_DISCOURSES = [
     {
+      id: 'disc_harinama_chintamani',
+      title: 'Harinama Chintamani Daily Class • Śrīla Bhaktivinoda Ṭhākura',
+      youtubeId: '',
+      youtubeUrl: '#harinama-chintamani',
+      category: 'Daily Online Reading',
+      speaker: 'HG Vraj Kishor Das',
+      duration: 'Live Daily 30m',
+      description: 'Organizer: Brajdhan Bhakti Centre. Experience the power, practice, and perfection of the Lord’s Holy Name. Mon–Fri 8:30 PM – 9:00 PM IST on Zoom.',
+      tags: ['HARINAMA CHINTAMANI', 'BRAJDHAN BHAKTI CENTRE', 'BHAKTIVINODA THAKURA', 'LIVE CLASS'],
+      date: '2026-10-29'
+    },
+    {
       id: 'disc_1',
       title: 'Session 1 - Srutadeva and Bahulasva - Part 1',
       youtubeId: 'mO3QZgQ6Wqg',

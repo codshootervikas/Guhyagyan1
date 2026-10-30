@@ -26,6 +26,17 @@ $listener = New-Object System.Net.HttpListener
 $prefix = "http://127.0.0.1:$port/"
 $listener.Prefixes.Add($prefix)
 
+# Copy poster asset if in artifact directory
+$posterSource = "C:\Users\lenovo\.gemini\antigravity\brain\a8b6de61-1b9c-4714-a7ee-502e9db1d300\.user_uploaded\media_1793265414159_86117020.jpg"
+$posterDest = Join-Path $baseDir "assets\images\harinama-chintamani-poster.jpg"
+if (Test-Path $posterSource) {
+    try {
+        $parent = Split-Path $posterDest
+        if (-not (Test-Path $parent)) { New-Item -ItemType Directory -Path $parent -Force | Out-Null }
+        Copy-Item -Path $posterSource -Destination $posterDest -Force
+    } catch {}
+}
+
 try {
     $listener.Start()
     Write-Host "=========================================================="
@@ -86,6 +97,17 @@ try {
 
             $relPath = $rawUrl.TrimStart('/').Replace('/', [System.IO.Path]::DirectorySeparatorChar)
             $filePath = Join-Path $baseDir $relPath
+
+            if (-not (Test-Path $filePath -PathType Leaf)) {
+                if ($relPath -like "*harinama-chintamani-poster.jpg" -and (Test-Path $posterSource)) {
+                    try {
+                        if (-not (Test-Path $posterDest)) {
+                            Copy-Item -Path $posterSource -Destination $posterDest -Force
+                        }
+                    } catch {}
+                    $filePath = if (Test-Path $posterDest) { $posterDest } else { $posterSource }
+                }
+            }
 
             if (Test-Path $filePath -PathType Leaf) {
                 $ext = [System.IO.Path]::GetExtension($filePath).ToLower()

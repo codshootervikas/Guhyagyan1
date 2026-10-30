@@ -13,8 +13,25 @@
   <!-- Floating Starfield Canvas -->
   <canvas id="celestial-canvas"></canvas>
 
-  <!-- Global Header Navigation -->
+  <!-- Global Header Navigation with Integrated Top Live Announcement -->
   <header class="main-header" id="main-header">
+    <!-- Top Announcement Strip for Live Ongoing Satsang -->
+    <div class="header-top-banner" id="header-top-banner">
+      <div class="container announcement-inner">
+        <div class="announcement-left">
+          <span class="announcement-live-tag"><span class="beacon-circle"></span> ONGOING DAILY SATSANG</span>
+          <span class="announcement-text">
+            <strong>Brajdhan Bhakti Centre:</strong> <em>'Harinama Chintamani'</em> by Śrīla Bhaktivinoda Ṭhākura • Mon–Fri 8:30 PM IST • Speaker: HG Vraj Kishor Das
+          </span>
+        </div>
+        <a href="index.html#harinama-chintamani" class="announcement-action-btn">
+          <span>Join Live Class</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
     <div class="container nav-container">
       <a href="index.html" class="brand-logo" id="brand-logo">
         <img src="assets/images/logo.png" alt="Guhya Gyan Foundation Logo" class="brand-logo-img" id="brand-logo-img">
@@ -24,17 +41,92 @@
         </div>
       </a>
 
+      <!-- Navigation Links with Intuitive Dropdowns -->
       <nav>
         <ul class="nav-links" id="nav-links">
-          <li><a href="index.html" class="nav-link">Sanctuary Home</a></li>
-          <li><a href="index.html#realms" class="nav-link">Sacred Realms</a></li>
-          <li><a href="index.html#interactive-sadhana" class="nav-link">Sound Studio</a></li>
-          <li><a href="sanctuary.html" class="nav-link active" id="nav-sanctuary-link">Seeker Portal</a></li>
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          
+          <!-- About ▾ -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-about" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>About</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="About Submenu">
+              <li><a href="about-the-speaker.html" class="dropdown-item">About the Speaker</a></li>
+              <li><a href="about-the-speaker.html#speaker-initiatives" class="dropdown-item">Brajdhan Bhakti Centre</a></li>
+              <li><a href="about-the-speaker.html#speaker-bio" class="dropdown-item">Guhya Gyan Foundation (NGO)</a></li>
+              <li><a href="index.html#harinama-chintamani" class="dropdown-item">Śrīla Bhaktivinoda Ṭhākura</a></li>
+            </ul>
+          </li>
+
+          <!-- Experience ▾ -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-experience" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>Experience</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="Experience Submenu">
+              <li><a href="index.html#kirtan" class="dropdown-item">Kirtan</a></li>
+              <li><a href="index.html#festivals" class="dropdown-item">Festivals</a></li>
+              <li><a href="index.html#sunday-program" class="dropdown-item">Sunday Feast/Open House</a></li>
+              <li><a href="index.html#eco-communities" class="dropdown-item">Eco-communities</a></li>
+              <li><a href="index.html#arts-culture" class="dropdown-item">Arts & Culture</a></li>
+            </ul>
+          </li>
+
+          <!-- Wisdom ▾ -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-wisdom" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>Wisdom</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="Wisdom Submenu">
+              <li><a href="index.html#harinama-chintamani" class="dropdown-item"><span class="nav-live-dot"></span> Harinama Live Class</a></li>
+              <li><a href="index.html#discourses" class="dropdown-item">Discourses & Katha Library</a></li>
+              <li><a href="index.html#sutra-oracle" class="dropdown-item">Daily Sutra Oracle (Maha-Mantra)</a></li>
+              <li><a href="index.html#interactive-sadhana" class="dropdown-item">Sadhana Studio (432Hz Sound)</a></li>
+            </ul>
+          </li>
+
+          <!-- Social Action ▾ -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-action" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>Social Action</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="Social Action Submenu">
+              <li><a href="index.html#arts-culture" class="dropdown-item">Ramayana Awareness Programs</a></li>
+              <li><a href="index.html#arts-culture" class="dropdown-item">Book Publications & Granthas</a></li>
+              <li><a href="about-the-speaker.html#speaker-initiatives" class="dropdown-item">Indian Knowledge System (IKS)</a></li>
+              <li><a href="index.html#eco-communities" class="dropdown-item">Cow Protection & Eco Ashrams</a></li>
+            </ul>
+          </li>
+
+          <!-- Instant Search Button -->
+          <li>
+            <button class="nav-search-btn" id="nav-search-trigger" aria-label="Search Sacred Wisdom" title="Search Teachings (Ctrl + K)">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </li>
         </ul>
       </nav>
 
-      <div class="nav-actions" id="nav-auth-actions">
-        <!-- Injected dynamically by auth.js -->
+      <!-- Prominent Dual Action Pill Buttons (Matching Reference Header) -->
+      <div class="nav-actions">
+        <a href="index.html#harinama-chintamani" class="btn btn-pill-live" id="nav-live-btn">
+          <span class="live-beacon-pulse"></span>
+          <span>LIVE CLASS</span>
+        </a>
+        <a href="contact.html" class="btn btn-pill-contact" id="nav-contact-btn">
+          <span>CONTACT US</span>
+        </a>
+        <div id="nav-auth-actions" class="nav-auth-slot">
+          <!-- Injected dynamically by auth.js -->
+        </div>
       </div>
 
       <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>

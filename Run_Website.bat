@@ -2,13 +2,18 @@
 title Guhya Gyan Sanctuary Server
 cls
 cd /d "%~dp0"
+if exist "C:\Users\lenovo\.gemini\antigravity\brain\a8b6de61-1b9c-4714-a7ee-502e9db1d300\.user_uploaded\media_1793265414159_86117020.jpg" (
+    if not exist "%~dp0assets\images" mkdir "%~dp0assets\images"
+    copy /Y "C:\Users\lenovo\.gemini\antigravity\brain\a8b6de61-1b9c-4714-a7ee-502e9db1d300\.user_uploaded\media_1793265414159_86117020.jpg" "%~dp0assets\images\harinama-chintamani-poster.jpg" >nul 2>&1
+)
 echo ==========================================================
 echo    Guhya Gyan Foundation - Website ^& Admin Server
 echo ==========================================================
 echo.
 echo  Website URL:       http://127.0.0.1:3000/
-echo  Admin Dashboard:   http://127.0.0.1:3000/admin.html
+echo  Contact Us:        http://127.0.0.1:3000/contact.html
 echo  About Speaker:     http://127.0.0.1:3000/about-the-speaker.html
+echo  Admin Dashboard:   http://127.0.0.1:3000/admin.html
 echo.
 echo ==========================================================
 echo  Server shuru ho raha hai aur Browser automatically open hoga!

@@ -208,7 +208,7 @@ class AuthManager {
             .eq('id', data.user.id)
             .maybeSingle();
           if (prof) profileData = prof;
-        } catch (e) {}
+        } catch (e) { }
 
         const seeker = {
           id: data.user.id,
@@ -246,7 +246,7 @@ class AuthManager {
     if (window.supabaseClient) {
       try {
         await window.supabaseClient.auth.signOut();
-      } catch (e) {}
+      } catch (e) { }
     }
     this.setCurrentUser(null);
   }
@@ -269,13 +269,12 @@ class AuthManager {
         sanctuaryLink.style.display = 'inline-block';
       }
       navActions.innerHTML = `
-        <a href="sanctuary.html" class="user-nav-profile" title="View Seeker Sanctuary">
+        <a href="sanctuary.html" class="user-nav-profile" title="Seeker Sanctuary: ${currentUser.name}">
           <div class="avatar-badge">${currentUser.avatar || '🪷'}</div>
           <span class="user-nav-name">${currentUser.name}</span>
         </a>
-        <button id="nav-logout-btn" class="btn btn-outline btn-sm" onclick="window.confirmLogoutModal()">
-          <span>Log Out</span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <button id="nav-logout-btn" class="btn-ghost-icon" onclick="window.confirmLogoutModal()" title="Log Out of Sanctuary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
         </button>
       `;
     } else {
@@ -283,10 +282,11 @@ class AuthManager {
         sanctuaryLink.style.display = 'none';
       }
       navActions.innerHTML = `
-        <a href="login.html" class="btn btn-ghost btn-sm" id="nav-login-btn">Log In</a>
-        <a href="register.html" class="btn btn-primary btn-sm" id="nav-register-btn">
-          <span>Initiate</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <a href="login.html" class="btn-ghost-icon" id="nav-login-icon" title="Seeker Portal Login">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
         </a>
       `;
     }
@@ -297,7 +297,7 @@ class AuthManager {
 window.authManager = new AuthManager();
 
 // Confirm Logout Dialog handler
-window.confirmLogoutModal = function() {
+window.confirmLogoutModal = function () {
   const modal = document.getElementById('logout-modal');
   if (modal) {
     modal.classList.add('active');
@@ -313,12 +313,12 @@ window.confirmLogoutModal = function() {
   }
 };
 
-window.closeLogoutModal = function() {
+window.closeLogoutModal = function () {
   const modal = document.getElementById('logout-modal');
   if (modal) modal.classList.remove('active');
 };
 
-window.executeLogout = async function() {
+window.executeLogout = async function () {
   await window.authManager.logout();
   window.closeLogoutModal();
   window.showToast('Sacred session concluded. May peace accompany your journey.', 'success');
@@ -343,7 +343,7 @@ async function syncActiveSession() {
             .eq('id', session.user.id)
             .maybeSingle();
           if (prof) profileData = prof;
-        } catch (e) {}
+        } catch (e) { }
 
         const seeker = {
           id: session.user.id,
