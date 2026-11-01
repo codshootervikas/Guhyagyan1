@@ -16,172 +16,226 @@
   // Category Definitions matching Explore Categories
   const CATEGORIES = [
     {
-      id: 'Daily Online Reading',
-      name: 'Daily Online Reading',
-      hindi: 'दैनिक स्वाध्याय एवं प्रवचन',
-      image: 'assets/images/cat-daily-reading.jpg',
-      tag: 'ONLINE READING'
+      id: 'Hari-nāma Cintāmaṇi',
+      name: 'Hari-nāma Cintāmaṇi',
+      hindi: 'हरिनाम चिन्तामणि स्वाध्याय',
+      image: 'assets/images/harinama-chintamani-poster.jpg',
+      imgStyle: 'object-position: center 16% !important;',
+      tag: 'HARINAMA CINTAMANI',
+      aliases: [
+        'hari-nama cintāmaṇi',
+        'hari-nama cintamani',
+        'harinama chintamani',
+        'hari nama cintamani',
+        'harinam chintamani',
+        'harinama cintamani',
+        'हरिनाम चिन्तामणि',
+        'हरिनाम चिंतामणि',
+        'हरिनाम',
+        'bhaktivinoda',
+        'chintamani',
+        'cintamani',
+        'cintāmaṇi'
+      ]
     },
     {
       id: 'Valmiki Ramayana',
       name: 'Valmiki Ramayana Series',
       hindi: 'वाल्मीकि रामायण प्रवचन',
       image: 'assets/images/cat-valmiki-ramayan.jpg',
-      tag: 'RAMAYANA'
+      tag: 'RAMAYANA',
+      aliases: ['valmiki ramayana', 'valmiki ramayan', 'ramayana', 'ramayan', 'वाल्मीकि रामायण', 'रामायण', 'किष्किन्धा', 'किष्किंधा', 'kishkindha', 'kishkinda', 'valmiki ramayana series', 'वाल्मीकि रामायण प्रवचन']
     },
     {
       id: 'Bhagavad Gita',
       name: 'Bhagavad Gita Rahasya',
       hindi: 'श्रीमद्भगवद्गीता रहस्य',
       image: 'assets/images/cat-bhagavad-gita.jpg',
-      tag: 'GITA'
+      tag: 'GITA',
+      aliases: ['bhagavad gita', 'gita', 'श्रीमद्भगवद्गीता', 'भगवद्गीता', 'गीता', 'bhagavad gita rahasya', 'श्रीमद्भगवद्गीता रहस्य']
+    },
+    {
+      id: 'Daily Online Reading',
+      name: 'Daily Online Reading',
+      hindi: 'दैनिक स्वाध्याय एवं प्रवचन',
+      image: 'assets/images/cat-daily-reading.jpg',
+      tag: 'ONLINE READING',
+      aliases: ['daily online reading', 'daily reading', 'दैनिक स्वाध्याय एवं प्रवचन', 'दैनिक स्वाध्याय', 'स्वाध्याय', 'सत्संग प्रश्नोत्तरी', 'satsang']
     },
     {
       id: 'Upanishads & Vedanta',
       name: 'Upanishads & Vedanta',
       hindi: 'उपनिषद् एवं वेदान्त',
       image: 'assets/images/sanctum-library.jpg',
-      tag: 'VEDANTA'
+      tag: 'VEDANTA',
+      aliases: ['upanishads & vedanta', 'upanishads', 'vedanta', 'उपनिषद् एवं वेदान्त', 'उपनिषद्', 'उपनिषद', 'वेदान्त', 'mandukya', 'माण्डूक्य']
     },
     {
       id: 'Srimad Bhagavatam',
       name: 'Srimad Bhagavatam',
       hindi: 'श्रीमद्भागवतम् अमृत',
       image: 'assets/images/hero-bg.jpg',
-      tag: 'BHAGAVATAM'
+      tag: 'BHAGAVATAM',
+      aliases: ['srimad bhagavatam', 'bhagavatam', 'श्रीमद्भागवतम्', 'भागवत', 'श्रीमद्भागवतम् अमृत', 'भक्ति एवं भागवतम्', 'भक्ति']
     },
     {
       id: 'Youth & Newcomers',
       name: 'Senior Youth Training & IKS',
       hindi: 'युवा संस्कार एवं शिक्षण',
       image: 'assets/images/cat-youth-education.jpg',
-      tag: 'YOUTH TRAINING'
+      tag: 'YOUTH TRAINING',
+      aliases: ['youth & newcomers', 'senior youth training & iks', 'youth training', 'युवा संस्कार एवं शिक्षण', 'युवा संस्कार', 'युवा', 'iks']
     }
   ];
 
-  // Default starter recordings
+  // Default starter recordings - purely populated from Admin Dashboard
   const DEFAULT_DISCOURSES = [
     {
-      id: 'disc_harinama_chintamani',
-      title: 'Harinama Chintamani Daily Class • Śrīla Bhaktivinoda Ṭhākura',
-      youtubeId: '',
-      youtubeUrl: '#harinama-chintamani',
-      category: 'Daily Online Reading',
-      speaker: 'HG Vraj Kishor Das',
-      duration: 'Live Daily 30m',
-      description: 'Organizer: Brajdhan Bhakti Centre. Experience the power, practice, and perfection of the Lord’s Holy Name. Mon–Fri 8:30 PM – 9:00 PM IST on Zoom.',
-      tags: ['HARINAMA CHINTAMANI', 'BRAJDHAN BHAKTI CENTRE', 'BHAKTIVINODA THAKURA', 'LIVE CLASS'],
-      date: '2026-10-29'
-    },
-    {
-      id: 'disc_1',
-      title: 'Session 1 - Srutadeva and Bahulasva - Part 1',
-      youtubeId: 'mO3QZgQ6Wqg',
-      youtubeUrl: 'https://www.youtube.com/watch?v=mO3QZgQ6Wqg',
-      category: 'Daily Online Reading',
-      speaker: 'HG Radheshyam Das',
-      duration: '22:28',
-      description: 'Devotional evening discourse exploring the pure bhakti and hospitality of Brahmana Srutadeva and King Bahulasva in Mithila.',
-      tags: ['SRUTADEVA AND BAHULASVA', 'DAILY READING'],
-      date: '2026-01-22'
-    },
-    {
-      id: 'disc_2',
-      title: 'Session 2 - Srutadeva and Bahulasva - Part 2',
-      youtubeId: 'jfKfPfyJRdk',
-      youtubeUrl: 'https://www.youtube.com/watch?v=jfKfPfyJRdk',
-      category: 'Daily Online Reading',
-      speaker: 'HG Radheshyam Das',
-      duration: '24:15',
-      description: 'The conclusion of Krishna’s simultaneous pastimes with Srutadeva and Bahulasva, elucidating selfless dedication.',
-      tags: ['SRUTADEVA AND BAHULASVA', 'KRISHNA LEELA'],
-      date: '2026-01-23'
-    },
-    {
-      id: 'disc_3',
-      title: 'वाल्मीकि रामायण किष्किन्धा काण्ड • Session 1 - The Sacred Forest',
-      youtubeId: '7X8II6J-6mU',
-      youtubeUrl: 'https://www.youtube.com/watch?v=7X8II6J-6mU',
+      id: 'disc_1793003249146',
+      title: 'Day 2 - वसंत ऋतु की सुंदरता ने राम जी का शोक बढ़ाया - Verse 4.1.31 - 4.1.60 - Valmiki Ramayan Series',
+      youtubeId: 'veUGCLMnBkg',
+      youtubeUrl: 'https://www.youtube.com/watch?v=veUGCLMnBkg',
       category: 'Valmiki Ramayana',
       speaker: 'Dhananjay Vashistha',
-      duration: '54:10',
-      description: 'Chanted verse-by-verse from Maharishi Valmiki’s original Sanskrit verses exploring Lakshmana and Rama’s arrival at Pampa Lake.',
-      tags: ['VALMIKI RAMAYANA', 'KISHKINDHA KAND'],
-      date: '2026-01-20'
+      duration: '25 min',
+      description: 'Kishkinda kand',
+      tags: ['वाल्मीकि रामायण', 'VALMIKI RAMAYANA'],
+      date: '2026-10-26'
     },
     {
-      id: 'disc_4',
-      title: 'श्रीमद्भगवद्गीता यथार्थ रहस्य • The Eternal Song of Consciousness',
-      youtubeId: 'mO3QZgQ6Wqg',
-      youtubeUrl: 'https://www.youtube.com/watch?v=mO3QZgQ6Wqg',
-      category: 'Bhagavad Gita',
+      id: 'disc_1793003074739',
+      title: 'Kishkindha Kand - Valmiki Ramayan series',
+      youtubeId: '1zYPxUp2zQI',
+      youtubeUrl: 'https://www.youtube.com/watch?v=1zYPxUp2zQI',
+      category: 'Valmiki Ramayana',
       speaker: 'Dhananjay Vashistha',
-      duration: '48:20',
-      description: 'An illuminating hermeneutic journey into Arjuna’s dilemma and Bhagavan Sri Krishna’s immortal instructions on Nishkama Karma.',
-      tags: ['BHAGAVAD GITA', 'SANKHYA YOGA'],
-      date: '2026-01-18'
-    },
-    {
-      id: 'disc_5',
-      title: 'माण्डूक्य उपनिषद् एवं ओम् ध्यान • Mandukya & The Silence of Turiya',
-      youtubeId: 'jfKfPfyJRdk',
-      youtubeUrl: 'https://www.youtube.com/watch?v=jfKfPfyJRdk',
-      category: 'Upanishads & Vedanta',
-      speaker: 'Dhananjay Vashistha',
-      duration: '42:35',
-      description: 'Transcending waking (Jagrat), dreaming (Svapna), and deep sleep (Susupti) into the changeless witness of Pure Consciousness.',
-      tags: ['UPANISHADS', 'VEDANTA', 'TURIYA'],
-      date: '2026-01-15'
-    },
-    {
-      id: 'disc_6',
-      title: 'श्रीमद्भागवतम् अमृत बूँदें • Bhagavatam Droplets & Divine Bhakti',
-      youtubeId: 'kxyh50aU-iU',
-      youtubeUrl: 'https://www.youtube.com/watch?v=kxyh50aU-iU',
-      category: 'Srimad Bhagavatam',
-      speaker: 'Dhananjay Vashistha',
-      duration: '36:50',
-      description: 'Nurturing the soul’s dormant devotion for the Supreme Divine through contemplative reflections from the crest-jewel of Vedic literature.',
-      tags: ['BHAGAVATAM', 'BHAKTI'],
-      date: '2026-01-12'
-    },
-    {
-      id: 'disc_7',
-      title: 'Senior Youth Training & Dharmic Leadership in Modern Times',
-      youtubeId: 'mO3QZgQ6Wqg',
-      youtubeUrl: 'https://www.youtube.com/watch?v=mO3QZgQ6Wqg',
-      category: 'Youth & Newcomers',
-      speaker: 'Dhananjay Vashistha',
-      duration: '31:40',
-      description: 'Practical application of Indian Knowledge System (IKS) principles for emotional intelligence, character development, and purpose.',
-      tags: ['YOUTH TRAINING', 'IKS', 'LEADERSHIP'],
-      date: '2026-01-10'
+      duration: '1 hr 11 min',
+      description: 'Spiritual discourse.',
+      tags: ['वाल्मीकि रामायण', 'VALMIKI RAMAYANA'],
+      date: '2026-10-26'
     }
   ];
 
   class DiscourseManager {
     constructor() {
-      this.discourses = this.loadFromStorage();
       this.categories = CATEGORIES;
       this.activeCategory = 'all';
       this.searchQuery = '';
       this.currentSort = 'default';
+      this.discourses = this.loadFromStorage();
+    }
+
+    getCanonicalCategoryId(raw) {
+      if (!raw) return 'Daily Online Reading';
+      const clean = String(raw).trim().toLowerCase();
+
+      for (const cat of this.categories) {
+        if (cat.id.toLowerCase() === clean) return cat.id;
+        if (cat.name.toLowerCase() === clean) return cat.id;
+        if (cat.hindi && cat.hindi.toLowerCase() === clean) return cat.id;
+        if (cat.tag && cat.tag.toLowerCase() === clean) return cat.id;
+        if (cat.aliases && cat.aliases.some(a => a.toLowerCase() === clean)) {
+          return cat.id;
+        }
+      }
+
+      // Keyword & Substring checks (Hindi & English)
+      if (clean.includes('चिन्तामणि') || clean.includes('चिंतामणि') || clean.includes('chintamani') || clean.includes('cintamani') || clean.includes('cintāmaṇi') || clean.includes('हरिनाम') || clean.includes('harinama') || clean.includes('hari-nama') || clean.includes('bhaktivinoda')) {
+        return 'Hari-nāma Cintāmaṇi';
+      }
+      if (clean.includes('राम') || clean.includes('ramayan') || clean.includes('किष्किन्धा') || clean.includes('किष्किंधा') || clean.includes('kishkindha') || clean.includes('kishkinda')) {
+        return 'Valmiki Ramayana';
+      }
+      if (clean.includes('गीत') || clean.includes('gita')) {
+        return 'Bhagavad Gita';
+      }
+      if (clean.includes('उपनिष') || clean.includes('वेदान्त') || clean.includes('vedanta') || clean.includes('upanishad') || clean.includes('माण्डूक्य')) {
+        return 'Upanishads & Vedanta';
+      }
+      if (clean.includes('भागवत') || clean.includes('bhagavat')) {
+        return 'Srimad Bhagavatam';
+      }
+      if (clean.includes('युवा') || clean.includes('youth') || clean.includes('संस्कार')) {
+        return 'Youth & Newcomers';
+      }
+      if (clean.includes('स्वाध्याय') || clean.includes('reading') || clean.includes('सत्संग') || clean.includes('online')) {
+        return 'Daily Online Reading';
+      }
+
+      return raw;
+    }
+
+    getCategoryDisplayName(raw) {
+      const canonical = this.getCanonicalCategoryId(raw);
+      const cat = this.categories.find(c => c.id === canonical);
+      if (cat) {
+        return `${cat.name} (${cat.hindi})`;
+      }
+      return raw || 'Spiritual Discourse';
     }
 
     loadFromStorage() {
+      let localList = [];
+      const legacyIds = new Set(['disc_1', 'disc_2', 'disc_3', 'disc_4', 'disc_5', 'disc_6', 'disc_7', 'disc_harinama_chintamani']);
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) {
           const parsed = JSON.parse(raw);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            return parsed;
+            // Filter out old demo dummy videos so only user's dashboard videos remain
+            localList = parsed.filter(d => !legacyIds.has(d.id));
           }
         }
       } catch (e) {
         console.warn('Error reading discourses from storage:', e);
       }
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_DISCOURSES));
-      return [...DEFAULT_DISCOURSES];
+
+      if (localList.length === 0) {
+        localList = [...DEFAULT_DISCOURSES];
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(localList)); } catch (e) {}
+      }
+
+      // Trigger background sync with server-side data/discourses.json
+      setTimeout(() => this.syncWithServer(), 100);
+
+      return localList;
+    }
+
+    syncWithServer() {
+      fetch('data/discourses.json?v=' + Date.now())
+        .then(res => {
+          if (!res.ok) throw new Error('Not found');
+          return res.json();
+        })
+        .then(serverDiscourses => {
+          if (Array.isArray(serverDiscourses) && serverDiscourses.length > 0) {
+            const legacyIds = new Set(['disc_1', 'disc_2', 'disc_3', 'disc_4', 'disc_5', 'disc_6', 'disc_7', 'disc_harinama_chintamani']);
+            const cleanServer = serverDiscourses.filter(d => !legacyIds.has(d.id));
+            const serverIds = new Set(cleanServer.map(d => d.id));
+            const serverTitles = new Set(cleanServer.map(d => (d.title || '').trim().toLowerCase()));
+
+            const updatedList = [...cleanServer];
+
+            // If local storage has newly added video, keep it
+            this.discourses.forEach(localD => {
+              if (legacyIds.has(localD.id)) return;
+              const titleKey = (localD.title || '').trim().toLowerCase();
+              if (!serverIds.has(localD.id) && !serverTitles.has(titleKey)) {
+                updatedList.unshift(localD);
+              }
+            });
+
+            this.discourses = updatedList;
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(this.discourses)); } catch (e) {}
+            if (document.getElementById('discourse-video-list')) {
+              this.renderVideoList('discourse-video-list');
+            }
+            if (document.getElementById('admin-discourses-tbody')) {
+              this.renderAdminTable('admin-discourses-tbody', 'admin-discourse-empty');
+            }
+          }
+        })
+        .catch(() => {});
     }
 
     saveToStorage() {
@@ -190,6 +244,15 @@
       } catch (e) {
         console.error('Failed to save discourses to storage:', e);
       }
+
+      // Persist to server disk via backend API
+      try {
+        fetch('/api/save-discourses', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(this.discourses, null, 2)
+        }).catch(() => {});
+      } catch (e) {}
     }
 
     extractYouTubeId(url) {
@@ -230,11 +293,15 @@
 
       container.innerHTML = this.categories.map(cat => {
         const isActive = this.activeCategory === cat.id;
+        const isHarinama = cat.id === 'Hari-nāma Cintāmaṇi';
+        const imgStyleAttr = cat.imgStyle ? `style="${cat.imgStyle}"` : '';
         return `
-          <div class="category-card ${isActive ? 'is-active' : ''}" 
+          <div class="category-card ${isActive ? 'is-active' : ''} ${isHarinama ? 'category-card-harinama' : ''}" 
+               data-cat="${this.escapeHtml(cat.id)}"
+               data-category-id="${this.escapeHtml(cat.id)}"
                onclick="window.discourseManager.selectCategory('${this.escapeHtml(cat.id)}')"
                title="${this.escapeHtml(cat.name)}">
-            <img src="${cat.image}" alt="${this.escapeHtml(cat.name)}" loading="lazy" onerror="this.src='assets/images/cat-daily-reading.jpg'">
+            <img src="${cat.image}" alt="${this.escapeHtml(cat.name)}" class="category-card-img" ${imgStyleAttr} loading="lazy" onerror="this.src='assets/images/cat-daily-reading.jpg'">
             <div class="category-card-overlay">
               <span class="category-card-name">${this.escapeHtml(cat.name)}</span>
               <span class="category-card-sub">${this.escapeHtml(cat.hindi)}</span>
@@ -277,9 +344,56 @@
 
       let list = [...this.discourses];
 
-      // Filter by category
+      // Filter by category with smart bidirectional and content matching
       if (this.activeCategory !== 'all') {
-        list = list.filter(d => d.category === this.activeCategory);
+        const targetCanonical = this.getCanonicalCategoryId(this.activeCategory);
+        list = list.filter(d => {
+          const itemCanonical = this.getCanonicalCategoryId(d.category);
+          if (targetCanonical && itemCanonical && targetCanonical === itemCanonical) {
+            return true;
+          }
+
+          const catStr = (d.category || '').toLowerCase();
+          const actStr = this.activeCategory.toLowerCase();
+          if (catStr === actStr || catStr.includes(actStr) || actStr.includes(catStr)) {
+            return true;
+          }
+
+          // Check if category definition matches
+          const catDef = this.categories.find(c => c.id === targetCanonical);
+          if (catDef) {
+            if (catDef.aliases && catDef.aliases.some(a => catStr.includes(a.toLowerCase()) || a.toLowerCase().includes(catStr))) {
+              return true;
+            }
+            if (catDef.name.toLowerCase().includes(catStr) || (catDef.hindi && catDef.hindi.toLowerCase().includes(catStr))) {
+              return true;
+            }
+          }
+
+          // Also check title or tags for Ramayana/Gita/Bhagavatam/etc.
+          const titleStr = (d.title || '').toLowerCase();
+          const descStr = (d.description || '').toLowerCase();
+          const tagStr = (d.tags || []).join(' ').toLowerCase();
+          const fullContent = `${titleStr} ${descStr} ${tagStr}`;
+
+          if (targetCanonical === 'Hari-nāma Cintāmaṇi' && (fullContent.includes('chintamani') || fullContent.includes('cintamani') || fullContent.includes('cintāmaṇi') || fullContent.includes('चिन्तामणि') || fullContent.includes('चिंतामणि') || fullContent.includes('harinama') || fullContent.includes('हरिनाम') || fullContent.includes('bhaktivinoda'))) {
+            return true;
+          }
+          if (targetCanonical === 'Valmiki Ramayana' && (fullContent.includes('ramayan') || fullContent.includes('रामायण') || fullContent.includes('किष्किन्धा') || fullContent.includes('किष्किंधा') || fullContent.includes('kishkindha') || fullContent.includes('kishkinda'))) {
+            return true;
+          }
+          if (targetCanonical === 'Bhagavad Gita' && (fullContent.includes('gita') || fullContent.includes('गीता'))) {
+            return true;
+          }
+          if (targetCanonical === 'Srimad Bhagavatam' && (fullContent.includes('bhagavat') || fullContent.includes('भागवत'))) {
+            return true;
+          }
+          if (targetCanonical === 'Upanishads & Vedanta' && (fullContent.includes('upanishad') || fullContent.includes('उपनिष') || fullContent.includes('vedanta') || fullContent.includes('वेदान्त'))) {
+            return true;
+          }
+
+          return false;
+        });
       }
 
       // Filter by search query
@@ -396,9 +510,12 @@
       const chipWrap = document.getElementById('active-category-chip-wrap');
       if (chipWrap) {
         if (this.activeCategory !== 'all') {
+          const canonical = this.getCanonicalCategoryId(this.activeCategory);
+          const catObj = this.categories.find(c => c.id === canonical);
+          const displayLabel = catObj ? `${catObj.name} • ${catObj.hindi}` : this.activeCategory;
           chipWrap.innerHTML = `
             <span class="active-filter-chip">
-              <span>Category: <strong>${this.escapeHtml(this.activeCategory)}</strong></span>
+              <span>Category: <strong>${this.escapeHtml(displayLabel)}</strong></span>
               <button onclick="window.discourseManager.selectCategory('all')" title="Clear filter">&times;</button>
             </span>
           `;
@@ -531,16 +648,28 @@
         throw new Error('कृपया प्रवचन का शीर्षक (Title) दर्ज करें।');
       }
 
+      const canonicalCat = this.getCanonicalCategoryId(category);
+      const catObj = this.categories.find(c => c.id === canonicalCat);
+      const displayCategory = catObj ? catObj.name : (category ? category.trim() : 'Daily Online Reading');
+
+      let finalSpeaker = (speaker && speaker.trim()) ? speaker.trim() : '';
+      if (!finalSpeaker) {
+        finalSpeaker = (canonicalCat === 'Hari-nāma Cintāmaṇi') ? 'HG Vraj Kishor Das' : 'Dhananjay Vashistha';
+      }
+
       const newDiscourse = {
         id: 'disc_' + Date.now(),
         title: title.trim(),
         youtubeId: ytId,
         youtubeUrl: `https://www.youtube.com/watch?v=${ytId}`,
-        category: (category && category.trim()) ? category.trim() : 'Daily Online Reading',
-        speaker: speaker || 'Dhananjay Vashistha',
+        category: displayCategory,
+        speaker: finalSpeaker,
         duration: duration ? duration.trim() : 'Video Discourse',
         description: description ? description.trim() : 'Spiritual discourse.',
-        tags: tags || [(category && category.trim()) ? category.trim().toUpperCase() : 'VEDIC DISCOURSE'],
+        tags: tags || [
+          canonicalCat.toUpperCase(),
+          (category && category.trim()) ? category.trim().toUpperCase() : 'VEDIC DISCOURSE'
+        ],
         date: new Date().toISOString().split('T')[0]
       };
 
@@ -585,7 +714,7 @@
               </div>
             </td>
             <td>
-              <span class="video-tag-pill" style="font-size: 0.72rem; padding: 0.2rem 0.6rem;">${this.escapeHtml(d.category)}</span>
+              <span class="video-tag-pill" style="font-size: 0.72rem; padding: 0.2rem 0.6rem;">${this.escapeHtml(this.getCategoryDisplayName(d.category))}</span>
             </td>
             <td style="color: #fed7aa; font-size: 0.85rem; font-weight: 600;">
               ${this.escapeHtml(d.speaker || 'Dhananjay Vashistha')}
@@ -625,6 +754,32 @@
   window.discourseManager = new DiscourseManager();
 
   // Admin Window Helpers
+  window.handleSpeakerChange = function (val) {
+    const customInp = document.getElementById('new-discourse-custom-speaker');
+    if (customInp) {
+      if (val === 'custom') {
+        customInp.style.display = 'block';
+        customInp.focus();
+      } else {
+        customInp.style.display = 'none';
+      }
+    }
+  };
+
+  window.handleDiscourseCategoryChange = function (catVal) {
+    const speakerSel = document.getElementById('new-discourse-speaker');
+    const customInp = document.getElementById('new-discourse-custom-speaker');
+    if (!speakerSel) return;
+
+    if (catVal === 'Hari-nāma Cintāmaṇi') {
+      speakerSel.value = 'HG Vraj Kishor Das';
+      if (customInp) customInp.style.display = 'none';
+    } else if (catVal === 'Valmiki Ramayana') {
+      speakerSel.value = 'Dhananjay Vashistha';
+      if (customInp) customInp.style.display = 'none';
+    }
+  };
+
   window.adminOpenAddDiscourseModal = function () {
     const modal = document.getElementById('admin-add-discourse-modal');
     if (modal) {
@@ -632,6 +787,12 @@
       modal.style.display = 'flex';
       modal.style.opacity = '1';
       modal.style.pointerEvents = 'auto';
+
+      // Set initial speaker according to current category
+      const catSel = document.getElementById('new-discourse-category');
+      if (catSel) {
+        window.handleDiscourseCategoryChange(catSel.value);
+      }
     }
   };
 
@@ -645,6 +806,8 @@
     }
     const form = document.getElementById('admin-add-discourse-form');
     if (form) form.reset();
+    const customInp = document.getElementById('new-discourse-custom-speaker');
+    if (customInp) customInp.style.display = 'none';
   };
 
   window.adminHandleAddDiscourse = function (e) {
@@ -654,14 +817,22 @@
     const titleInput = document.getElementById('new-discourse-title');
     const categoryInput = document.getElementById('new-discourse-category');
     const durationInput = document.getElementById('new-discourse-duration');
-    const speakerInput = document.getElementById('new-discourse-speaker');
+    const speakerSelect = document.getElementById('new-discourse-speaker');
+    const customSpeakerInput = document.getElementById('new-discourse-custom-speaker');
     const descInput = document.getElementById('new-discourse-desc');
 
     const url = urlInput ? urlInput.value.trim() : '';
     const title = titleInput ? titleInput.value.trim() : '';
     const category = categoryInput ? categoryInput.value.trim() : 'Daily Online Reading';
     const duration = durationInput ? durationInput.value.trim() : 'Discourse';
-    const speaker = speakerInput ? speakerInput.value.trim() : 'Dhananjay Vashistha';
+    
+    let speaker = speakerSelect ? speakerSelect.value.trim() : '';
+    if (speaker === 'custom' && customSpeakerInput && customSpeakerInput.value.trim()) {
+      speaker = customSpeakerInput.value.trim();
+    } else if (!speaker || speaker === 'custom') {
+      speaker = (category === 'Hari-nāma Cintāmaṇi') ? 'HG Vraj Kishor Das' : 'Dhananjay Vashistha';
+    }
+
     const description = descInput ? descInput.value.trim() : 'Spiritual discourse.';
 
     if (!url) {
@@ -688,9 +859,9 @@
       window.discourseManager.renderAdminTable('admin-discourses-tbody', 'admin-discourse-empty');
 
       if (window.showToast) {
-        window.showToast(`प्रवचन सफलतापूर्वक जोड़ा गया: "${added.title}"`, 'success');
+        window.showToast(`प्रवचन सफलतापूर्वक जोड़ा गया: "${added.title}" (${added.speaker})`, 'success');
       } else {
-        alert('प्रवचन सफलतापूर्वक वेबसाइट पर जोड़ दिया गया है!');
+        alert(`प्रवचन सफलतापूर्वक जोड़ दिया गया है!\nवक्ता: ${added.speaker}`);
       }
     } catch (err) {
       alert(err.message || 'वीडियो जोड़ने में त्रुटि हुई। कृपया लिंक जांचें।');
@@ -744,6 +915,24 @@
         window.discourseManager.setSort(e.target.value);
       });
     }
+
+    // Instant cross-tab real-time sync between Admin Dashboard & Website
+    window.addEventListener('storage', (e) => {
+      if (e.key === STORAGE_KEY && e.newValue) {
+        try {
+          const parsed = JSON.parse(e.newValue);
+          if (Array.isArray(parsed)) {
+            window.discourseManager.discourses = parsed;
+            if (document.getElementById('discourse-video-list')) {
+              window.discourseManager.renderVideoList('discourse-video-list');
+            }
+            if (document.getElementById('admin-discourses-tbody')) {
+              window.discourseManager.renderAdminTable('admin-discourses-tbody', 'admin-discourse-empty');
+            }
+          }
+        } catch (err) {}
+      }
+    });
   }
 
   if (document.readyState === 'loading') {

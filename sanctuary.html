@@ -96,6 +96,7 @@
               <span class="dropdown-chevron">▼</span>
             </a>
             <ul class="dropdown-menu" aria-label="Social Action Submenu">
+              <li><a href="quiz.html" class="dropdown-item" style="color: var(--gold-light); font-weight: 700;">🏆 Vedic Wisdom Quizzes</a></li>
               <li><a href="index.html#arts-culture" class="dropdown-item">Ramayana Awareness Programs</a></li>
               <li><a href="index.html#arts-culture" class="dropdown-item">Book Publications & Granthas</a></li>
               <li><a href="about-the-speaker.html#speaker-initiatives" class="dropdown-item">Indian Knowledge System (IKS)</a></li>
@@ -294,6 +295,23 @@
             </div>
           </div>
 
+          <!-- Vedic Quiz Achievements & Scorecard -->
+          <div class="sacred-card" id="seeker-quiz-section">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.75rem;">
+              <div>
+                <h3 class="font-cinzel" style="font-size: 1.35rem; color: #fff;">🏆 मेरी ज्ञान परीक्षा उपलब्धियां (My Vedic Quiz Scorecard)</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Track all your completed scriptural tests and examination performance.</p>
+              </div>
+              <a href="quiz.html" class="btn btn-outline btn-sm">
+                <span>➕ Take More Quizzes</span>
+              </a>
+            </div>
+
+            <div id="seeker-quiz-history-container">
+              <!-- Dynamically rendered by js/quiz.js -->
+            </div>
+          </div>
+
           <!-- Saved Contemplations & Scripture Notes -->
           <div class="sacred-card">
             <h3 class="font-cinzel" style="font-size: 1.35rem; color: #fff; margin-bottom: 0.5rem;">Saved Contemplations Vault</h3>
@@ -339,10 +357,11 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-config.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/sound.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/spiritual-3d.js"></script>
+  <script src="js/auth.js?v=5.2"></script>
+  <script src="js/sound.js?v=5.2"></script>
+  <script src="js/quiz.js?v=5.2"></script>
+  <script src="js/main.js?v=5.2"></script>
+  <script src="js/spiritual-3d.js?v=5.2"></script>
   <script>
     // Tibetan Singing Bowl Chime Synthesizer using Web Audio API
     function strikeTibetanBell() {

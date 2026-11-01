@@ -106,6 +106,146 @@ try {
                 continue
             }
 
+            # Save live class notice endpoint
+            if ($rawUrl -eq "/api/save-notice" -and $req.HttpMethod -eq "POST") {
+                try {
+                    $reader = New-Object System.IO.StreamReader($req.InputStream, [System.Text.Encoding]::UTF8)
+                    $body = $reader.ReadToEnd()
+                    $reader.Close()
+
+                    $noticeFile = Join-Path $baseDir "data\class-notice.json"
+                    $dataDir = Join-Path $baseDir "data"
+                    if (-not (Test-Path $dataDir)) { New-Item -ItemType Directory -Path $dataDir -Force | Out-Null }
+                    [System.IO.File]::WriteAllText($noticeFile, $body, [System.Text.Encoding]::UTF8)
+
+                    $respJson = '{"success":true,"message":"Notice saved successfully"}'
+                    $res.StatusCode = 200
+                } catch {
+                    $respJson = '{"success":false,"error":"' + $_.Exception.Message.Replace('"', '\"') + '"}'
+                    $res.StatusCode = 500
+                }
+
+                $bytes = [System.Text.Encoding]::UTF8.GetBytes($respJson)
+                $res.ContentType = "application/json; charset=utf-8"
+                $res.Headers.Add("Cache-Control", "no-cache")
+                $res.ContentLength64 = $bytes.Length
+                $res.OutputStream.Write($bytes, 0, $bytes.Length)
+                $res.OutputStream.Close()
+                continue
+            }
+
+            # Save notifications list endpoint
+            if ($rawUrl -eq "/api/save-notifications" -and $req.HttpMethod -eq "POST") {
+                try {
+                    $reader = New-Object System.IO.StreamReader($req.InputStream, [System.Text.Encoding]::UTF8)
+                    $body = $reader.ReadToEnd()
+                    $reader.Close()
+
+                    $notifFile = Join-Path $baseDir "data\notifications.json"
+                    $dataDir = Join-Path $baseDir "data"
+                    if (-not (Test-Path $dataDir)) { New-Item -ItemType Directory -Path $dataDir -Force | Out-Null }
+                    [System.IO.File]::WriteAllText($notifFile, $body, [System.Text.Encoding]::UTF8)
+
+                    $respJson = '{"success":true,"message":"Notifications saved successfully"}'
+                    $res.StatusCode = 200
+                } catch {
+                    $respJson = '{"success":false,"error":"' + $_.Exception.Message.Replace('"', '\"') + '"}'
+                    $res.StatusCode = 500
+                }
+
+                $bytes = [System.Text.Encoding]::UTF8.GetBytes($respJson)
+                $res.ContentType = "application/json; charset=utf-8"
+                $res.Headers.Add("Cache-Control", "no-cache")
+                $res.ContentLength64 = $bytes.Length
+                $res.OutputStream.Write($bytes, 0, $bytes.Length)
+                $res.OutputStream.Close()
+                continue
+            }
+
+            # Save discourses list endpoint
+            if ($rawUrl -eq "/api/save-discourses" -and $req.HttpMethod -eq "POST") {
+                try {
+                    $reader = New-Object System.IO.StreamReader($req.InputStream, [System.Text.Encoding]::UTF8)
+                    $body = $reader.ReadToEnd()
+                    $reader.Close()
+
+                    $discFile = Join-Path $baseDir "data\discourses.json"
+                    $dataDir = Join-Path $baseDir "data"
+                    if (-not (Test-Path $dataDir)) { New-Item -ItemType Directory -Path $dataDir -Force | Out-Null }
+                    [System.IO.File]::WriteAllText($discFile, $body, [System.Text.Encoding]::UTF8)
+
+                    $respJson = '{"success":true,"message":"Discourses saved successfully"}'
+                    $res.StatusCode = 200
+                } catch {
+                    $respJson = '{"success":false,"error":"' + $_.Exception.Message.Replace('"', '\"') + '"}'
+                    $res.StatusCode = 500
+                }
+
+                $bytes = [System.Text.Encoding]::UTF8.GetBytes($respJson)
+                $res.ContentType = "application/json; charset=utf-8"
+                $res.Headers.Add("Cache-Control", "no-cache")
+                $res.ContentLength64 = $bytes.Length
+                $res.OutputStream.Write($bytes, 0, $bytes.Length)
+                $res.OutputStream.Close()
+                continue
+            }
+
+            # Save quizzes list endpoint
+            if ($rawUrl -eq "/api/save-quizzes" -and $req.HttpMethod -eq "POST") {
+                try {
+                    $reader = New-Object System.IO.StreamReader($req.InputStream, [System.Text.Encoding]::UTF8)
+                    $body = $reader.ReadToEnd()
+                    $reader.Close()
+
+                    $quizFile = Join-Path $baseDir "data\quizzes.json"
+                    $dataDir = Join-Path $baseDir "data"
+                    if (-not (Test-Path $dataDir)) { New-Item -ItemType Directory -Path $dataDir -Force | Out-Null }
+                    [System.IO.File]::WriteAllText($quizFile, $body, [System.Text.Encoding]::UTF8)
+
+                    $respJson = '{"success":true,"message":"Quizzes saved successfully"}'
+                    $res.StatusCode = 200
+                } catch {
+                    $respJson = '{"success":false,"error":"' + $_.Exception.Message.Replace('"', '\"') + '"}'
+                    $res.StatusCode = 500
+                }
+
+                $bytes = [System.Text.Encoding]::UTF8.GetBytes($respJson)
+                $res.ContentType = "application/json; charset=utf-8"
+                $res.Headers.Add("Cache-Control", "no-cache")
+                $res.ContentLength64 = $bytes.Length
+                $res.OutputStream.Write($bytes, 0, $bytes.Length)
+                $res.OutputStream.Close()
+                continue
+            }
+
+            # Save quiz results endpoint
+            if ($rawUrl -eq "/api/save-quiz-results" -and $req.HttpMethod -eq "POST") {
+                try {
+                    $reader = New-Object System.IO.StreamReader($req.InputStream, [System.Text.Encoding]::UTF8)
+                    $body = $reader.ReadToEnd()
+                    $reader.Close()
+
+                    $resFile = Join-Path $baseDir "data\quiz-results.json"
+                    $dataDir = Join-Path $baseDir "data"
+                    if (-not (Test-Path $dataDir)) { New-Item -ItemType Directory -Path $dataDir -Force | Out-Null }
+                    [System.IO.File]::WriteAllText($resFile, $body, [System.Text.Encoding]::UTF8)
+
+                    $respJson = '{"success":true,"message":"Quiz results saved successfully"}'
+                    $res.StatusCode = 200
+                } catch {
+                    $respJson = '{"success":false,"error":"' + $_.Exception.Message.Replace('"', '\"') + '"}'
+                    $res.StatusCode = 500
+                }
+
+                $bytes = [System.Text.Encoding]::UTF8.GetBytes($respJson)
+                $res.ContentType = "application/json; charset=utf-8"
+                $res.Headers.Add("Cache-Control", "no-cache")
+                $res.ContentLength64 = $bytes.Length
+                $res.OutputStream.Write($bytes, 0, $bytes.Length)
+                $res.OutputStream.Close()
+                continue
+            }
+
             $relPath = $rawUrl.TrimStart('/').Replace('/', [System.IO.Path]::DirectorySeparatorChar)
             $filePath = Join-Path $baseDir $relPath
 

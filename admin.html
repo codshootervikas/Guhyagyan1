@@ -19,8 +19,8 @@
     rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css?v=4.6">
-  <link rel="stylesheet" href="css/admin.css?v=4.6">
+  <link rel="stylesheet" href="css/style.css?v=5.3">
+  <link rel="stylesheet" href="css/admin.css?v=5.3">
 
   <!-- Supabase Client CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -49,6 +49,7 @@
           <li><a href="about-the-speaker.html" class="nav-link">About the Speaker</a></li>
           <li><a href="index.html#harinama-chintamani" class="nav-link">Live Class</a></li>
           <li><a href="sanctuary.html" class="nav-link">Seeker Portal</a></li>
+          <li><a href="quiz.html" class="nav-link">Vedic Quizzes</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
           <li><a href="admin.html" class="nav-link active">Admin Dashboard</a></li>
         </ul>
@@ -69,161 +70,114 @@
     <div class="container">
       
       <!-- Top Title Bar -->
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1.5rem;">
         <div>
-          <div class="sanskrit-subtitle" style="justify-content: flex-start;">साधक नामावली • Seeker Directory & Oversight</div>
-          <h1 class="font-cinzel" style="font-size: clamp(2.1rem, 4vw, 2.85rem); line-height: 1.15; margin-bottom: 0.5rem;">
-            Admin <span class="gold-gradient-text">Sanctum Dashboard</span>
+          <div class="sanskrit-subtitle" style="justify-content: flex-start;">परम प्रबंधन संकुल • Master Executive Sanctuary</div>
+          <h1 class="font-cinzel" style="font-size: clamp(2rem, 3.8vw, 2.75rem); line-height: 1.15; margin-bottom: 0.45rem;">
+            Master Admin <span class="gold-gradient-text">Oversight Sanctum</span>
           </h1>
-          <p style="color: var(--text-secondary); font-size: 1rem; max-width: 650px;">
-            Full administrative overview of all initiated seekers, sadhana metrics, cloud synchronization state, and directory vault records.
+          <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 680px;">
+            Unified command console for initiated seekers, spiritual discourses, Vedic examination results, and real-time live class broadcasts.
           </p>
         </div>
 
         <div class="admin-header-actions">
-          <button class="btn btn-outline btn-sm" id="admin-refresh-btn" title="Refresh Seeker Records">
+          <button class="btn btn-outline btn-sm" id="admin-refresh-btn" onclick="window.adminDashboard.loadAllUsers(); window.updateAdminGlobalStats();" title="Refresh Seeker Records">
             <span>🔄 Refresh Data</span>
           </button>
           <button class="btn btn-outline btn-sm" id="admin-export-csv-btn" title="Download CSV Spreadsheet">
-            <span>📊 Export CSV</span>
+            <span>📊 Export Seekers</span>
           </button>
           <button class="btn btn-primary btn-sm" id="admin-add-seeker-btn">
-            <span>➕ Initiate New Seeker</span>
+            <span>➕ Initiate Seeker</span>
           </button>
         </div>
       </div>
 
-      <!-- Stats Grid -->
+      <!-- 5-Column Executive Metric Cards Grid -->
       <div class="admin-stats-grid">
         <div class="admin-stat-card">
           <div class="admin-stat-header">
-            <span class="admin-stat-label">Total Registered Seekers</span>
+            <span class="admin-stat-label">Registered Seekers</span>
             <div class="admin-stat-icon">👥</div>
           </div>
           <div class="admin-stat-value" id="stat-total-users">0</div>
-          <div class="admin-stat-sub">Initiated accounts across all platforms</div>
+          <div class="admin-stat-sub">Initiated sacred accounts</div>
         </div>
 
         <div class="admin-stat-card">
           <div class="admin-stat-header">
-            <span class="admin-stat-label">Cloud Synchronized</span>
-            <div class="admin-stat-icon">☁️</div>
+            <span class="admin-stat-label">Video Discourses</span>
+            <div class="admin-stat-icon">🎥</div>
           </div>
-          <div class="admin-stat-value" id="stat-cloud-users" style="color: #7dd3fc;">0</div>
-          <div class="admin-stat-sub">Supabase live cloud authentication</div>
+          <div class="admin-stat-value" id="stat-total-discourses" style="color: #f59e0b;">0</div>
+          <div class="admin-stat-sub">Published to video library</div>
         </div>
 
         <div class="admin-stat-card">
           <div class="admin-stat-header">
-            <span class="admin-stat-label">Active Sadhakas</span>
-            <div class="admin-stat-icon">🔥</div>
+            <span class="admin-stat-label">Vedic Quizzes</span>
+            <div class="admin-stat-icon">🏆</div>
           </div>
-          <div class="admin-stat-value" id="stat-active-sadhakas" style="color: #f59e0b;">0</div>
-          <div class="admin-stat-sub">Sadhakas actively tracking sadhana streak</div>
+          <div class="admin-stat-value" id="stat-total-quizzes" style="color: #86efac;">3</div>
+          <div class="admin-stat-sub">Active scriptural tests</div>
         </div>
 
         <div class="admin-stat-card">
           <div class="admin-stat-header">
-            <span class="admin-stat-label">Average Sadhana Streak</span>
-            <div class="admin-stat-icon">🪷</div>
+            <span class="admin-stat-label">Exam Submissions</span>
+            <div class="admin-stat-icon">📑</div>
           </div>
-          <div class="admin-stat-value" id="stat-avg-streak" style="color: var(--gold-light);">0</div>
-          <div class="admin-stat-sub">Continuous daily meditation average</div>
+          <div class="admin-stat-value" id="stat-total-submissions" style="color: #7dd3fc;">0</div>
+          <div class="admin-stat-sub">Seekers evaluated</div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="admin-stat-header">
+            <span class="admin-stat-label">Live Broadcast</span>
+            <div class="admin-stat-icon">📢</div>
+          </div>
+          <div class="admin-stat-value" id="stat-live-status" style="font-size: 1.45rem; color: #86efac; margin-top: 0.35rem;">
+            Active ●
+          </div>
+          <div class="admin-stat-sub">Class running normally</div>
         </div>
       </div>
 
-      <!-- ================= Live Class Notice & Cancellation Manager ================= -->
-      <div class="admin-panel" id="admin-class-notice-panel" style="margin-bottom: 2.5rem; border: 1.5px solid var(--border-gold);">
-        <div class="admin-panel-header" style="flex-wrap: wrap; gap: 1rem; align-items: flex-start; justify-content: space-between;">
-          <div>
-            <div style="display: flex; align-items: center; gap: 0.6rem;">
-              <span style="font-size: 1.5rem;">📢</span>
-              <h2 class="admin-panel-title font-cinzel" style="margin: 0;">Live Class Notice & Cancellation Manager</h2>
-            </div>
-            <p class="admin-panel-desc" style="margin-top: 0.35rem;">
-              Agar aaj class cancel ya reschedule karni ho, toh yahan se 1-click mein poori website par notice broadcast karein.
-            </p>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <span style="font-size: 0.82rem; color: var(--text-secondary);">Current Status:</span>
-            <span class="class-pill pill-live-status" id="admin-notice-current-status-pill">
-              <span class="live-beacon-pulse"></span>
-              <span id="admin-notice-status-label">Class Active as Scheduled</span>
-            </span>
-          </div>
-        </div>
-
-        <!-- 1-Click Quick Preset Buttons -->
-        <div style="background: rgba(20, 8, 3, 0.6); padding: 1rem; border-radius: 12px; border: 1px solid rgba(245, 158, 11, 0.2); margin-bottom: 1.5rem;">
-          <div style="font-size: 0.8rem; font-weight: 700; color: var(--gold-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.65rem;">
-            ⚡ Quick 1-Click Presets:
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.65rem;">
-            <button type="button" class="btn btn-sm btn-danger" onclick="window.setNoticePreset('cancelled')">
-              <span>⚠️ Cancel Today's Class (आज की क्लास कैंसिल करें)</span>
-            </button>
-            <button type="button" class="btn btn-sm btn-outline" onclick="window.setNoticePreset('rescheduled')">
-              <span>⏰ Reschedule to 9:00 PM (समय बदलें)</span>
-            </button>
-            <button type="button" class="btn btn-sm btn-ghost" onclick="window.setNoticePreset('active')" style="color: #86efac; border: 1px solid rgba(34, 197, 94, 0.4);">
-              <span>✅ Reset to Normal (क्लास चालू रखें)</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Notice Form -->
-        <form id="admin-class-notice-form" onsubmit="window.saveClassNotice(event)">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
-            <div>
-              <label class="form-label" for="notice-status-select">Class Broadcast Status</label>
-              <select class="admin-select" id="notice-status-select" style="width: 100%;" onchange="window.updateNoticePreview()">
-                <option value="active">✅ Normal Schedule (Class Active)</option>
-                <option value="cancelled">⚠️ Cancelled Today (आज क्लास रद्द है)</option>
-                <option value="rescheduled">⏰ Rescheduled / Time Changed (समय बदला है)</option>
-                <option value="special">🪔 Special Satsang Announcement</option>
-              </select>
-            </div>
-            <div>
-              <label class="form-label" for="notice-title-input">Notice Heading / Banner Title</label>
-              <input type="text" class="form-input" id="notice-title-input" placeholder="e.g. Today's Live Class is Cancelled / Postponed" required oninput="window.updateNoticePreview()">
-            </div>
-          </div>
-
-          <div style="margin-bottom: 1.25rem;">
-            <label class="form-label" for="notice-message-textarea">Detailed Explanation Message (Bhakton ke liye sandesh)</label>
-            <textarea class="form-input" id="notice-message-textarea" rows="3" placeholder="Priya Bhakton, kripya dhyan dein: Aaj shaam 8:30 PM ki 'Harinama Chintamani' live class anivarya kaaranon se cancel rahegi..." required oninput="window.updateNoticePreview()"></textarea>
-          </div>
-
-          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.25rem; align-items: flex-end; margin-bottom: 1.5rem;">
-            <div>
-              <label class="form-label" for="notice-resumes-input">Next Session Resumes At (Agli class kab hogi)</label>
-              <input type="text" class="form-input" id="notice-resumes-input" placeholder="e.g. Tomorrow at 8:30 PM – 9:00 PM IST" oninput="window.updateNoticePreview()">
-            </div>
-            <div>
-              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="btn-save-notice">
-                <span>💾 Save & Broadcast Live</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Live Notice Preview Box in Admin -->
-          <div style="background: rgba(18, 6, 2, 0.7); border: 1px dashed rgba(245, 158, 11, 0.35); border-radius: 12px; padding: 1rem;">
-            <div style="font-size: 0.76rem; color: var(--gold-light); font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem;">
-              👁️ Website Live Preview (Visitors ko kaisa dikhega):
-            </div>
-            <div id="admin-notice-live-preview" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
-              Currently, class is running normally as scheduled.
-            </div>
-          </div>
-        </form>
+      <!-- Interactive Module Navigation Tab Bar -->
+      <div class="admin-module-nav-bar" id="admin-module-nav-bar">
+        <button class="admin-nav-tab active" data-target="all" onclick="window.switchAdminTab('all')">
+          <span>🗂️ All Modules (पूर्ण दृश्य)</span>
+        </button>
+        <button class="admin-nav-tab" data-target="seekers" onclick="window.switchAdminTab('seekers')">
+          <span>👥 Seekers Vault</span>
+          <span class="admin-nav-tab-badge" id="tab-count-seekers">0</span>
+        </button>
+        <button class="admin-nav-tab" data-target="discourses" onclick="window.switchAdminTab('discourses')">
+          <span>🎥 Video Discourses</span>
+          <span class="admin-nav-tab-badge" id="tab-count-discourses">0</span>
+        </button>
+        <button class="admin-nav-tab" data-target="quizzes" onclick="window.switchAdminTab('quizzes')">
+          <span>🏆 Vedic Quizzes &amp; Marksheet</span>
+          <span class="admin-nav-tab-badge" id="tab-count-quizzes">0</span>
+        </button>
+        <button class="admin-nav-tab" data-target="broadcast" onclick="window.switchAdminTab('broadcast')">
+          <span>📢 Class Notice &amp; Bell Updates</span>
+        </button>
       </div>
 
-      <!-- User Directory Panel -->
-      <div class="admin-panel">
-        <div class="admin-panel-header">
+      <!-- ================= Section 1: Seeker Directory Vault ================= -->
+      <div class="admin-panel" id="admin-seekers-panel" style="margin-bottom: 3rem;">
+        <div class="admin-panel-header" style="flex-wrap: wrap; gap: 1rem; align-items: flex-end;">
           <div>
+            <div class="sanskrit-subtitle" style="justify-content: flex-start; margin-bottom: 0.35rem;">साधक संकुल • Seeker Vault</div>
             <h2 class="admin-panel-title font-cinzel">Initiated Seeker Directory</h2>
             <p class="admin-panel-desc" id="filtered-count-display">Showing all seekers registered in Guhya Gyan Foundation</p>
+          </div>
+          <div>
+            <button class="btn btn-primary btn-sm" onclick="window.adminDashboard.openAddUserModal()">
+              <span>➕ Add Seeker</span>
+            </button>
           </div>
         </div>
 
@@ -257,14 +211,14 @@
           <table class="admin-table">
             <thead>
               <tr>
-                <th>Seeker Profile</th>
-                <th>Credentials & ID</th>
+                <th style="min-width: 180px;">Seeker Profile</th>
+                <th style="min-width: 170px;">Credentials &amp; ID</th>
                 <th>Spiritual Path</th>
                 <th>Level</th>
                 <th>Streak</th>
                 <th>Initiated</th>
                 <th>Source</th>
-                <th>Actions</th>
+                <th style="text-align: right; min-width: 130px;">Actions</th>
               </tr>
             </thead>
             <tbody id="admin-users-tbody">
@@ -281,12 +235,12 @@
         </div>
       </div>
 
-      <!-- ================= Spiritual Discourse by Dhananjay Vashistha Panel ================= -->
-      <div class="admin-panel" id="admin-discourse-panel" style="margin-top: 3.5rem;">
+      <!-- ================= Section 2: Spiritual Discourses Management Panel ================= -->
+      <div class="admin-panel" id="admin-discourse-panel" style="margin-bottom: 3rem;">
         <div class="admin-panel-header" style="flex-wrap: wrap; gap: 1rem; align-items: flex-end;">
           <div>
             <div class="sanskrit-subtitle" style="justify-content: flex-start; margin-bottom: 0.35rem;">प्रवचन प्रबंधन • Sacred Discourses</div>
-            <h2 class="admin-panel-title font-cinzel">Spiritual Discourse by <span class="gold-gradient-text">Dhananjay Vashistha</span></h2>
+            <h2 class="admin-panel-title font-cinzel">Spiritual Discourses • <span class="gold-gradient-text">Dhananjay Vashistha &amp; HG Vraj Kishor Das</span></h2>
             <p class="admin-panel-desc">Manage video discourses for the website. Add links from @guhyagyan and they appear live in the 3D card view immediately.</p>
           </div>
           <div>
@@ -302,12 +256,12 @@
             <thead>
               <tr>
                 <th style="width: 120px;">Thumbnail</th>
-                <th>Discourse Title</th>
+                <th style="min-width: 250px;">Discourse Title</th>
                 <th>Category</th>
                 <th>Speaker</th>
                 <th>Duration</th>
                 <th>Published</th>
-                <th style="text-align: right;">Actions</th>
+                <th style="text-align: right; min-width: 140px;">Actions</th>
               </tr>
             </thead>
             <tbody id="admin-discourses-tbody">
@@ -317,9 +271,227 @@
           <div class="admin-empty-state" id="admin-discourse-empty" style="display: none;">
             <div class="admin-empty-icon">🪷</div>
             <h3 class="font-cinzel" style="color: #fff; margin-bottom: 0.5rem;">No Discourses Published Yet</h3>
-            <p style="font-size: 0.9rem;">Click "Add Spiritual Discourse" to publish your first discourse by Dhananjay Vashistha.</p>
+            <p style="font-size: 0.9rem;">Click "Add Spiritual Discourse" to publish your first discourse.</p>
           </div>
         </div>
+      </div>
+
+      <!-- ================= Section 3: Vedic Quiz Management & Seeker Results Panel ================= -->
+      <div class="admin-panel" id="admin-quiz-panel" style="margin-bottom: 3rem;">
+        <div class="admin-panel-header" style="flex-wrap: wrap; gap: 1rem; align-items: flex-end;">
+          <div>
+            <div class="sanskrit-subtitle" style="justify-content: flex-start; margin-bottom: 0.35rem;">परीक्षा प्रबंधन • Vedic Examination Oversight</div>
+            <h2 class="admin-panel-title font-cinzel">Vedic Quiz Management &amp; <span class="gold-gradient-text">Seeker Results</span></h2>
+            <p class="admin-panel-desc">Manage online tests on Ramayana, Gita, and Harinama Chintamani. Review marks and detailed answers of every initiated seeker.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn btn-outline btn-sm" onclick="window.quizEngine.exportSubmissionsCSV()" title="Export all marks to CSV">
+              <span>📊 Export Results CSV</span>
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="window.adminOpenCreateQuizModal()">
+              <span>➕ Create New Quiz</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Bar for Quiz Submissions -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; background: rgba(0,0,0,0.25); padding: 1rem 1.25rem; border-radius: 14px; border: 1px solid var(--border-subtle);">
+          <div style="display: flex; gap: 1rem; align-items: center; flex: 1; min-width: 280px;">
+            <input type="text" id="admin-quiz-search" placeholder="Search submissions by seeker name or email..." class="form-input" style="background: rgba(14, 5, 2, 0.9); margin: 0; font-size: 0.85rem;" oninput="window.adminFilterQuizSubmissions()">
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span class="recordings-count-badge" id="admin-quiz-submissions-count">0 Submissions</span>
+          </div>
+        </div>
+
+        <!-- Seeker Submissions Table -->
+        <h3 class="font-cinzel" style="font-size: 1.15rem; color: #fff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span>📑</span>
+          <span>All Seeker Examination Submissions (सभी साधकों के परीक्षा परिणाम)</span>
+        </h3>
+        <div class="admin-table-container" style="margin-bottom: 2.5rem;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th style="min-width: 170px;">Seeker Name</th>
+                <th style="min-width: 160px;">Email / ID</th>
+                <th style="min-width: 220px;">Quiz Title</th>
+                <th>Score</th>
+                <th>Status</th>
+                <th>Submitted Date</th>
+                <th style="text-align: right; min-width: 140px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-quiz-submissions-tbody">
+              <!-- Dynamically populated by js/quiz.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Active Quizzes Management Table -->
+        <h3 class="font-cinzel" style="font-size: 1.15rem; color: #fff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span>🗂️</span>
+          <span>Active Quizzes in System (सक्रिय क्विज़ सूची)</span>
+        </h3>
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th style="min-width: 240px;">Quiz Title</th>
+                <th>Category</th>
+                <th>Questions</th>
+                <th>Duration</th>
+                <th>Passing</th>
+                <th style="text-align: right; min-width: 100px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-quizzes-tbody">
+              <!-- Dynamically populated by js/quiz.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ================= Section 4: 2-Column Communications & Broadcast Hub ================= -->
+      <div class="admin-2col-grid" id="admin-broadcast-panel">
+        
+        <!-- Column 1: Live Class Notice & Cancellation Manager -->
+        <div class="admin-panel admin-col-panel" id="admin-class-notice-panel" style="border: 1.5px solid var(--border-gold);">
+          <div class="admin-panel-header" style="flex-wrap: wrap; gap: 1rem; align-items: flex-start; justify-content: space-between; margin-bottom: 1.25rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span style="font-size: 1.4rem;">📢</span>
+                <h2 class="admin-panel-title font-cinzel" style="margin: 0; font-size: 1.25rem;">Live Class Notice</h2>
+              </div>
+              <p class="admin-panel-desc" style="margin-top: 0.35rem; font-size: 0.82rem;">
+                Broadcast instant live cancellation or reschedule alerts to visitors.
+              </p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="class-pill pill-live-status" id="admin-notice-current-status-pill" style="font-size: 0.75rem; padding: 0.25rem 0.65rem;">
+                <span class="live-beacon-pulse"></span>
+                <span id="admin-notice-status-label">Class Active</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Quick Presets -->
+          <div style="background: rgba(20, 8, 3, 0.6); padding: 0.85rem; border-radius: 12px; border: 1px solid rgba(245, 158, 11, 0.2); margin-bottom: 1.25rem;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--gold-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">
+              ⚡ 1-Click Presets:
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <button type="button" class="btn btn-sm btn-danger" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;" onclick="window.setNoticePreset('cancelled')">
+                <span>⚠️ Cancel Today</span>
+              </button>
+              <button type="button" class="btn btn-sm btn-outline" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;" onclick="window.setNoticePreset('rescheduled')">
+                <span>⏰ Set 9:00 PM</span>
+              </button>
+              <button type="button" class="btn btn-sm btn-ghost" onclick="window.setNoticePreset('active')" style="color: #86efac; border: 1px solid rgba(34, 197, 94, 0.4); font-size: 0.75rem; padding: 0.25rem 0.6rem;">
+                <span>✅ Class Active</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Notice Form -->
+          <form id="admin-class-notice-form" onsubmit="window.saveClassNotice(event)" style="display: flex; flex-direction: column; flex: 1;">
+            <div style="margin-bottom: 1rem;">
+              <label class="form-label" for="notice-status-select" style="font-size: 0.82rem;">Broadcast Status</label>
+              <select class="admin-select" id="notice-status-select" style="width: 100%; font-size: 0.85rem;" onchange="window.updateNoticePreview()">
+                <option value="active">✅ Normal Schedule (Class Active)</option>
+                <option value="cancelled">⚠️ Cancelled Today (आज क्लास रद्द है)</option>
+                <option value="rescheduled">⏰ Rescheduled / Time Changed (समय बदला है)</option>
+                <option value="special">🪔 Special Satsang Announcement</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+              <label class="form-label" for="notice-title-input" style="font-size: 0.82rem;">Banner Heading Title</label>
+              <input type="text" class="form-input" id="notice-title-input" placeholder="e.g. Today's Live Class is Cancelled" required oninput="window.updateNoticePreview()" style="font-size: 0.85rem;">
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+              <label class="form-label" for="notice-message-textarea" style="font-size: 0.82rem;">Notice Message</label>
+              <textarea class="form-input" id="notice-message-textarea" rows="2" placeholder="Message for devotees..." required oninput="window.updateNoticePreview()" style="font-size: 0.85rem;"></textarea>
+            </div>
+
+            <div style="margin-bottom: 1.25rem;">
+              <label class="form-label" for="notice-resumes-input" style="font-size: 0.82rem;">Next Session Resumes At</label>
+              <input type="text" class="form-input" id="notice-resumes-input" placeholder="e.g. Tomorrow at 8:30 PM IST" oninput="window.updateNoticePreview()" style="font-size: 0.85rem;">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center; margin-bottom: 1.25rem;" id="btn-save-notice">
+              <span>💾 Broadcast Notice Live</span>
+            </button>
+
+            <!-- Live Notice Preview Box -->
+            <div style="background: rgba(18, 6, 2, 0.7); border: 1px dashed rgba(245, 158, 11, 0.35); border-radius: 12px; padding: 0.85rem; margin-top: auto;">
+              <div style="font-size: 0.72rem; color: var(--gold-light); font-weight: 700; text-transform: uppercase; margin-bottom: 0.35rem;">
+                👁️ Website Live Preview:
+              </div>
+              <div id="admin-notice-live-preview" style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">
+                Currently, class is running normally as scheduled.
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Column 2: Notification Bell Updates -->
+        <div class="admin-panel admin-col-panel" id="admin-notifications-panel" style="border: 1.5px solid var(--border-gold);">
+          <div class="admin-panel-header" style="flex-wrap: wrap; gap: 1rem; align-items: flex-start; justify-content: space-between; margin-bottom: 1.25rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span style="font-size: 1.4rem;">🔔</span>
+                <h2 class="admin-panel-title font-cinzel" style="margin: 0; font-size: 1.25rem;">Push Notifications Dispatcher</h2>
+              </div>
+              <p class="admin-panel-desc" style="margin-top: 0.35rem; font-size: 0.82rem;">
+                Send live notifications for new video uploads, quizzes, or general announcements to the Bell Icon.
+              </p>
+            </div>
+          </div>
+
+          <form id="admin-add-notification-form" onsubmit="window.saveNewNotification(event)" style="display: flex; flex-direction: column; flex: 1;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 1rem;">
+              <div>
+                <label class="form-label" style="font-size: 0.82rem;">Notification Type</label>
+                <select class="admin-select" id="notif-type-select" style="width: 100%; font-size: 0.85rem;">
+                  <option value="video">📹 New Video</option>
+                  <option value="quiz">🧩 New Quiz</option>
+                  <option value="class">🛕 Class Schedule</option>
+                  <option value="general">🌸 Announcement</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label" style="font-size: 0.82rem;">Action Link</label>
+                <input type="text" class="form-input" id="notif-link-input" placeholder="e.g. quiz.html or #discourses" required style="font-size: 0.85rem;">
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+              <label class="form-label" style="font-size: 0.82rem;">Notification Title</label>
+              <input type="text" class="form-input" id="notif-title-input" placeholder="e.g. Harinama Chintamani Video #15 Live" required style="font-size: 0.85rem;">
+            </div>
+
+            <div style="margin-bottom: 1.25rem;">
+              <label class="form-label" style="font-size: 0.82rem;">Message Body</label>
+              <textarea class="form-input" id="notif-message-input" rows="3" placeholder="Brief announcement description..." required style="font-size: 0.85rem;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center; margin-top: auto;">
+              <span>🔔 Publish to Bell Icon</span>
+            </button>
+
+            <div style="background: rgba(20, 8, 3, 0.4); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 12px; padding: 0.85rem; margin-top: 1.25rem;">
+              <div style="font-size: 0.72rem; color: #fed7aa; font-weight: 700; text-transform: uppercase; margin-bottom: 0.35rem;">
+                📌 Quick Note:
+              </div>
+              <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
+                All notifications published here appear instantaneously on the top right bell icon with an unread badge counter for all website visitors.
+              </p>
+            </div>
+          </form>
+        </div>
+
       </div>
 
     </div>
@@ -537,7 +709,7 @@
       
       <div class="sanskrit-subtitle">दिव्य प्रवचन • New Discourse</div>
       <h3 class="font-cinzel" style="font-size: 1.5rem; color: #fff; margin-bottom: 1.25rem;">
-        Add Spiritual Discourse by <span class="gold-gradient-text">Dhananjay Vashistha</span>
+        Add Spiritual Discourse <span class="gold-gradient-text">• Sacred Library</span>
       </h3>
 
       <form id="admin-add-discourse-form" onsubmit="window.adminHandleAddDiscourse(event)">
@@ -555,15 +727,15 @@
         <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
           <div class="form-group">
             <label class="form-label" for="new-discourse-category">Category / विषय <span class="req">*</span></label>
-            <input type="text" id="new-discourse-category" class="form-input" list="discourse-category-suggestions" placeholder="e.g. भगवद्गीता, उपनिषद्, ध्यान" required>
-            <datalist id="discourse-category-suggestions">
-              <option value="भगवद्गीता">
-              <option value="वाल्मीकि रामायण">
-              <option value="उपनिषद् एवं वेदान्त">
-              <option value="भक्ति एवं भागवतम्">
-              <option value="ध्यान एवं कुण्डलिनी">
-              <option value="सत्संग प्रश्नोत्तरी">
-            </datalist>
+            <select id="new-discourse-category" class="form-input" required style="background: rgba(20, 8, 3, 0.95); color: #fff;" onchange="window.handleDiscourseCategoryChange(this.value)">
+              <option value="Hari-nāma Cintāmaṇi" selected>हरिनाम चिन्तामणि • Hari-nāma Cintāmaṇi (Śrīla Bhaktivinoda Ṭhākura)</option>
+              <option value="Valmiki Ramayana">वाल्मीकि रामायण • Valmiki Ramayana Series</option>
+              <option value="Bhagavad Gita">श्रीमद्भगवद्गीता • Bhagavad Gita Rahasya</option>
+              <option value="Daily Online Reading">दैनिक स्वाध्याय एवं प्रवचन • Daily Online Reading</option>
+              <option value="Upanishads & Vedanta">उपनिषद् एवं वेदान्त • Upanishads & Vedanta</option>
+              <option value="Srimad Bhagavatam">श्रीमद्भागवतम् अमृत • Srimad Bhagavatam</option>
+              <option value="Youth & Newcomers">युवा संस्कार एवं शिक्षण • Youth Training & IKS</option>
+            </select>
           </div>
 
           <div class="form-group">
@@ -573,8 +745,13 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="new-discourse-speaker">Speaker</label>
-          <input type="text" id="new-discourse-speaker" class="form-input" value="Dhananjay Vashistha" readonly style="opacity: 0.85; background: rgba(20, 8, 3, 0.6); color: var(--gold-light);">
+          <label class="form-label" for="new-discourse-speaker">Speaker / वक्ता <span class="req">*</span></label>
+          <select id="new-discourse-speaker" class="form-input" required style="background: rgba(20, 8, 3, 0.95); color: #fff;" onchange="window.handleSpeakerChange(this.value)">
+            <option value="HG Vraj Kishor Das" selected>HG Vraj Kishor Das (हरिनाम चिन्तामणि)</option>
+            <option value="Dhananjay Vashistha">Dhananjay Vashistha (वाल्मीकि रामायण / स्वाध्याय)</option>
+            <option value="custom">➕ Other / Custom Speaker...</option>
+          </select>
+          <input type="text" id="new-discourse-custom-speaker" class="form-input" placeholder="Type speaker name here..." style="display: none; margin-top: 0.5rem; background: rgba(20, 8, 3, 0.95); color: #fff;">
         </div>
 
         <div class="form-group">
@@ -590,11 +767,429 @@
     </div>
   </div>
 
+  <!-- ================= Create New Quiz Modal ================= -->
+  <div class="admin-modal" id="admin-create-quiz-modal" role="dialog" aria-modal="true">
+    <div class="admin-modal-backdrop" onclick="window.adminCloseCreateQuizModal()"></div>
+    <div class="admin-modal-dialog" style="max-width: 780px;">
+      <button class="admin-modal-close" onclick="window.adminCloseCreateQuizModal()" aria-label="Close modal">✕</button>
+      
+      <div class="sanskrit-subtitle">ज्ञान परीक्षा • New Vedic Examination</div>
+      <h3 class="font-cinzel" style="font-size: 1.5rem; color: #fff; margin-bottom: 1.25rem;">
+        Create New <span class="gold-gradient-text">Vedic Wisdom Quiz</span>
+      </h3>
+
+      <form id="admin-create-quiz-form" onsubmit="window.adminHandleCreateQuiz(event)">
+        <div class="form-group">
+          <label class="form-label" for="quiz-new-title">Quiz Title <span class="req">*</span></label>
+          <input type="text" id="quiz-new-title" class="form-input" placeholder="e.g. श्रीमद्भगवद्गीता - अध्याय २ सांख्य योग परीक्षा" required>
+        </div>
+
+        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="quiz-new-category">Category / विषय <span class="req">*</span></label>
+            <select id="quiz-new-category" class="form-input" required style="background: rgba(20, 8, 3, 0.95); color: #fff;">
+              <option value="Hari-nāma Cintāmaṇi">हरिनाम चिन्तामणि • Hari-nāma Cintāmaṇi</option>
+              <option value="Valmiki Ramayana" selected>वाल्मीकि रामायण • Valmiki Ramayana</option>
+              <option value="Bhagavad Gita">श्रीमद्भगवद्गीता • Bhagavad Gita</option>
+              <option value="Daily Online Reading">दैनिक स्वाध्याय एवं सत्संग • Daily Reading</option>
+              <option value="Upanishads & Vedanta">उपनिषद् एवं वेदान्त • Upanishads</option>
+              <option value="Srimad Bhagavatam">श्रीमद्भागवतम् अमृत • Bhagavatam</option>
+              <option value="Youth & Newcomers">युवा संस्कार एवं शिक्षण • Youth IKS</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="quiz-new-duration">Duration (Minutes)</label>
+            <input type="number" id="quiz-new-duration" class="form-input" value="10" min="1" max="180" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="quiz-new-desc">Description / Overview</label>
+          <textarea id="quiz-new-desc" class="form-input" rows="2" placeholder="Brief summary of teachings or verses tested in this quiz..."></textarea>
+        </div>
+
+        <!-- Questions Builder -->
+        <div style="margin-top: 1.5rem; margin-bottom: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <label class="form-label" style="margin: 0; font-size: 1rem; color: var(--gold-light);">
+              Questions &amp; Multiple Choice Options <span class="req">*</span>
+            </label>
+            <button type="button" class="btn btn-outline btn-sm" onclick="window.adminAddQuestionField()">
+              <span>➕ Add Another Question</span>
+            </button>
+          </div>
+
+          <div id="admin-quiz-questions-builder" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem; border-top: 1px solid rgba(245, 158, 11, 0.2); padding-top: 1.25rem;">
+          <button type="button" class="btn btn-outline btn-sm" onclick="window.adminCloseCreateQuizModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Publish Quiz Live 🚀</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Scripts -->
-  <script src="js/auth.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/discourses.js"></script>
-  <script src="js/admin.js"></script>
+  <script src="js/auth.js?v=5.2"></script>
+  <script src="js/main.js?v=5.2"></script>
+  <script src="js/discourses.js?v=5.2"></script>
+  <script src="js/quiz.js?v=5.2"></script>
+  <script src="js/admin.js?v=5.2"></script>
+
+  <!-- Inline Fail-Safe for Live Notice Controls -->
+  <script>
+    window.loadAdminNoticeForm = function() {
+      var notice = null;
+      try {
+        var raw = localStorage.getItem('gg_live_class_notice');
+        if (raw) notice = JSON.parse(raw);
+      } catch (e) {}
+
+      if (!notice) {
+        notice = {
+          status: 'active',
+          title: "Today's Live Class is Cancelled / Postponed",
+          message: "Priya Bhakton, kripya dhyan dein: Aaj shaam 8:30 PM ki 'Harinama Chintamani' live class anivarya kaaranon se sthagit (cancelled) rahegi. Agli class kal nirdharit samay par hogi. Hare Krishna!",
+          resumesAt: 'Tomorrow at 8:30 PM – 9:00 PM IST'
+        };
+      }
+
+      var statusSel = document.getElementById('notice-status-select');
+      var titleInp = document.getElementById('notice-title-input');
+      var msgInp = document.getElementById('notice-message-textarea');
+      var resInp = document.getElementById('notice-resumes-input');
+      var pill = document.getElementById('admin-notice-current-status-pill');
+      var label = document.getElementById('admin-notice-status-label');
+
+      if (statusSel) statusSel.value = notice.status || 'active';
+      if (titleInp) titleInp.value = notice.title || '';
+      if (msgInp) msgInp.value = notice.message || '';
+      if (resInp) resInp.value = notice.resumesAt || '';
+
+      if (label && pill) {
+        if (notice.status === 'cancelled') {
+          label.textContent = '⚠️ Class Cancelled Today';
+          pill.style.background = 'rgba(239, 68, 68, 0.2)';
+          pill.style.borderColor = 'rgba(239, 68, 68, 0.5)';
+          pill.style.color = '#fca5a5';
+        } else if (notice.status === 'rescheduled') {
+          label.textContent = '⏰ Rescheduled / Time Changed';
+          pill.style.background = 'rgba(245, 158, 11, 0.2)';
+          pill.style.borderColor = 'rgba(245, 158, 11, 0.5)';
+          pill.style.color = '#fde68a';
+        } else {
+          label.textContent = '✅ Class Active as Scheduled';
+          pill.style.background = 'rgba(34, 197, 94, 0.16)';
+          pill.style.borderColor = 'rgba(34, 197, 94, 0.45)';
+          pill.style.color = '#86efac';
+        }
+      }
+
+      window.updateNoticePreview();
+    };
+
+    window.setNoticePreset = function(preset) {
+      var statusSel = document.getElementById('notice-status-select');
+      var titleInp = document.getElementById('notice-title-input');
+      var msgInp = document.getElementById('notice-message-textarea');
+      var resInp = document.getElementById('notice-resumes-input');
+
+      if (preset === 'cancelled') {
+        if (statusSel) statusSel.value = 'cancelled';
+        if (titleInp) titleInp.value = "⚠️ Important Notice: Today's Live Class is Cancelled";
+        if (msgInp) msgInp.value = "Priya Bhakton, kripya dhyan dein: Aaj shaam 8:30 PM ki 'Harinama Chintamani' live satsang class HG Vraj Kishor Das ji ke saath anivarya kaaranon se sthagit (cancelled) rahegi. Agli class kal apne nirdharit samay par hogi. Hare Krishna!";
+        if (resInp) resInp.value = "Tomorrow at 8:30 PM – 9:00 PM IST (Zoom & YouTube Live)";
+      } else if (preset === 'rescheduled') {
+        if (statusSel) statusSel.value = 'rescheduled';
+        if (titleInp) titleInp.value = "⏰ Today's Class Rescheduled to 9:00 PM IST";
+        if (msgInp) msgInp.value = "Priya Bhakton, kripya dhyan dein: Aaj ki 'Harinama Chintamani' live class ka samay thoda badalkar shaam 9:00 PM kar diya gaya hai. Kripya naye samay par judein.";
+        if (resInp) resInp.value = "Today at 9:00 PM IST (Special Adjusted Timing)";
+      } else {
+        if (statusSel) statusSel.value = 'active';
+        if (titleInp) titleInp.value = "Class Running Normally as Scheduled";
+        if (msgInp) msgInp.value = "Daily live satsang on 'Harinama Chintamani' with HG Vraj Kishor Das takes place Monday to Friday from 8:30 PM to 9:00 PM IST.";
+        if (resInp) resInp.value = "Monday to Friday at 8:30 PM IST";
+      }
+
+      window.updateNoticePreview();
+    };
+
+    window.updateNoticePreview = function() {
+      var statusSel = document.getElementById('notice-status-select');
+      var titleInp = document.getElementById('notice-title-input');
+      var msgInp = document.getElementById('notice-message-textarea');
+      var resInp = document.getElementById('notice-resumes-input');
+      var preview = document.getElementById('admin-notice-live-preview');
+
+      if (!preview) return;
+
+      var status = statusSel ? statusSel.value : 'active';
+      var title = titleInp ? titleInp.value : '';
+      var msg = msgInp ? msgInp.value : '';
+      var res = resInp ? resInp.value : '';
+
+      if (status === 'active') {
+        preview.innerHTML = '<span style="color: #86efac;">✅ Class is running normally. No cancellation alerts will be displayed to visitors.</span>';
+      } else {
+        preview.innerHTML = '<div style="border-left: 3px solid #f59e0b; padding-left: 0.75rem; margin-top: 0.25rem;">' +
+          '<div style="font-weight: 700; color: ' + (status === 'cancelled' ? '#f87171' : '#fbbf24') + ';">' + (title || 'Notice') + '</div>' +
+          '<div style="margin: 0.25rem 0; color: #e5e7eb;">' + (msg || '') + '</div>' +
+          '<div style="font-size: 0.8rem; color: #fbbf24;">📅 Resumes: <strong>' + (res || 'TBD') + '</strong></div>' +
+        '</div>';
+      }
+    };
+
+    window.saveClassNotice = async function(e) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      var statusSel = document.getElementById('notice-status-select');
+      var titleInp = document.getElementById('notice-title-input');
+      var msgInp = document.getElementById('notice-message-textarea');
+      var resInp = document.getElementById('notice-resumes-input');
+      var btn = document.getElementById('btn-save-notice');
+
+      var noticeData = {
+        status: statusSel ? statusSel.value : 'active',
+        title: titleInp ? titleInp.value.trim() : '',
+        message: msgInp ? msgInp.value.trim() : '',
+        resumesAt: resInp ? resInp.value.trim() : '',
+        updatedAt: new Date().toISOString()
+      };
+
+      if (btn) btn.disabled = true;
+
+      // 1. Save in localStorage
+      try {
+        localStorage.setItem('gg_live_class_notice', JSON.stringify(noticeData));
+        sessionStorage.removeItem('gg_notice_dismissed');
+      } catch (err) {}
+
+      // 2. Save on server via /api/save-notice
+      try {
+        await fetch('/api/save-notice', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(noticeData)
+        });
+      } catch (err) {}
+
+      window.loadAdminNoticeForm();
+      if (btn) btn.disabled = false;
+
+      var toastMsg = noticeData.status === 'cancelled' 
+        ? '⚠️ Class Cancellation Notice Published! Website par alert active ho chuka hai.' 
+        : (noticeData.status === 'rescheduled' ? '⏰ Reschedule Notice Published!' : '✅ Class Status Reset to Normal!');
+
+      if (typeof window.showToast === 'function') {
+        window.showToast(toastMsg, noticeData.status === 'cancelled' ? 'warning' : 'success');
+      } else {
+        alert(toastMsg);
+      }
+    };
+
+    window.saveNewNotification = async function(e) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      var type = document.getElementById('notif-type-select').value;
+      var title = document.getElementById('notif-title-input').value.trim();
+      var link = document.getElementById('notif-link-input').value.trim();
+      var msg = document.getElementById('notif-message-input').value.trim();
+
+      var badgeMap = {
+        video: 'NEW VIDEO',
+        quiz: 'NEW QUIZ',
+        class: 'LIVE CLASS',
+        general: 'ANNOUNCEMENT'
+      };
+
+      var newNotif = {
+        id: 'notif-' + Date.now(),
+        type: type,
+        badge: badgeMap[type] || 'NOTICE',
+        title: title,
+        message: msg,
+        link: link || '#',
+        time: 'Just Now',
+        read: false
+      };
+
+      var list = [];
+      try {
+        var raw = localStorage.getItem('gg_notifications');
+        if (raw) list = JSON.parse(raw);
+      } catch(err) {}
+
+      list.unshift(newNotif);
+
+      try {
+        localStorage.setItem('gg_notifications', JSON.stringify(list));
+      } catch(err) {}
+
+      try {
+        await fetch('/api/save-notifications', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(list)
+        });
+      } catch(err) {}
+
+      document.getElementById('notif-title-input').value = '';
+      document.getElementById('notif-message-input').value = '';
+
+      if (typeof window.showToast === 'function') {
+        window.showToast('🔔 Notification published successfully! Website par Bell Icon par active ho gaya.', 'success');
+      } else {
+        alert('Notification published successfully!');
+      }
+    };
+
+    // ==========================================
+    // Vedic Quiz Administration Functions
+    // ==========================================
+    window.adminOpenCreateQuizModal = function() {
+      const modal = document.getElementById('admin-create-quiz-modal');
+      if (modal) {
+        modal.classList.add('is-active', 'active');
+        modal.style.display = 'flex';
+        modal.style.opacity = '1';
+        modal.style.pointerEvents = 'auto';
+
+        const builder = document.getElementById('admin-quiz-questions-builder');
+        if (builder && builder.children.length === 0) {
+          window.adminAddQuestionField();
+        }
+      }
+    };
+
+    window.adminCloseCreateQuizModal = function() {
+      const modal = document.getElementById('admin-create-quiz-modal');
+      if (modal) {
+        modal.classList.remove('is-active', 'active');
+        modal.style.display = '';
+        modal.style.opacity = '';
+        modal.style.pointerEvents = '';
+      }
+      const form = document.getElementById('admin-create-quiz-form');
+      if (form) form.reset();
+      const builder = document.getElementById('admin-quiz-questions-builder');
+      if (builder) builder.innerHTML = '';
+    };
+
+    window.adminAddQuestionField = function() {
+      const builder = document.getElementById('admin-quiz-questions-builder');
+      if (!builder) return;
+      const qIndex = builder.children.length;
+      const qDiv = document.createElement('div');
+      qDiv.className = 'admin-q-field-card';
+      qDiv.style.cssText = 'background: rgba(0,0,0,0.35); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 14px; padding: 1.25rem;';
+      qDiv.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+          <strong style="color: var(--gold-light); font-size: 0.95rem;">Question ${qIndex + 1}</strong>
+          ${qIndex > 0 ? `<button type="button" class="btn btn-danger btn-sm" style="font-size: 0.75rem; padding: 0.2rem 0.5rem;" onclick="this.closest('.admin-q-field-card').remove(); window.adminRenumberQuestions();">🗑 Remove</button>` : ''}
+        </div>
+        <div class="form-group" style="margin-bottom: 0.85rem;">
+          <input type="text" class="form-input q-text-input" placeholder="Type question text here (उदा. भगवान श्री राम का जन्म किस पावन नगरी में हुआ था?)" required style="background: rgba(20, 8, 3, 0.95);">
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+          4 Options (Choose the radio button next to the <strong>CORRECT</strong> answer):
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 8px;">
+            <input type="radio" name="correct_q_${qIndex}" value="0" checked style="accent-color: #10b981;">
+            <input type="text" class="form-input q-opt-input" placeholder="Option A" required style="padding: 0.4rem 0.6rem; font-size: 0.85rem;">
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 8px;">
+            <input type="radio" name="correct_q_${qIndex}" value="1" style="accent-color: #10b981;">
+            <input type="text" class="form-input q-opt-input" placeholder="Option B" required style="padding: 0.4rem 0.6rem; font-size: 0.85rem;">
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 8px;">
+            <input type="radio" name="correct_q_${qIndex}" value="2" style="accent-color: #10b981;">
+            <input type="text" class="form-input q-opt-input" placeholder="Option C" required style="padding: 0.4rem 0.6rem; font-size: 0.85rem;">
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 8px;">
+            <input type="radio" name="correct_q_${qIndex}" value="3" style="accent-color: #10b981;">
+            <input type="text" class="form-input q-opt-input" placeholder="Option D" required style="padding: 0.4rem 0.6rem; font-size: 0.85rem;">
+          </div>
+        </div>
+      `;
+      builder.appendChild(qDiv);
+    };
+
+    window.adminRenumberQuestions = function() {
+      const cards = document.querySelectorAll('.admin-q-field-card');
+      cards.forEach((card, idx) => {
+        const title = card.querySelector('strong');
+        if (title) title.textContent = `Question ${idx + 1}`;
+        const radios = card.querySelectorAll('input[type="radio"]');
+        radios.forEach(r => r.name = `correct_q_${idx}`);
+      });
+    };
+
+    window.adminHandleCreateQuiz = function(e) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      const titleInp = document.getElementById('quiz-new-title');
+      const catInp = document.getElementById('quiz-new-category');
+      const durInp = document.getElementById('quiz-new-duration');
+      const descInp = document.getElementById('quiz-new-desc');
+
+      const cards = document.querySelectorAll('.admin-q-field-card');
+      if (cards.length === 0) {
+        alert('कृपया कम से कम १ प्रश्न जोड़ें।');
+        return;
+      }
+
+      const questions = [];
+      cards.forEach((card, idx) => {
+        const qText = card.querySelector('.q-text-input').value.trim();
+        const optInputs = card.querySelectorAll('.q-opt-input');
+        const options = Array.from(optInputs).map(inp => inp.value.trim());
+        const checkedRadio = card.querySelector('input[type="radio"]:checked');
+        const correctIdx = checkedRadio ? parseInt(checkedRadio.value, 10) : 0;
+
+        questions.push({
+          id: 'q_' + (idx + 1) + '_' + Date.now(),
+          question: qText,
+          options: options,
+          correctIndex: correctIdx,
+          points: 1
+        });
+      });
+
+      try {
+        const newQuiz = window.quizEngine.addNewQuiz({
+          title: titleInp.value.trim(),
+          category: catInp.value,
+          description: descInp ? descInp.value.trim() : '',
+          durationMinutes: parseInt(durInp.value, 10) || 10,
+          passingScore: 60,
+          questions: questions
+        });
+
+        window.adminCloseCreateQuizModal();
+        if (window.showToast) {
+          window.showToast(`🏆 क्विज़ सफलता से पब्लिश हुआ: "${newQuiz.title}"`, 'success');
+        } else {
+          alert(`क्विज़ सफलता से पब्लिश हो गया है: ${newQuiz.title}`);
+        }
+      } catch (err) {
+        alert(err.message || 'क्विज़ जोड़ने में त्रुटि हुई।');
+      }
+    };
+
+    window.adminFilterQuizSubmissions = function() {
+      const query = document.getElementById('admin-quiz-search') ? document.getElementById('admin-quiz-search').value : '';
+      window.quizEngine.renderAdminSubmissionsTable('admin-quiz-submissions-tbody', query);
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      window.loadAdminNoticeForm();
+    });
+  </script>
 </body>
 
 </html>

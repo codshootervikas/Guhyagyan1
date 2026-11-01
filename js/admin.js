@@ -200,6 +200,10 @@ class AdminDashboard {
     if (cloudUsersEl) cloudUsersEl.textContent = `${cloudCount} (${total > 0 ? Math.round((cloudCount / total) * 100) : 0}%)`;
     if (activeSadhakasEl) activeSadhakasEl.textContent = activeCount;
     if (avgStreakEl) avgStreakEl.textContent = `${avgStreak} Days`;
+
+    if (typeof window.updateAdminGlobalStats === 'function') {
+      window.updateAdminGlobalStats();
+    }
   }
 
   // Render User Directory Table
@@ -842,7 +846,107 @@ window.saveClassNotice = function(e) {
   } else {
     alert('Notice saved and broadcasted successfully!');
   }
+
+  if (typeof window.updateAdminGlobalStats === 'function') {
+    window.updateAdminGlobalStats();
+  }
 };
+
+/* ========================================================
+   Admin Module Tab Navigation & Synchronized Metrics Engine
+   ======================================================== */
+window.switchAdminTab = function(tabName) {
+  const tabs = document.querySelectorAll('.admin-nav-tab');
+  tabs.forEach(t => {
+    if (t.getAttribute('data-target') === tabName) t.classList.add('active');
+    else t.classList.remove('active');
+  });
+
+  const panels = {
+    seekers: document.getElementById('admin-seekers-panel'),
+    discourses: document.getElementById('admin-discourse-panel'),
+    quizzes: document.getElementById('admin-quiz-panel'),
+    broadcast: document.getElementById('admin-broadcast-panel')
+  };
+
+  if (tabName === 'all') {
+    Object.values(panels).forEach(p => { 
+      if (p) {
+        p.style.display = p.id === 'admin-broadcast-panel' ? 'grid' : 'block'; 
+      }
+    });
+  } else {
+    Object.keys(panels).forEach(k => {
+      if (panels[k]) {
+        if (k === tabName) {
+          panels[k].style.display = panels[k].id === 'admin-broadcast-panel' ? 'grid' : 'block';
+          panels[k].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          panels[k].style.display = 'none';
+        }
+      }
+    });
+  }
+};
+
+window.updateAdminGlobalStats = function() {
+  // Total Discourses
+  const discCountEl = document.getElementById('stat-total-discourses');
+  if (discCountEl && window.discourseManager && window.discourseManager.discourses) {
+    discCountEl.textContent = window.discourseManager.discourses.length;
+  }
+
+  // Quizzes & Submissions
+  const quizCountEl = document.getElementById('stat-total-quizzes');
+  const subCountEl = document.getElementById('stat-total-submissions');
+  if (window.quizEngine) {
+    if (quizCountEl && window.quizEngine.quizzes) quizCountEl.textContent = window.quizEngine.quizzes.length;
+    if (subCountEl && window.quizEngine.results) subCountEl.textContent = window.quizEngine.results.length;
+  }
+
+  // Live broadcast status
+  const liveStatEl = document.getElementById('stat-live-status');
+  if (liveStatEl) {
+    try {
+      const rawNotice = localStorage.getItem('gg_live_class_notice');
+      if (rawNotice) {
+        const parsed = JSON.parse(rawNotice);
+        if (parsed.status === 'cancelled') {
+          liveStatEl.textContent = 'Cancelled ⚠️';
+          liveStatEl.style.color = '#fca5a5';
+        } else if (parsed.status === 'rescheduled') {
+          liveStatEl.textContent = 'Rescheduled ⏰';
+          liveStatEl.style.color = '#fde68a';
+        } else {
+          liveStatEl.textContent = 'Active ●';
+          liveStatEl.style.color = '#86efac';
+        }
+      }
+    } catch (e) {}
+  }
+
+  // Tab Badge Counters
+  const tabSeekers = document.getElementById('tab-count-seekers');
+  const tabDiscourses = document.getElementById('tab-count-discourses');
+  const tabQuizzes = document.getElementById('tab-count-quizzes');
+
+  if (tabSeekers && window.adminDashboard && window.adminDashboard.users) {
+    tabSeekers.textContent = window.adminDashboard.users.length;
+  }
+  if (tabDiscourses && window.discourseManager && window.discourseManager.discourses) {
+    tabDiscourses.textContent = window.discourseManager.discourses.length;
+  }
+  if (tabQuizzes && window.quizEngine && window.quizEngine.quizzes) {
+    tabQuizzes.textContent = `${window.quizEngine.quizzes.length}Q / ${window.quizEngine.results ? window.quizEngine.results.length : 0}R`;
+  }
+};
+
+// Periodic background check to keep counts synced
+setInterval(() => {
+  if (typeof window.updateAdminGlobalStats === 'function') {
+    window.updateAdminGlobalStats();
+  }
+}, 2000);
 
 // Instantiate immediately or upon DOM ready
 function initAdminInstance() {

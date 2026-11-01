@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vedic Wisdom Quizzes & Examination Portal — Guhya Gyan Foundation</title>
+  <meta name="description"
+    content="Participate in sacred Vedic wisdom examinations, verse comprehension tests, and spiritual quizzes on Valmiki Ramayana, Harinama Chintamani, and Bhagavad Gita.">
+  <link rel="stylesheet" href="css/style.css?v=5.2">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Floating Starfield Canvas -->
+  <canvas id="celestial-canvas"></canvas>
+
+  <!-- Global Header Navigation with Integrated Top Live Announcement -->
+  <header class="main-header" id="main-header">
+    <!-- Top Announcement Strip for Live Ongoing Satsang -->
+    <div class="header-top-banner" id="header-top-banner">
+      <div class="container announcement-inner">
+        <div class="announcement-left">
+          <span class="announcement-live-tag"><span class="beacon-circle"></span> ONGOING DAILY SATSANG</span>
+          <span class="announcement-text">
+            <strong>Brajdhan Bhakti Centre:</strong> <em>'Harinama Chintamani'</em> by Śrīla Bhaktivinoda Ṭhākura • Mon–Fri 8:30 PM IST • Speaker: HG Vraj Kishor Das
+          </span>
+        </div>
+        <a href="index.html#harinama-chintamani" class="announcement-action-btn">
+          <span>Join Live Class</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="brand-logo">
+        <img src="assets/images/logo.png" alt="Guhya Gyan Foundation Logo" class="brand-logo-img" id="brand-logo-img">
+        <div class="brand-title-wrap">
+          <span class="brand-name">Guhya Gyan Foundation</span>
+          <span class="brand-sub">गुह्य ज्ञान • Sacred Wisdom</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links with Intuitive Dropdowns -->
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          
+          <!-- About ▾ -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-about" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>About</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="About Submenu">
+              <li><a href="about-the-speaker.html" class="dropdown-item">About the Speaker</a></li>
+              <li><a href="about-the-speaker.html#speaker-initiatives" class="dropdown-item">Brajdhan Bhakti Centre</a></li>
+              <li><a href="about-the-speaker.html#speaker-bio" class="dropdown-item">Guhya Gyan Foundation (NGO)</a></li>
+              <li><a href="index.html#harinama-chintamani" class="dropdown-item">Śrīla Bhaktivinoda Ṭhākura</a></li>
+            </ul>
+          </li>
+
+          <!-- Experience ▾ -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-experience" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>Experience</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="Experience Submenu">
+              <li><a href="index.html#kirtan" class="dropdown-item">Kirtan</a></li>
+              <li><a href="index.html#festivals" class="dropdown-item">Festivals</a></li>
+              <li><a href="index.html#sunday-program" class="dropdown-item">Sunday Feast/Open House</a></li>
+              <li><a href="index.html#eco-communities" class="dropdown-item">Eco-communities</a></li>
+              <li><a href="index.html#arts-culture" class="dropdown-item">Arts & Culture</a></li>
+            </ul>
+          </li>
+
+          <!-- Wisdom ▾ -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="nav-wisdom" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>Wisdom</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="Wisdom Submenu">
+              <li><a href="index.html#harinama-chintamani" class="dropdown-item"><span class="nav-live-dot"></span> Harinama Live Class</a></li>
+              <li><a href="index.html#discourses" class="dropdown-item">Discourses & Katha Library</a></li>
+              <li><a href="index.html#sutra-oracle" class="dropdown-item">Daily Sutra Oracle (Maha-Mantra)</a></li>
+              <li><a href="index.html#interactive-sadhana" class="dropdown-item">Sadhana Studio (432Hz Sound)</a></li>
+            </ul>
+          </li>
+
+          <!-- Social Action ▾ -->
+          <li class="nav-item-dropdown">
+            <a href="javascript:void(0)" class="nav-link dropdown-toggle active" id="nav-action" role="button" aria-haspopup="true" aria-expanded="false">
+              <span>Social Action</span>
+              <span class="dropdown-chevron">▼</span>
+            </a>
+            <ul class="dropdown-menu" aria-label="Social Action Submenu">
+              <li><a href="quiz.html" class="dropdown-item active" style="color: var(--gold-light); font-weight: 700;">🏆 Vedic Wisdom Quizzes</a></li>
+              <li><a href="index.html#arts-culture" class="dropdown-item">Ramayana Awareness Programs</a></li>
+              <li><a href="index.html#arts-culture" class="dropdown-item">Book Publications & Granthas</a></li>
+              <li><a href="index.html#sunday-program" class="dropdown-item">Value-Based Youth Education</a></li>
+              <li><a href="contact.html" class="dropdown-item">Support & Seva Initiatives</a></li>
+            </ul>
+          </li>
+
+          <li><a href="sanctuary.html" class="nav-link" id="nav-sanctuary">Seeker Portal</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions (Seeker Auth) -->
+      <div class="nav-actions" id="nav-auth-actions">
+        <!-- Rendered by auth.js -->
+        <a href="login.html" class="btn btn-outline btn-sm" id="nav-login-btn">
+          <span>Seeker Login</span>
+        </a>
+      </div>
+
+      <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Main Content: Quiz Examination Hub -->
+  <main>
+    <section class="quiz-hero-section">
+      <div class="container">
+        <div class="section-header text-center" style="max-width: 820px; margin: 0 auto 1.5rem auto;">
+          <div class="sanskrit-subtitle">वैदिक ज्ञान परीक्षा • Sacred Wisdom Examinations</div>
+          <h1 class="section-title">Vedic Wisdom <span class="gold-gradient-text">Examination Portal</span></h1>
+          <p class="section-desc">
+            Test your comprehension of timeless scriptures, verse insights, and spiritual discourses. Log in with your Seeker ID to track your personal marks, build your continuous sadhana record, and receive spiritual recognition.
+          </p>
+        </div>
+
+        <!-- Search Bar & Controls -->
+        <div style="max-width: 580px; margin: 0 auto 1.5rem auto;">
+          <div class="recordings-search-wrap" style="width: 100%;">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="quiz-search-input" placeholder="Search quizzes by title, topic, or scripture..." class="recordings-search-input" oninput="window.quizEngine.setSearch(this.value)">
+          </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="quiz-filter-container">
+          <button class="quiz-filter-pill active" data-cat="all" onclick="window.quizEngine.setCategory('all')">
+            All Topics (सभी विषय)
+          </button>
+          <button class="quiz-filter-pill" data-cat="Hari-nāma Cintāmaṇi" onclick="window.quizEngine.setCategory('Hari-nāma Cintāmaṇi')">
+            हरिनाम चिन्तामणि
+          </button>
+          <button class="quiz-filter-pill" data-cat="Valmiki Ramayana" onclick="window.quizEngine.setCategory('Valmiki Ramayana')">
+            वाल्मीकि रामायण
+          </button>
+          <button class="quiz-filter-pill" data-cat="Bhagavad Gita" onclick="window.quizEngine.setCategory('Bhagavad Gita')">
+            श्रीमद्भगवद्गीता
+          </button>
+          <button class="quiz-filter-pill" data-cat="Daily Online Reading" onclick="window.quizEngine.setCategory('Daily Online Reading')">
+            दैनिक स्वाध्याय
+          </button>
+          <button class="quiz-filter-pill" data-cat="Youth & Newcomers" onclick="window.quizEngine.setCategory('Youth & Newcomers')">
+            युवा संस्कार IKS
+          </button>
+        </div>
+
+        <!-- Count Indicator -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
+          <span class="recordings-count-badge" id="quizzes-count-badge">Loading Quizzes...</span>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            💡 <em>लॉगिन आवश्यक है ताकि आपके अंक आपकी आईडी में सुरक्षित रहें।</em>
+          </div>
+        </div>
+
+        <!-- Quizzes Cards Grid -->
+        <div class="quizzes-grid" id="quizzes-grid-container">
+          <!-- Dynamically populated by js/quiz.js -->
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-link" style="margin-bottom: 1.25rem;">
+            <img src="assets/images/logo.png" alt="Guhya Gyan Foundation" class="brand-logo-img">
+            <div class="brand-title-wrap">
+              <span class="brand-name">Guhya Gyan Foundation</span>
+              <span class="brand-sub">गुह्य ज्ञान • Sacred Wisdom</span>
+            </div>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; max-width: 340px;">
+            A sanctuary dedicated to preserving, illuminating, and practicing timeless esoteric wisdom, Vedantic non-duality, and inner transformation.
+          </p>
+          <div style="margin-top: 1.25rem; font-family: var(--font-editorial); font-size: 1.25rem; color: var(--gold-light); font-style: italic; letter-spacing: 0.05em;">
+            जय श्री राम ॥
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Sanctuary</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Sacred Home</a></li>
+            <li><a href="about-the-speaker.html">About the Speaker</a></li>
+            <li><a href="quiz.html">Vedic Wisdom Quizzes</a></li>
+            <li><a href="index.html#discourses">Discourses & Katha</a></li>
+            <li><a href="sanctuary.html">Seeker Portal</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Traditions</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#experience">Kirtan & Sankirtana</a></li>
+            <li><a href="index.html#harinama-chintamani">Harinama Chintamani</a></li>
+            <li><a href="index.html#discourses">Valmiki Ramayana</a></li>
+            <li><a href="index.html#discourses">Bhagavad Gita</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Gateways & Admin</h4>
+          <ul class="footer-links">
+            <li><a href="login.html">Sanctum Login</a></li>
+            <li><a href="register.html">Initiation Registration</a></li>
+            <li><a href="sanctuary.html">Sadhana Tracker</a></li>
+            <li><a href="admin.html">Master Admin Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 GuhyaGyan Foundation. All sacred knowledge freely offered in devotion to truth.
+        </div>
+        <div style="color: var(--gold-light);">
+          सत्यमेव जयते नानृतम् • Truth alone triumphs
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/auth.js?v=5.2"></script>
+  <script src="js/quiz.js?v=5.2"></script>
+  <script src="js/main.js?v=5.2"></script>
+</body>
+
+</html>

@@ -686,6 +686,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof window.loadLiveClassNotice === 'function') {
     window.loadLiveClassNotice();
   }
+  if (typeof window.loadNotifications === 'function') {
+    window.loadNotifications();
+  }
 });
 
 // ========================================================
@@ -781,3 +784,204 @@ window.dismissUrgentNotice = function() {
   if (normalHeaderBanner) normalHeaderBanner.style.display = 'block';
   sessionStorage.setItem('gg_notice_dismissed', 'true');
 };
+
+// =======================================================
+// Sacred Notifications Center (Videos, Quizzes, Notices)
+// =======================================================
+window.notificationsList = [];
+window.currentNotifFilter = 'all';
+
+window.loadNotifications = async function() {
+  let list = [];
+
+  // 1. Try local storage
+  try {
+    const raw = localStorage.getItem('gg_notifications');
+    if (raw) list = JSON.parse(raw);
+  } catch (e) {}
+
+  // 2. Fallback to data/notifications.json if not present
+  if (!list || list.length === 0) {
+    try {
+      const res = await fetch('data/notifications.json?t=' + Date.now());
+      if (res.ok) {
+        list = await res.json();
+      }
+    } catch (e) {}
+  }
+
+  // Fallback defaults if still empty
+  if (!list || list.length === 0) {
+    list = [
+      {
+        id: 'notif-1',
+        type: 'video',
+        badge: 'NEW VIDEO',
+        title: "Harinama Chintamani Satsang Uploaded",
+        message: "HG Vraj Kishor Das ji ka naya live satsang video YouTube par uplabdh hai. Dekhne ke liye click karein.",
+        link: "#youtube-live-player-section",
+        time: "Just Now",
+        read: false
+      },
+      {
+        id: 'notif-2',
+        type: 'quiz',
+        badge: 'NEW QUIZ',
+        title: "Daily Vedic Wisdom Quiz Live!",
+        message: "Ramayana evam Indian Knowledge System (IKS) par aadharit aaj ka naya quiz live hai. Apne gyan ki pariksha karein.",
+        link: "#interactive-sadhana",
+        time: "Today",
+        read: false
+      },
+      {
+        id: 'notif-3',
+        type: 'class',
+        badge: 'LIVE CLASS',
+        title: "Daily Live Satsang (8:30 PM IST)",
+        message: "'Harinama Chintamani' par daily discourse Zoom & YouTube Live par somwar se shukrawar chalu hai.",
+        link: "#harinama-chintamani",
+        time: "Mon–Fri",
+        read: false
+      }
+    ];
+  }
+
+  window.notificationsList = list;
+  window.updateNotificationBadgeCount();
+  window.renderNotifications();
+};
+
+window.updateNotificationBadgeCount = function() {
+  const unreadCount = window.notificationsList.filter(n => !n.read).length;
+  const desktopBadge = document.getElementById('bell-badge-count');
+  const mobileBadge = document.getElementById('mobile-bell-badge-count');
+  const totalNum = document.getElementById('notif-total-num');
+
+  [desktopBadge, mobileBadge].forEach(badge => {
+    if (badge) {
+      if (unreadCount > 0) {
+        badge.textContent = unreadCount;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+  });
+
+  if (totalNum) {
+    totalNum.textContent = window.notificationsList.length;
+  }
+};
+
+window.renderNotifications = function() {
+  const container = document.getElementById('notif-list-container');
+  if (!container) return;
+
+  const filter = window.currentNotifFilter;
+  const items = filter === 'all' 
+    ? window.notificationsList 
+    : window.notificationsList.filter(n => n.type === filter);
+
+  if (items.length === 0) {
+    container.innerHTML = `
+      <div class="notif-empty-state">
+        <div class="notif-empty-icon">🔔</div>
+        <p style="margin: 0; font-size: 0.88rem;">Koi nayi suchna nahi hai (No notifications)</p>
+      </div>
+    `;
+    return;
+  }
+
+  const icons = {
+    video: '📹',
+    quiz: '🧩',
+    class: '🛕',
+    general: '🌸'
+  };
+
+  container.innerHTML = items.map(n => `
+    <a href="${n.link || 'javascript:void(0)'}" class="notif-item ${n.read ? '' : 'unread'}" onclick="window.handleNotificationClick('${n.id}', event)">
+      <div class="notif-item-icon-wrap notif-icon-${n.type || 'general'}">
+        <span>${icons[n.type] || '🔔'}</span>
+      </div>
+      <div class="notif-item-content">
+        <div class="notif-item-top">
+          <span class="notif-type-tag tag-${n.type || 'general'}">${n.badge || n.type || 'NOTICE'}</span>
+          <span class="notif-time">${n.time || 'Recently'}</span>
+        </div>
+        <h5 class="notif-title">${n.title || ''}</h5>
+        <p class="notif-desc">${n.message || ''}</p>
+      </div>
+    </a>
+  `).join('');
+};
+
+window.toggleNotificationDropdown = function(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  const dropdown = document.getElementById('notification-dropdown-menu');
+  if (!dropdown) return;
+
+  const isVisible = dropdown.style.display === 'flex';
+  if (isVisible) {
+    dropdown.style.display = 'none';
+  } else {
+    dropdown.style.display = 'flex';
+    window.renderNotifications();
+  }
+};
+
+window.closeNotificationDropdown = function() {
+  const dropdown = document.getElementById('notification-dropdown-menu');
+  if (dropdown) dropdown.style.display = 'none';
+};
+
+window.filterNotifications = function(type, e) {
+  if (e) e.stopPropagation();
+  window.currentNotifFilter = type;
+
+  document.querySelectorAll('.notif-filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-filter') === type);
+  });
+
+  window.renderNotifications();
+};
+
+window.handleNotificationClick = function(id, e) {
+  const item = window.notificationsList.find(n => n.id === id);
+  if (item) {
+    item.read = true;
+    try {
+      localStorage.setItem('gg_notifications', JSON.stringify(window.notificationsList));
+    } catch (err) {}
+    window.updateNotificationBadgeCount();
+  }
+  window.closeNotificationDropdown();
+};
+
+window.markAllNotificationsRead = function() {
+  window.notificationsList.forEach(n => n.read = true);
+  try {
+    localStorage.setItem('gg_notifications', JSON.stringify(window.notificationsList));
+  } catch (err) {}
+  window.updateNotificationBadgeCount();
+  window.renderNotifications();
+  if (typeof window.showToast === 'function') {
+    window.showToast('Sabhi notifications padhe huye mark kar diye gaye!', 'info');
+  }
+};
+
+// Global click outside listener to close notification dropdown
+document.addEventListener('click', (e) => {
+  const dropdown = document.getElementById('notification-dropdown-menu');
+  const bell = document.getElementById('nav-bell-trigger');
+  const mobBell = document.getElementById('mobile-bell-trigger');
+
+  if (dropdown && dropdown.style.display === 'flex') {
+    if (!dropdown.contains(e.target) && (!bell || !bell.contains(e.target)) && (!mobBell || !mobBell.contains(e.target))) {
+      dropdown.style.display = 'none';
+    }
+  }
+});

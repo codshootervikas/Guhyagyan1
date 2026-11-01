@@ -1,0 +1,32 @@
+[
+  {
+    "id": "notif-1",
+    "type": "video",
+    "badge": "NEW VIDEO",
+    "title": "Harinama Chintamani Satsang Uploaded",
+    "message": "HG Vraj Kishor Das ji ka naya live satsang video YouTube par upload ho chuka hai. Yahan click karke dekhein.",
+    "link": "#youtube-live-player-section",
+    "time": "Just Now",
+    "read": false
+  },
+  {
+    "id": "notif-2",
+    "type": "quiz",
+    "badge": "NEW QUIZ",
+    "title": "Daily Vedic Wisdom Quiz Live!",
+    "message": "Ramayana evam Indian Knowledge System (IKS) par aadharit aaj ka naya quiz live hai. Apne gyan ki pariksha karein.",
+    "link": "#interactive-sadhana",
+    "time": "Today",
+    "read": false
+  },
+  {
+    "id": "notif-3",
+    "type": "class",
+    "badge": "LIVE CLASS",
+    "title": "Daily Live Satsang (8:30 PM IST)",
+    "message": "'Harinama Chintamani' par daily discourse Zoom & YouTube Live par somwar se shukrawar chalu hai.",
+    "link": "#harinama-chintamani",
+    "time": "Mon–Fri",
+    "read": false
+  }
+]

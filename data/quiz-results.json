@@ -1,0 +1,21 @@
+﻿[
+  {
+    "id": "sub_1793540380419",
+    "quizId": "quiz_1793540324752",
+    "quizTitle": "Quiz - Day 4 - Valmiki Ramayan Series by Guhya Gyan",
+    "category": "Valmiki Ramayana",
+    "seekerId": "875d44f7-280e-4d02-a276-acad00e8a60b",
+    "seekerName": "vikas singh",
+    "seekerEmail": "vikas123@gmail.com",
+    "spiritualName": "vikas singh",
+    "score": 0,
+    "totalQuestions": 2,
+    "percentage": 0,
+    "passed": false,
+    "userAnswers": {
+      "q_1_1793540324751": 2,
+      "q_2_1793540324751": 2
+    },
+    "submittedAt": "2026-11-01T13:39:40.419Z"
+  }
+]

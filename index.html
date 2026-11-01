@@ -7,7 +7,7 @@
   <title>Guhya Gyan Foundation — Indian Knowledge System (IKS) & Sacred Wisdom</title>
   <meta name="description"
     content="Guhya Gyan Foundation is a not-for-profit NGO involved in activities related to the Indian Knowledge System (IKS), including Ramayana awareness programs, book publications, Kirtan jamming, and online & offline educational & value-based programs.">
-  <link rel="stylesheet" href="css/style.css?v=4.6">
+  <link rel="stylesheet" href="css/style.css?v=5.1">
   <link rel="icon" type="image/png" href="assets/images/logo.png">
 </head>
 
@@ -33,6 +33,26 @@
         </div>
       </div>
     </div>
+    <script>
+      (function() {
+        try {
+          var raw = localStorage.getItem('gg_live_class_notice');
+          if (raw) {
+            var n = JSON.parse(raw);
+            if (n && n.status && n.status !== 'active') {
+              var top = document.getElementById('urgent-class-notice-banner');
+              var norm = document.getElementById('header-top-banner');
+              var badge = document.getElementById('urgent-badge-text');
+              var msg = document.getElementById('urgent-msg-text');
+              if (top) top.style.display = 'block';
+              if (norm) norm.style.display = 'none';
+              if (badge) badge.textContent = n.status === 'cancelled' ? '⚠️ CLASS CANCELLED TODAY' : '📢 SCHEDULE UPDATE';
+              if (msg) msg.innerHTML = '<strong>' + (n.title || 'Notice') + ':</strong> ' + (n.message || '') + ' <span style="color:#fef08a;font-weight:600;">(Resumes: ' + (n.resumesAt || '') + ')</span>';
+            }
+          }
+        } catch(e) {}
+      })();
+    </script>
 
     <!-- Top Announcement Strip for Live Ongoing Satsang -->
     <div class="header-top-banner" id="header-top-banner">
@@ -123,6 +143,7 @@
               <span class="dropdown-chevron">▼</span>
             </a>
             <ul class="dropdown-menu" aria-label="Social Action Submenu">
+              <li><a href="quiz.html" class="dropdown-item" style="color: var(--gold-light); font-weight: 700;">🏆 Vedic Wisdom Quizzes</a></li>
               <li><a href="#arts-culture" class="dropdown-item">Ramayana Awareness Programs</a></li>
               <li><a href="#arts-culture" class="dropdown-item">Book Publications & Granthas</a></li>
               <li><a href="about-the-speaker.html#speaker-initiatives" class="dropdown-item">Indian Knowledge System
@@ -161,8 +182,47 @@
         </ul>
       </nav>
 
-      <!-- Prominent Dual Action Pill Buttons (Matching Reference ISKCON Header) -->
+      <!-- Prominent Dual Action Pill Buttons & Notification Bell -->
       <div class="nav-actions">
+        <!-- Notification Bell Widget -->
+        <div class="nav-notification-wrap" id="nav-notification-wrap">
+          <button class="nav-bell-btn" id="nav-bell-trigger" onclick="window.toggleNotificationDropdown(event)" aria-label="Sacred Notifications" title="Sacred Notifications (सूचनाएं)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="bell-badge" id="bell-badge-count">3</span>
+          </button>
+
+          <!-- Notification Dropdown Menu -->
+          <div class="notification-dropdown-menu" id="notification-dropdown-menu" style="display: none;">
+            <div class="notif-dropdown-header">
+              <div class="notif-header-title">
+                <span>🔔</span>
+                <h4>Sacred Notifications</h4>
+              </div>
+              <button class="notif-mark-read-btn" onclick="window.markAllNotificationsRead()" type="button">Mark all read</button>
+            </div>
+
+            <!-- Notification Filter Tabs -->
+            <div class="notif-filter-tabs">
+              <button class="notif-filter-btn active" data-filter="all" onclick="window.filterNotifications('all', event)">All (<span id="notif-total-num">3</span>)</button>
+              <button class="notif-filter-btn" data-filter="video" onclick="window.filterNotifications('video', event)">📹 Videos</button>
+              <button class="notif-filter-btn" data-filter="quiz" onclick="window.filterNotifications('quiz', event)">🧩 Quizzes</button>
+              <button class="notif-filter-btn" data-filter="class" onclick="window.filterNotifications('class', event)">🛕 Classes</button>
+            </div>
+
+            <!-- List of items -->
+            <div class="notif-list-container" id="notif-list-container">
+              <!-- Rendered by js/main.js -->
+            </div>
+
+            <div class="notif-dropdown-footer">
+              <a href="#harinama-chintamani" onclick="window.closeNotificationDropdown()" class="notif-footer-link">Join Live Class Broadcast ↗</a>
+            </div>
+          </div>
+        </div>
+
         <a href="#harinama-chintamani" class="btn btn-pill-live" id="nav-live-btn">
           <span class="live-beacon-pulse"></span>
           <span>LIVE CLASS</span>
@@ -179,6 +239,15 @@
           </a>
         </div>
       </div>
+
+      <!-- Mobile Bell Button (Visible on mobile header) -->
+      <button class="mobile-bell-btn" id="mobile-bell-trigger" onclick="window.toggleNotificationDropdown(event)" aria-label="Notifications" title="Sacred Notifications">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <span class="bell-badge" id="mobile-bell-badge-count">3</span>
+      </button>
 
       <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
     </div>
@@ -1238,11 +1307,11 @@
   </aside>
 
   <!-- Scripts -->
-  <script src="js/auth.js"></script>
-  <script src="js/sound.js"></script>
-  <script src="js/discourses.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/spiritual-3d.js"></script>
+  <script src="js/auth.js?v=4.9"></script>
+  <script src="js/sound.js?v=4.9"></script>
+  <script src="js/discourses.js?v=5.1"></script>
+  <script src="js/main.js?v=4.9"></script>
+  <script src="js/spiritual-3d.js?v=4.9"></script>
 </body>
 
 </html>
